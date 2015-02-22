@@ -1,0 +1,24 @@
+<ul class="breadcrumb">
+  <% if @sort.parent_id %>
+  <li class="first"><%= link_to father(@sort).name, baike_path(father(@sort)) %></li>
+  <% end %>
+  <li><%= link_to @sort.name, baike_path(@sort) %></li>
+  <li>编辑</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

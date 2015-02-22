@@ -1,0 +1,72 @@
+<div class="wiki">
+    <% if sort.have_section == 1 %>
+    <ul class="wiki-nav">
+      <% sort.sections.each do |section| %>
+        <li class="nav-dd">
+          <span><%= section.name %></span>
+          <% section.section_sorts.each do |sort| %>
+            <span><%= link_to sort.name, baike_path(sort) %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
+</div>
+
+
+<dl class="nav-dl">
+  <% @sorts.each do |sort| %>
+    <dt class="nav-dt">
+      <span><%= link_to sort.name, baike_path(sort) %></span>
+    </dt>
+
+    <% sort.sections.each do |section| %>
+      <dd class="nav-dd">
+        <span><%= section.name %></span>
+        <% section.section_sorts.each do |sort| %>
+          <span><%= link_to sort.name, baike_path(sort) %></span>
+        <% end %>
+      </dd>
+    <% end %>
+  <% end %>
+</dl>
+
+<% if sort.has_section %>
+  <div class="passage-nav">
+    <% sort.sections.each do |section| %>
+      <p class="nav-dd">
+        <span><%= section.name %></span>
+        <% section.sorts.each do |sort| %>
+          <span><%= link_to sort.name, baike_path(sort) %></span>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+
+<% else %>
+
+<ul class="nav nav-gov">
+  <% sort.parent.siblings.each do |brother| %>
+    <% if brother == sort.parent %>
+      <li class=""><%= link_to brother.name, url_for(:action => :show, :id => brother) %>
+        <ul class="nav">
+          <% brother.children.each do |son| %>
+            <li class="<%= 'active' if son == sort %>"><%= link_to son.name, url_for(:action => :show, :id => son)  %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% else %>
+      <li class=""><%= link_to brother.name, url_for(:action => :show, :id => brother) %>
+        <ul class="nav">
+          <% brother.children.each do |son| %>
+            <li class=""><%= link_to son.name, url_for(:action => :show, :id => son) %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% end %>

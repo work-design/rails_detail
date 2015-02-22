@@ -1,0 +1,38 @@
+<ul class="breadcrumb">
+  <li><%= link_to @sort.name, baike_path(@sort) %></li>
+  <li>版本对比</li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>更新时间</th>
+      <th>版本</th>
+      <th>贡献者</th>
+      <th>修改原因</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @solos.each do |solo| %>
+      <tr>
+        <td><%= solo.id %></td>
+        <td><%= format_time solo.updated_at %></td>
+        <td><%= link_to '查看', sort_solo_path(@sort, solo) %></td>
+        <td><%= solo.try(:user).try(:name) %></td>
+        <td><%= truncate solo.reason, :length => 80 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>最近两个版本对比</h3>
+<div class='well'>
+  <% if @solos.size > 1 %>
+    <div class="diff">
+      <%= simple_format Diff.diff(@solos[-2].content, @solos[-1].content) %>
+    </div>
+  <% elsif @solos.size == 1 %>
+    <div><%= simple_format @solos[0].content %></div>
+  <% end %>
+</div>

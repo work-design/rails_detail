@@ -1,0 +1,5 @@
+<% if params[:sup] %>
+  $('<%= '#part_'+@sup.id.to_s %>').after('<%= j render 'text/sorts/sub' %>');
+<% else %>
+  $('<%= '#solo_'+@parent.id.to_s %>').after('<%= j render 'text/sorts/sub' %>');
+<% end %>

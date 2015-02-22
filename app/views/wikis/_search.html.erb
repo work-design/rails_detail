@@ -1,0 +1,21 @@
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="text-right" style="line-height: 45px">搜索</p>
+    </div>
+    <div class="col-md-9">
+      <%= form_tag search_wikis_path, class: 'form-horizontal', :role => 'form' do %>
+        <div class="form-group">
+          <%= label 'query', '搜索:', class: "sr-only" %>
+          <div class="col-md-12">
+            <div class="input-group">
+              <%= text_field_tag 'query', nil, class: 'form-control input-lg' %>
+              <span class="input-group-btn"><button type="submit" class="btn btn-default input-lg">搜索</button></span>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<%= render :partial => 'panel/sorts/head' %>
+
+<div class="row">
+
+  <%= render :partial => 'panel/sorts/side' %>
+
+  <div class="span9">
+
+    <% if @sort.has_section == 1 %>
+      <%= render :partial => 'show_section', :collection => @sort.sections, :as => :section %>
+    <% else %>
+      <p>还没有导读链接！</p>
+      <%= link_to '添加节点', new_sort_section_path(@sort) %>
+    <% end %>
+
+  </div>
+
+</div>

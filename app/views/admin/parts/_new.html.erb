@@ -1,0 +1,7 @@
+<div class="passage" id="<%= "part_"+@solo.id.to_s+'_form' %>">
+  <%= form_for @part, :url => wiki_parts_path(params[:wiki_id]), :html => {:class => "form-horizontal well"}, :remote => true do |f| %>
+    <%= render :partial => 'text/admin/wikis/form', :locals => { :f => f } %>
+
+
+  <% end %>
+</div>

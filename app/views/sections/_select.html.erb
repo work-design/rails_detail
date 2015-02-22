@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#section_contains').select2({
+      placeholder: '可输入查询',
+      multiple: true,
+      width: '130px',
+      initSelection: function(element, callback) {
+        var data = [];
+        $(element.val()).each(function () {
+          data.push({id: this, name: this});
+        });
+        callback(data);
+      },
+      ajax: {
+        url: '/sorts/search.json',
+        datatype: 'jsonp',
+        data: function(term, page) {
+          return {
+            q: term,
+            page :page
+          };
+        },
+        results: function(data, page) {
+          return {
+            results: data.sorts
+          };
+        }
+      },
+      formatResult: function(sort) {
+        return sort.id;
+      },
+      formatSelection: function(sort) {
+        return sort.name;
+      }
+    })
+  });
+</script>
+

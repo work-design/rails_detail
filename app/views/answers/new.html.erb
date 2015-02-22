@@ -1,0 +1,22 @@
+<ul class="breadcrumb">
+  <li><%= link_to @ask.title, ask_path(@ask) %></li>
+  <li class="active">回答</li>
+</ul>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="well">
+      <h1><%= @ask.title %></h1>
+      <div class="info">
+        <%= @ask.answered_at %>
+        <%= @ask.user_id %>
+      </div>
+      <div>
+        <%= @ask.body %>
+      </div>
+    </div>
+    <%= render 'form' %>
+  </div>
+</div>
+
+

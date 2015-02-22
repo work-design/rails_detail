@@ -1,0 +1,5 @@
+<div class="passage" id="<%= "solo_"+@sort.id.to_s+"_form" %>">
+  <%= form_for @solo, :url => sort_solos_path(params[:sort_id]), :html => {:class => "form-horizontal well"}, :remote => true do |f| %>
+    <%= render :partial => 'form', :locals => { :sort => @sort, :f => f } %>
+  <% end %>
+</div>
