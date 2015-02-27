@@ -1,5 +1,0 @@
-class Service < Item
-
-
-
-end

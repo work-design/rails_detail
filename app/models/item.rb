@@ -2,11 +2,7 @@ class Item < ActiveRecord::Base
   paginates_per 10
   mount_uploader :picture, PictureUploader
 
-
   belongs_to :list, :counter_cache => true
-
-  has_many :good_items, -> { order(position: :asc) }, dependent: :destroy
-  has_many :goods, through: :good_items
 
   has_many :parents, class_name: 'ItemParent', :dependent => :destroy
   has_many :children, class_name: 'ItemChild', :dependent => :destroy
