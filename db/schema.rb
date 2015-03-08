@@ -81,18 +81,7 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.integer "position",  limit: 4, default: 0
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.string   "picture",        limit: 255
-    t.integer  "list_id",        limit: 4
-    t.string   "list_name",      limit: 255
-    t.text     "content",        limit: 65535
-    t.string   "type",           limit: 255
-    t.integer  "status",         limit: 4,     default: 0
-    t.integer  "node_type",      limit: 4
-    t.integer  "children_count", limit: 4,     default: 0
-    t.datetime "updated_at"
-  end
+
 
   create_table "lists", force: :cascade do |t|
     t.string  "name",        limit: 255
@@ -106,23 +95,9 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.integer "shipment_id", limit: 4
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4,              null: false
-    t.integer  "good_id",     limit: 4
-    t.float    "price",       limit: 24
-    t.integer  "quantity",    limit: 4,  default: 1
-    t.float    "total_price", limit: 24
-    t.time     "order_at"
-    t.date     "order_on"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-  end
 
-  create_table "payments", force: :cascade do |t|
-    t.integer "user_id",     limit: 4
-    t.integer "order_id",    limit: 4
-    t.float   "total_price", limit: 24
-  end
+
+
 
   create_table "photos", force: :cascade do |t|
     t.string   "title",          limit: 255
@@ -189,21 +164,6 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.integer "promote_id", limit: 4
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name",             limit: 255,             null: false
-    t.string   "email",            limit: 255,             null: false
-    t.string   "password_digest",  limit: 255,             null: false
-    t.string   "confirm_token",    limit: 255
-    t.datetime "confirm_sent_at"
-    t.integer  "logins_count",     limit: 4,   default: 0
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip", limit: 255
-    t.string   "last_login_ip",    limit: 255
-    t.string   "avatar",           limit: 255
-    t.integer  "role_id",          limit: 4
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-  end
+
 
 end

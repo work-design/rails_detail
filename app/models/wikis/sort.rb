@@ -13,5 +13,4 @@ class Sort < ActiveRecord::Base
   has_many :ask_sorts, :dependent => :destroy
   has_many :asks, :through => :ask_sorts
 
-
 end
