@@ -25,16 +25,7 @@ ActiveRecord::Schema.define(version: 20141003094735) do
     t.string  "contribute_type", limit: 255
   end
 
-  create_table "items", force: true do |t|
-    t.string   "name",       limit: 255
-    t.string   "picture",    limit: 255
-    t.integer  "praise",     limit: 4,     default: 0
-    t.datetime "updated_at"
-    t.integer  "list_id",    limit: 4
-    t.text     "content",    limit: 65535
-    t.string   "list_name",  limit: 255
-    t.string   "type",       limit: 255
-  end
+
 
   create_table "lists", force: true do |t|
     t.string  "name",        limit: 255, default: ""

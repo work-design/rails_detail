@@ -16,19 +16,14 @@ class Item < ActiveRecord::Base
 
 end
 
-=begin
+# 开始属性列表
+# :list_id,        :integer
+# :list_name,      :string,  limit: 50
+# :name,           :string,  limit: 50
+# :content,        :text,    limit: 65535
+# :type,           :string,  limit: 10
+# :status,         :integer, default: 0
+# :node_type,      :integer
+# :children_count, :integer, default: 0
+# :picture_url,    :string,  limit: 255
 
-create_table "items", force: :cascade do |t|
-  t.string   "name",           limit: 255
-  t.string   "picture",        limit: 255
-  t.integer  "list_id",        limit: 4
-  t.string   "list_name",      limit: 255
-  t.text     "content",        limit: 65535
-  t.string   "type",           limit: 255
-  t.integer  "status",         limit: 4,     default: 0
-  t.integer  "node_type",      limit: 4
-  t.integer  "children_count", limit: 4,     default: 0
-  t.datetime "updated_at"
-end
-
-=end
