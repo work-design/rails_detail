@@ -1,5 +1,4 @@
-# coding: utf-8
-class Text::WikisController < ApplicationController
+class TheDetail::WikisController < TheDetail::BaseController
 
   def index
     @themes = Solo.roots

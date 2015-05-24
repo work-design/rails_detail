@@ -21,3 +21,8 @@ class List < ActiveRecord::Base
   end
 
 end
+
+# :name, :string, limit: 255
+# :items_count, :integer, limit: 4, default: 0
+# :position, :integer, limit: 4, default: 0
+# :kind, :integer, limit: 4

@@ -1,0 +1,5 @@
+zh:
+  errors:
+    messages:
+      wrong_name_or_password: '账号或者密码错误'
+

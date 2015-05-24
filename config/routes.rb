@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get 'taxon:id' => :taxon, :as => :taxon, :on => :collection
       resources :items
     end
+    get 'detail' => 'detail#index'
   end
 
 end

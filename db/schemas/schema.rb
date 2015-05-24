@@ -55,19 +55,7 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.datetime "finish_at"
   end
 
-  create_table "goods", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "logo",        limit: 255
-    t.text     "overview",    limit: 65535
-    t.integer  "provider_id", limit: 4
-    t.string   "sku",         limit: 255
-    t.float    "price",       limit: 24,    default: 9999.0
-    t.integer  "sales_count", limit: 4,     default: 0
-    t.boolean  "published",   limit: 1,     default: true
-    t.integer  "promote_id",  limit: 4
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-  end
+
 
   create_table "item_children", force: :cascade do |t|
     t.integer "item_id",  limit: 4
@@ -79,15 +67,6 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.integer "item_id",   limit: 4
     t.integer "parent_id", limit: 4
     t.integer "position",  limit: 4, default: 0
-  end
-
-
-
-  create_table "lists", force: :cascade do |t|
-    t.string  "name",        limit: 255
-    t.integer "items_count", limit: 4,   default: 0
-    t.integer "position",    limit: 4,   default: 0
-    t.integer "kind",        limit: 4
   end
 
   create_table "order_shipments", force: :cascade do |t|

@@ -4,20 +4,10 @@ class Admin::ItemsController < Admin::BaseController
 
   def index
     @items = @list.items
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @lists }
-    end
   end
 
   def new
     @item = @list.items.build
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @item }
-    end
   end
 
   def create
