@@ -1,9 +1,8 @@
 class Item < ActiveRecord::Base
   paginates_per 10
-  mount_uploader :picture, PictureUploader
+  attachment :photo
 
   belongs_to :list, :counter_cache => true
-
   has_many :parents, class_name: 'ItemParent', :dependent => :destroy
   has_many :children, class_name: 'ItemChild', :dependent => :destroy
 
@@ -25,5 +24,5 @@ end
 # :status,         :integer, default: 0
 # :node_type,      :integer
 # :children_count, :integer, default: 0
-# :picture_url,    :string,  limit: 255
+# :photo_id,    :string,  limit: 255
 
