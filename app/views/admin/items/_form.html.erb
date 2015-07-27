@@ -1,27 +1,17 @@
-<%= render "shared/error_messages", :target => @item %>
-<fieldset>
+<%= render 'shared/error_messages', target: @item %>
 
-  <div class="inline field">
-    <%= f.label :name, "名称：", :class => "five wide field" %>
-    <%= f.text_field :name, :class => "ten wide field" %>
-  </div>
+<%= f.text_field :name, label: '名称：' %>
+<%= f.text_area :content, label: '内容：' %>
+<div class="inline field">
+  <%= f.label :photo, '图片：' %>
+  <%= f.attachment_field :photo %>
+  <% if @item.photo_id? %>
+    <div class="inlile fields">
+      <div class="six wide field"></div>
+      <%= image_tag attachment_url(@item, :photo) %>
+    </div>
+  <% end %>
+</div>
+<%= f.submit %>
 
-  <div class="inline field">
-    <%= f.label :content, "内容：", :class => "five wide field" %>
-    <%= f.text_area :content, rows: 4, :class => 'ten wide field' %>
-  </div>
-
-  <div class="inline field">
-    <%= f.label :picture, "配图：", class: "five wide field" %>
-    <%= image_tag(@item.picture_url) if @item.picture? %>
-    <%= f.file_field :picture %>
-    <%= f.hidden_field :picture_cache %>
-  </div>
-
-  <div class="inline field">
-    <label class="six wide field"></label>
-    <%= f.submit class: 'ui button' %>
-  </div>
-
-</fieldset>
 

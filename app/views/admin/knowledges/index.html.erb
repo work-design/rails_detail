@@ -1,0 +1,40 @@
+<div class="three wide column">
+  <%= render 'admin/detail/nav' %>
+</div>
+
+<div class="thirteen wide column">
+
+  <div class="ui top attached menu borderless">
+    <div class="item"><strong>知识</strong></div>
+    <div class="right menu">
+      <div class="item"><%= link_to '新建', new_admin_knowledge_path, class: 'ui teal button' %></div>
+    </div>
+  </div>
+
+  <table class="ui table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>名称</th>
+      <th>类型</th>
+      <th>描述</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @knowledges.each do |knowledge| %>
+      <tr>
+        <td><%= knowledge.id %></td>
+        <td><%= knowledge.name %></td>
+        <td><%= link_to 'Show', admin_knowledge_path(knowledge) %></td>
+        <td><%= link_to 'Edit', edit_admin_knowledge_path(knowledge) %></td>
+        <td><%= link_to 'Destroy', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @knowledges %>
+
+</div>

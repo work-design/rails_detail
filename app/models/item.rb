@@ -13,6 +13,17 @@ class Item < ActiveRecord::Base
   enum node_type: [:node_top, :node_mid, :node_bottom]
   scope :node_tops, -> { where(node_type: node_types[:node_top]) }
 
+  #after_save :move_to_wiki_histories
+
+  # def move_to_wiki_histories
+  #   history = WikiHistory.new
+  #   history.content = self.content
+  #   history.reason = self.reason
+  #   history.wiki_id = self.id
+  #   history.user_id = self.user_id
+  #   history.save
+  # end
+
 end
 
 # 开始属性列表

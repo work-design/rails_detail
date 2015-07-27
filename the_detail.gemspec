@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = TheDetail::VERSION
   s.authors     = ["qinmingyuan"]
   s.email       = ["mingyuan0715@foxmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/yigexiangfa/the_detail"
   s.summary     = "Summary of TheDetail."
   s.description = "Description of TheDetail."
   s.license     = "MIT"

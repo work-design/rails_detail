@@ -12,8 +12,8 @@
   </div>
 
   <div>
-    <%= form_for [:admin, @list, @item], :html => {:class => 'ui form'} do |f| %>
-      <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= default_form_for [:admin, @list, @item] do |f| %>
+      <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>
 </div>
