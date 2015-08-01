@@ -1,6 +1,6 @@
-# coding: utf-8
-class Text::Admin::PartsController < Text::Admin::BaseController
+class MinorsController < ApplicationController
   before_action :set_wiki, :only => [:new, :create]
+  before_action :set_knowledge
 
   def index
     @sort = Sort.find params[:sort_id]
@@ -65,6 +65,10 @@ class Text::Admin::PartsController < Text::Admin::BaseController
 
   def set_wiki
     @solo = Solo.find params[:wiki_id]
+  end
+
+  def set_knowledge
+    @knowledge = Knowledge.find params[:knowledge_id]
   end
 
   def part_params

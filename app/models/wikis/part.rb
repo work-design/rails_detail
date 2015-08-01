@@ -1,6 +1,0 @@
-class Part < Wiki
-
-
-end
-
-

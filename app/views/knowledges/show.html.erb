@@ -1,9 +1,12 @@
 <% content_for :title, ' ' %>
 <% content_for :meta_description, '' %>
 
-<ol class="ui breadcrumb">
-  <li class="active"><%= @knowledge.name %></li>
-</ol>
+<div class="sixteen wide column">
+  <ol class="ui breadcrumb">
+    <li class="section active"><%= @knowledge.name %></li>
+  </ol>
+</div>
+
 
 <div class="four wide column">
 
@@ -17,7 +20,7 @@
     <%= @knowledge.name %>
   </h3>
 
-  
+
 
 </div>
 
