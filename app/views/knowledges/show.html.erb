@@ -13,12 +13,13 @@
     <%= @knowledge.name %>
   </h3>
 
-  <%= render partial: 'wiki', locals: { knowledge: @knowledge } %>
+  <div class="ui items">
+    <%= render partial: 'wiki', locals: { knowledge: @knowledge } %>
 
-  <% @knowledge.children.each do |child| %>
-    <%= render partial: 'wiki', locals: { knowledge: child } %>
-  <% end %>
-
+    <% @knowledge.children.each do |child| %>
+      <%= render partial: 'wiki', locals: { knowledge: child } %>
+    <% end %>
+  </div>
 
 </div>
 

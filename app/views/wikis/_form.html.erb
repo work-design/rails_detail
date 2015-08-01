@@ -1,29 +1,7 @@
-<div class="form-group">
-  <%= f.label :name, "分类名称：", :class => "col-lg-2 control-label" %>
-  <div class="col-lg-10">
-    <%= f.text_field :name, :class => "form-control", placeholder: "分类名称" %>
-  </div>
-</div>
+<%= default_form_for @wiki do |f| %>
 
-<div class="form-group">
-  <%= f.label :subname, "副标题：", :class => "col-lg-2 control-label" %>
-  <div class="col-lg-10">
-    <%= f.text_field :subname, :class => "form-control", placeholder: "副标题" %>
-  </div>
-</div>
+  <%= f.text_area body, rows: 10, label: '内容：' %>
+  <%= f.text_area commit_message, rows: 3, label: '修改备注：' %>
+  <%= f.submit %>
 
-<div class="form-group">
-  <%= f.label :position, "排序码：", :class => "col-lg-2 control-label" %>
-  <div class="col-lg-10">
-    <%= f.text_field :position, :class => "form-control" %>
-  </div>
-</div>
-
-<div class="modal-footer">
-  <%- if f.options[:html][:id] == "edit_sort" -%>
-    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-  <%- elsif f.options[:html][:id] == "new_sort" -%>
-    <%= link_to "取消", fade_form_baike_index_path(:area => "sort-form-#{id}"), class: "btn btn-default", remote: true %>
-  <%- end -%>
-  <%= f.submit :class => "btn btn-primary" %>
-</div>
+<% end %>

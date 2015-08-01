@@ -1,21 +1,23 @@
-# coding: utf-8
-class Text::Admin::WikisController < Text::Admin::BaseController
-  respond_to :html, :js, :json
+class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+  before_action :set_knowledge
   
   def index
-    @sorts = Sort.roots
+    @wikis = @knowledge.wiki_histories.page(params[:page])
   end
 
   def new
-    @sort = Sort.new
+    @wiki = @knowledge.wiki || @knowledge.build_wiki
   end
 
   def create
-    @sort = Sort.new sort_params
+    @wiki = @knowledge.wiki || @knowledge.build_wiki
+    @wiki.body = wiki_params[:body]
+    @wiki.commit_message = wiki_params[:commit_message]
+    @wiki.commit_id = current_user.id
 
     respond_to do |format|
-      if @sort.save
+      if @wiki.save
         format.html { redirect_to admin_sorts_url, notice: '添加成功' }
       else
         format.html { render action: "new" }
@@ -81,8 +83,12 @@ class Text::Admin::WikisController < Text::Admin::BaseController
     @wiki = Wiki.find params[:id]
   end
 
+  def set_knowledge
+    @knowledge = Knowledge.find params[:knowledge_id]
+  end
+
   def wiki_params
-    params[:wiki].permit(:name, :subname, :position)
+    params[:wiki].permit(:body, :commit_message)
   end
 
 
