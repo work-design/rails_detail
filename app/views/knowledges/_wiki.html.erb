@@ -7,15 +7,17 @@
   <div class="passage-info clearfix">
 
     <div class="pull-left">
-      <%= link_to '插入段落', new_knowledge_path(knowledge, position: 1), :remote => true %>
+      <%= link_to '插入段落', new_knowledge_path(knowledge_id: knowledge, position: 1), :remote => true %>
       <span>丨</span><%= link_to '编辑内容', new_knowledge_wiki_path(knowledge), remote: true %>
-      <span>丨所有版本：</span><%= link_to knowledge.wiki_histories_count, knowledge_wikis_path %>
+      <span>丨所有版本：</span><%= link_to knowledge.wiki_histories_count, knowledge_wikis_path(knowledge) %>
     </div>
 
+    <% if knowledge.wiki %>
     <div class="pull-right">
       <span>最近贡献：</span>
-      <%= link_to knowledge.wiki.try(:commit).try(:name), person_path(knowledge.wiki) %>
+      <%= link_to knowledge.wiki.commit.name, person_path(knowledge.wiki.commit) %>
     </div>
+    <% end %>
 
   </div>
 

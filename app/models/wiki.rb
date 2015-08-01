@@ -4,9 +4,9 @@ class Wiki < ActiveRecord::Base
 
   belongs_to :knowledge
   belongs_to :commit, class_name: 'User', foreign_key: 'commit_id'
+  validates :commit_id, presence: true
 
-
-  after_save :move_to_wiki_histories
+  after_save :move_to_wiki_histories, if: :body_changed?
 
   def move_to_wiki_histories
     history = WikiHistory.new
