@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :knowledges
+  resources :knowledges do
+    resources :wikis
+  end
 
   namespace :admin do
     resources :lists, except: [:show] do

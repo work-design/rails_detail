@@ -7,20 +7,24 @@
   </ol>
 </div>
 
-
-<div class="four wide column">
-
-  <%= render :partial => 'nav', :locals => { :sorts => @knowledge.children } %>
-
-</div>
-
 <div class="twelve wide column">
 
   <h3 class="ui header">
     <%= @knowledge.name %>
   </h3>
 
+  <%= render partial: 'wiki', locals: { knowledge: @knowledge } %>
 
+  <% @knowledge.children.each do |child| %>
+    <%= render partial: 'wiki', locals: { knowledge: child } %>
+  <% end %>
+
+
+</div>
+
+<div class="four wide column">
+
+  <%= render :partial => 'nav', :locals => { :sorts => @knowledge.children } %>
 
 </div>
 
