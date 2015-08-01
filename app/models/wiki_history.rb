@@ -1,9 +1,8 @@
-class History < ActiveRecord::Base
+class WikiHistory < ActiveRecord::Base
   paginates_per 10
 
-  belongs_to :user
-  belongs_to :item
-
+  belongs_to :wiki
+  belongs_to :knowledge
 
 
 end

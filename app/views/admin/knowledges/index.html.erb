@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <table class="ui table">
+  <table class="ui attached table">
     <thead>
     <tr>
       <th>ID</th>
@@ -27,9 +27,10 @@
       <tr>
         <td><%= knowledge.id %></td>
         <td><%= knowledge.name %></td>
-        <td><%= link_to 'Show', admin_knowledge_path(knowledge) %></td>
-        <td><%= link_to 'Edit', edit_admin_knowledge_path(knowledge) %></td>
-        <td><%= link_to 'Destroy', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详细', knowledge_path(knowledge), target: '_blank' %></td>
+        <td><%= link_to '编辑', edit_admin_knowledge_path(knowledge) %></td>
+        <td><%= link_to '添加章节', new_admin_knowledge_path(parent_id: knowledge) %></td>
+        <td><%= link_to '删除', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>

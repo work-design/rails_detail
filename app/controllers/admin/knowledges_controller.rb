@@ -2,14 +2,15 @@ class Admin::KnowledgesController < Admin::BaseController
   before_action :set_knowledge, only: [:show, :edit, :update, :destroy]
 
   def index
-    @knowledges = Knowledge.page(params[:page])
+    @knowledges = Knowledge.roots.page(params[:page])
   end
 
   def show
   end
 
   def new
-    @knowledge = Knowledge.new
+    parent_id = params[:parent_id] || 0
+    @knowledge = Knowledge.new(parent_id: parent_id)
   end
 
   def edit
@@ -44,7 +45,7 @@ class Admin::KnowledgesController < Admin::BaseController
   end
 
   def knowledge_params
-    params[:knowledge].permit(:name)
+    params[:knowledge].permit(:name, :parent_id)
   end
 
 end

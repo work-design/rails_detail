@@ -1,9 +1,13 @@
 class Admin::ItemsController < Admin::BaseController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_list
 
   def index
-    @items = @list.items
+    if params[:list_id].present?
+      @items = set_list.items
+    else
+      @items = Item.page(params[:page])
+    end
+
   end
 
   def new
@@ -64,7 +68,11 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def item_params
-    params[:item].permit(:parent_id, :name, :content, :picture, :picture_cache, :need_ids => [])
+    params[:item].permit(:parent_id,
+                         :name,
+                         :content,
+                         :photo,
+                         :photo_cache)
   end
 
 end

@@ -1,0 +1,23 @@
+<% content_for :title, ' ' %>
+<% content_for :meta_description, '' %>
+
+<ol class="ui breadcrumb">
+  <li class="active"><%= @knowledge.name %></li>
+</ol>
+
+<div class="four wide column">
+
+  <%= render :partial => 'nav', :locals => { :sorts => @knowledge.children } %>
+
+</div>
+
+<div class="twelve wide column">
+
+  <h3 class="ui header">
+    <%= @knowledge.name %>
+  </h3>
+
+  
+
+</div>
+

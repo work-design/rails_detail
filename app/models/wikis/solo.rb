@@ -1,0 +1,6 @@
+class Solo < Wiki
+
+
+
+end
+

@@ -1,33 +1,17 @@
-<% content_for :title, @solo.name + ' ' + @solo.subname %>
-<% content_for :meta_description, @solo.content %>
-
-<%= render 'search' %>
-
-<%= render :partial => 'breadcrumb' %>
-
 <div class="row">
 
-  <span class="col-md-3">
+  <div>
+    <%= render :partial => 'nav', :locals => { :sorts => @sorts } %>
+  </div>
 
-    <%= render :partial => 'nav', :locals => { :sorts => @solo.siblings_and_self } %>
-
-  </span>
-
-  <div class="col-md-9">
-
-    <div class="center-header">
-      <h1>
-        <%= @solo.name %>
-        <small><%= @solo.subname %></small>
-      </h1>
-    </div>
-
-    <%= render :partial => 'solo', :locals => { :wiki => @solo } %>
-
-    <% @solo.parts.each do |sort| %>
-      <%= render :partial => 'text/parts/part', :locals => { :wiki => sort } %>
+  <div class="span9">
+    <% if @wiki.size > 1 %>
+      <div class="diff">
+        <%= simple_format Diff.diff(@wiki[-2].content, @wiki[-1].content) %>
+      </div>
+    <% else %>
+      <div><%= simple_format @wiki[0].content %></div>
     <% end %>
-
   </div>
 
 </div>

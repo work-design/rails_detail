@@ -2,7 +2,7 @@
 
   <% if wiki %>
   <div class="passage-content">
-    <%= ex_simple_format wiki.content %>
+    <%= ex_simple_format wiki.body %>
   </div>
   <% end %>
 
@@ -24,3 +24,8 @@
   </div>
 
 </div>
+<%= render :partial => 'solo', :locals => { :wiki => @knowledge } %>
+
+<% @solo.parts.each do |sort| %>
+  <%= render :partial => 'text/parts/part', :locals => { :wiki => sort } %>
+<% end %>

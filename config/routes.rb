@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :lists
+  resources :knowledges
 
   namespace :admin do
-    resources :lists, :except => [:show] do
-      get 'taxon:id' => :taxon, :as => :taxon, :on => :collection
-      resources :items
+    resources :lists, except: [:show] do
     end
-    resources :knowledges
+    resources :items
+    resources :knowledges do
+
+    end
     get 'detail' => 'detail#index'
   end
 
