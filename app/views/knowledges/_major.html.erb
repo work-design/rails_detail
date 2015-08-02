@@ -1,0 +1,27 @@
+<div class="item" id="wiki_<%= knowledge.id %>">
+
+  <div class="content">
+
+    <div class="description">
+      <%= ex_simple_format knowledge.wiki.try(:body) %>
+    </div>
+
+    <div class="extra">
+      <div>
+        <%= link_to '插入段落', new_knowledge_path(knowledge_id: knowledge, position: 1), :remote => true %>
+        <span>丨</span><%= link_to '编辑内容', new_knowledge_wiki_path(knowledge), remote: true %>
+        <span>丨所有版本：</span><%= link_to knowledge.wiki_histories_count, knowledge_wikis_path(knowledge) %>
+      </div>
+
+      <% if knowledge.wiki %>
+        <div class="right floated">
+          <span>最近贡献：</span>
+          <%= link_to knowledge.wiki.commit.name, person_path(knowledge.wiki.commit) %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+
+</div>

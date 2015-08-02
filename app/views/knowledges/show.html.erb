@@ -9,15 +9,15 @@
 
 <div class="twelve wide column">
 
-  <h3 class="ui header">
+  <h4 class="ui center aligned header">
     <%= @knowledge.name %>
-  </h3>
+  </h4>
 
-  <div class="ui items">
-    <%= render partial: 'wiki', locals: { knowledge: @knowledge } %>
+  <div class="ui divided items">
+    <%= render partial: 'major', locals: { knowledge: @knowledge } %>
 
     <% @knowledge.children.each do |child| %>
-      <%= render partial: 'wiki', locals: { knowledge: child } %>
+      <%= render partial: 'minor', locals: { knowledge: child } %>
     <% end %>
   </div>
 

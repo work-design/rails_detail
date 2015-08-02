@@ -7,20 +7,24 @@ class WikisController < ApplicationController
   end
 
   def new
-    @wiki = @knowledge.wiki || @knowledge.build_wiki
+    @wiki = @knowledge.wiki_histories.build
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
-    @wiki = @knowledge.wiki || @knowledge.build_wiki
+    @wiki = @knowledge.wiki_histories.build
     @wiki.body = wiki_params[:body]
     @wiki.commit_message = wiki_params[:commit_message]
     @wiki.commit_id = current_user.id
 
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to admin_sorts_url, notice: '添加成功' }
+        format.js
       else
-        format.html { render action: "new" }
+        format.js
       end
     end
   end
@@ -90,6 +94,5 @@ class WikisController < ApplicationController
   def wiki_params
     params[:wiki].permit(:body, :commit_message)
   end
-
 
 end
