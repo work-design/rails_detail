@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+  before_action :set_wiki, only: [:pass, :destroy]
   before_action :set_knowledge
   
   def index
@@ -28,53 +28,19 @@ class WikisController < ApplicationController
       end
     end
   end
-    
-  def edit    
-    respond_to do |format|
-      format.html
-    end
-  end
 
-  def update
-    respond_to do |format|
-      if @sort.update(sort_params)
-        format.html { redirect_to :back, :notice => '更新成功' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @sort.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  def pass
+    @wiki.status_passed!
 
-  def sub
-    if params[:sup]
-      @sup = Sort.find params[:sup]
-      @sort = Sort.new(:position => @sup.position.to_i+1)
-    else
-      @parent = Sort.find params[:id]
-      @sort = Sort.new(:position => params[:position])
+    if @wiki == @knowledge.wiki_histories.last
+      @wiki.set_active
     end
-  end
 
-  def create_sub
-    @parent = Sort.find params[:id]
-    @sort = @parent.children.new sort_params
-    @sort.insert_at(params[:sort][:position].to_i)
-
-    respond_to do |format|
-      if @sort.save
-        format.html { redirect_to :back, :notice => "添加成功" }
-        format.json { render json: @sort, status: :created, location: @sort }
-      else
-        format.html { render :action => 'sub' }
-        format.json { render json: @sort.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to knowledge_wikis_url(@knowledge)
   end
 
   def destroy
-    @sort.destroy
+    @wiki.destroy
 
     respond_to do |format|
       format.html { redirect_to admin_sorts_url }
@@ -84,7 +50,7 @@ class WikisController < ApplicationController
  
   private
   def set_wiki
-    @wiki = Wiki.find params[:id]
+    @wiki = WikiHistory.find params[:id]
   end
 
   def set_knowledge

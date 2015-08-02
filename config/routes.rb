@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :knowledges do
-    resources :wikis
+    resources :wikis do
+      patch :pass, on: :member
+    end
   end
 
   namespace :admin do
