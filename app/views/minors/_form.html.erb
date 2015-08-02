@@ -1,0 +1,7 @@
+<%= form_for @wiki, as: :wiki, url: knowledge_minors_path(@knowledge), html: { class: 'ui form' }, remote: true do |f| %>
+
+  <%= f.text_area :body, rows: 10, placeholder: '内容：', class: 'field' %>
+  <%= f.text_area :commit_message, rows: 3, placeholder: '修改备注：', class: 'field' %>
+  <%= f.submit class: 'ui submit button' %>
+
+<% end %>

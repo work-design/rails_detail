@@ -1,0 +1,6 @@
+class MajorRecord < WikiRecord
+
+
+
+end
+

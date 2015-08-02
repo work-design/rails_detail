@@ -1,0 +1,6 @@
+class MinorRecord < WikiRecord
+
+
+end
+
+

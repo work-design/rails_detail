@@ -1,1 +1,1 @@
-$('<%= '#solo_'+@solo.id.to_s %>').after('<%= j render 'new' %>');
+$('#minor_<%= @knowledge.id %>').html('<%= j(render 'form') %>');

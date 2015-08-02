@@ -1,4 +1,4 @@
-class WikiHistory < ActiveRecord::Base
+class WikiRecord < ActiveRecord::Base
   paginates_per 10
 
   belongs_to :wiki
@@ -9,6 +9,7 @@ class WikiHistory < ActiveRecord::Base
 
   enum status: [:status_initial, :status_passed]
 
+  default_scope -> { order(id: :desc) }
   def set_active
     self.class.where.not(id: self.id).where(knowledge_id: self.knowledge_id).update_all(active: false)
     self.update(active: true)

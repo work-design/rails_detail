@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   resources :knowledges do
-    resources :wikis do
+    resources :majors do
+      patch :pass, on: :member
+    end
+    resources :minors do
       patch :pass, on: :member
     end
   end

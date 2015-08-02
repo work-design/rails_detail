@@ -1,93 +1,68 @@
-class ManjorsController < ApplicationController
+class MajorsController < ApplicationController
   before_action :set_major, only: [:edit, :update]
   before_action :set_knowledge
 
-  def index
-    @majors = @knowledge.majors.order("id DESC")
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @majors }
-    end
+  def index
+    @wikis = @knowledge.major_records.page(params[:page])
   end
 
+
   def new
-    if @knowledge.majors == []
-      @major = major.new
-    else
-      @major = major.new(:content => @knowledge.majors.last.content||'',
-                       :picture => @knowledge.majors.last.picture)
-    end
+    @wiki = @knowledge.major_records.build
 
     respond_to do |format|
-      format.html
       format.js
     end
   end
 
   def create
-    @major = @knowledge.majors.build major_params
+    @wiki = @knowledge.major_records.build
+    @wiki.body = wiki_params[:body]
+    @wiki.commit_message = wiki_params[:commit_message]
+    @wiki.commit_id = current_user.id
 
     respond_to do |format|
-      if @major.save
-        format.html { redirect_to @major, notice: 'major was successfully created.' }
+      if @wiki.save
         format.js
-        format.json { render json: @major, status: :created, location: @major }
       else
-        format.html { render action: "new" }
         format.js
-        format.json { render json: @major.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  def show
-    respond_to do |format|
-      format.html
-      format.js
-      format.json { render json: @major }
-    end
-  end
+  def pass
+    @wiki.status_passed!
 
-  def edit
-    respond_to do |format|
-      format.js
-      format.html { render :layout => false }
+    if @wiki == @knowledge.major_records.last
+      @wiki.set_active
     end
-  end
 
-  def update
-    respond_to do |format|
-      if @knowledge.update(knowledge_params)
-        format.html { redirect_to :back, :notice => '更新成功' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @knowledge.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to knowledge_majors_url(@knowledge)
   end
 
   def destroy
-    @major.destroy
+    @wiki.destroy
 
     respond_to do |format|
-      format.html { redirect_to majors_url }
+      format.html { redirect_to admin_sorts_url }
       format.json { head :no_content }
     end
   end
 
+
   private
-  def set_major
-    @major = Major.find params[:id]
+
+  def set_wiki
+    @wiki = majorRecord.find params[:id]
   end
 
   def set_knowledge
     @knowledge = Knowledge.find params[:knowledge_id]
   end
 
-  def major_params
-    params[:major].permit(:name, :subname, :content, :reason).merge(:user_id => current_user.id)
+  def wiki_params
+    params[:wiki].permit(:body, :commit_message)
   end
 
 end

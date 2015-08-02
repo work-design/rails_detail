@@ -3,76 +3,65 @@ class MinorsController < ApplicationController
   before_action :set_knowledge
 
   def index
-    @sort = Sort.find params[:sort_id]
-    @parts = @sort.parts.order("id DESC")
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @parts }
-    end
+    @wikis = @knowledge.minor_records.page(params[:page])
   end
 
+
   def new
-    @part = Part.new
+    @wiki = @knowledge.minor_records.build
+
     respond_to do |format|
-      format.html
       format.js
-      format.json { render json: @part }
     end
   end
 
   def create
-    @sort = Sort.find params[:sort_id]
-    @part = @sort.parts.build part_params
-
+    @wiki = @knowledge.minor_records.build
+    @wiki.body = wiki_params[:body]
+    @wiki.commit_message = wiki_params[:commit_message]
+    @wiki.commit_id = current_user.id
 
     respond_to do |format|
-      if @part.save
-        format.html { redirect_to sort_parts_path(sort), :notice => '添加成功!' }
+      if @wiki.save
         format.js
-        format.json { render json: @part, status: :created, location: @part }
       else
-        format.html { render action: "new" }
-        format.js { render :status => 406 }
-        format.json { render json: @part.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
-  def show
-    @sort = Sort.find params[:sort_id]
-    @part = Part.find(params[:id])
+  def pass
+    @wiki.status_passed!
 
-    respond_to do |format|
-      format.html
-      format.js
-      format.json { render json: @part }
+    if @wiki == @knowledge.minor_records.last
+      @wiki.set_active
     end
+
+    redirect_to knowledge_minors_url(@knowledge)
   end
 
   def destroy
-    @sort = Sort.find params[:sort_id]
-    @part = Part.find(params[:id])
-    @part.destroy
+    @wiki.destroy
 
     respond_to do |format|
-      format.html { redirect_to parts_url }
+      format.html { redirect_to admin_sorts_url }
       format.json { head :no_content }
     end
   end
 
+
   private
 
   def set_wiki
-    @solo = Solo.find params[:wiki_id]
+    @wiki = MinorRecord.find params[:id]
   end
 
   def set_knowledge
     @knowledge = Knowledge.find params[:knowledge_id]
   end
 
-  def part_params
-    params.require(:part).permit(:content, :reason).merge(:user_id => current_user.id)
+  def wiki_params
+    params[:wiki].permit(:body, :commit_message)
   end
 
 
