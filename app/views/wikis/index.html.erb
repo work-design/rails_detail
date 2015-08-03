@@ -29,7 +29,7 @@
         <td><%= wiki.updated_at.localtime.to_s(:db) %></td>
         <th><%= wiki.status %></th>
         <td>
-          <%= link_to '通过', pass_knowledge_wiki_path(@knowledge, wiki), method: :patch, data: { confirm: '审核通过' } %>
+          <%= link_to '通过', pass_knowledge_wi_path(@knowledge, wiki), method: :patch, data: { confirm: '审核通过' } %>
         </td>
       </tr>
     <% end %>

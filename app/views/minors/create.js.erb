@@ -1,10 +1,10 @@
-<% if @part.errors.empty? %>
+<% if @minor.errors.empty? %>
 
-  $('<%= '#part_'+@sort.id.to_s %>').replaceWith('<%= j render :partial => 'part', :locals => { :sort => @sort, :wiki => @part } %>').hide().fadeIn('fast');
-  $('<%= '#part_'+@sort.id.to_s+'_form' %>').fadeOut('fast');
+  $('#minor_<%= @knowledge.id %>').html('<%= j render partial: 'knowledges/minor', locals: { knowledge: @knowledge } %>').hide().fadeIn('fast');
+  $('new_wiki').fadeOut('fast');
 
 <% else %>
 
-  $('<span class="error-message"><%= escape_javascript(@part.errors.full_messages.join(',')) %></span>').appendTo($('#new_reply_form'))
+  $('<span class="error-message"><%= escape_javascript(@minor.errors.full_messages.join(',')) %></span>').appendTo($('#new_wiki'))
 
 <% end %>

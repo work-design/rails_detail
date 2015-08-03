@@ -14,10 +14,14 @@
   </h4>
 
   <div class="ui divided items">
-    <%= render partial: 'major', locals: { knowledge: @knowledge } %>
+    <div class="item" id="major_<%= @knowledge.id %>">
+      <%= render partial: 'major', locals: { knowledge: @knowledge } %>
+    </div>
 
     <% @knowledge.children.each do |child| %>
+    <div class="item" id="minor_<%= child.id %>">
       <%= render partial: 'minor', locals: { knowledge: child } %>
+    </div>
     <% end %>
   </div>
 

@@ -1,39 +1,41 @@
-<ul class="breadcrumb">
-  <li><%= link_to @sort.parent.name, baike_path(@sort.parent) %></li>
-  <li><%= link_to @sort.name, baike_path(@sort.parent, :anchor => 'part_'+@sort.id.to_s) %></li>
-  <li>版本对比</li>
-</ul>
 
-<table class="table table-striped">
-  <thead>
+<div class="sixteen wide column">
+
+  <ol class="ui breadcrumb">
+    <%= link_to @knowledge.name, knowledge_path(@knowledge), class: 'section' %>
+    <li class="divider"> / </li>
+    <li class="section active">历史列表</li>
+  </ol>
+
+  <table class="ui table">
+    <thead>
     <tr>
-      <th>id</th>
-      <th>更新时间</th>
-      <th>版本</th>
-      <th>贡献者</th>
-      <th>修改原因</th>
+      <th>ID</th>
+      <th>内容</th>
+      <th>提交信息</th>
+      <th>提交人</th>
+      <th>提交时间</th>
+      <th>状态</th>
+      <th colspan="2">操作</th>
     </tr>
-  </thead>
-  <tbody>
-    <% @parts.each do |part| %>
+    </thead>
+    <tbody>
+    <% @wikis.each do |wiki| %>
       <tr>
-        <td><%= part.id %></td>
-        <td><%= format_time part.updated_at %></td>
-        <td><%= link_to '查看', sort_part_path(@sort, part) %></td>
-        <td><%= part.try(:user).try(:name) %></td>
-        <td><%= truncate part.reason, :length => 80 %></td>
+        <td><%= wiki.id %></td>
+        <td><%= ex_simple_format wiki.body %></td>
+        <td><%= wiki.commit_message %></td>
+        <td><%= wiki.commit.name %></td>
+        <td><%= wiki.updated_at.localtime.to_s(:db) %></td>
+        <th><%= wiki.status %></th>
+        <td>
+          <%= link_to '通过', pass_knowledge_minor_path(@knowledge, wiki), method: :patch, data: { confirm: '审核通过' } %>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<h3>最近两个版本对比</h3>
-<div class='well'>
-  <% if @parts.size > 1 %>
-    <div class="diff">
-      <%= simple_format Diff.diff(@parts[-2].content, @parts[-1].content) %>
-    </div>
-  <% elsif @parts.size == 1 %>
-    <div><%= simple_format @parts[0].content %></div>
-  <% end %>
 </div>
+
+

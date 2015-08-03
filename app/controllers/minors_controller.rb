@@ -1,5 +1,5 @@
 class MinorsController < ApplicationController
-  before_action :set_wiki, :only => [:new, :create]
+  before_action :set_minor, :only => [:pass]
   before_action :set_knowledge
 
   def index
@@ -16,24 +16,21 @@ class MinorsController < ApplicationController
   end
 
   def create
-    @wiki = @knowledge.minor_records.build
-    @wiki.body = wiki_params[:body]
-    @wiki.commit_message = wiki_params[:commit_message]
-    @wiki.commit_id = current_user.id
+    @minor = @knowledge.minor_records.build
+    @minor.body = wiki_params[:body]
+    @minor.commit_message = wiki_params[:commit_message]
+    @minor.commit_id = current_user.id
+    @minor.save
 
     respond_to do |format|
-      if @wiki.save
-        format.js
-      else
-        format.js
-      end
+      format.js
     end
   end
 
   def pass
     @wiki.status_passed!
 
-    if @wiki == @knowledge.minor_records.last
+    if @wiki == @knowledge.minor_records.first
       @wiki.set_active
     end
 
@@ -51,8 +48,7 @@ class MinorsController < ApplicationController
 
 
   private
-
-  def set_wiki
+  def set_minor
     @wiki = MinorRecord.find params[:id]
   end
 

@@ -1,5 +1,5 @@
 class MajorsController < ApplicationController
-  before_action :set_major, only: [:edit, :update]
+  before_action :set_major, only: [:pass, :update]
   before_action :set_knowledge
 
 
@@ -17,16 +17,16 @@ class MajorsController < ApplicationController
   end
 
   def create
-    @wiki = @knowledge.major_records.build
-    @wiki.body = wiki_params[:body]
-    @wiki.commit_message = wiki_params[:commit_message]
-    @wiki.commit_id = current_user.id
+    @major = @knowledge.major_records.build
+    @major.body = wiki_params[:body]
+    @major.commit_message = wiki_params[:commit_message]
+    @major.commit_id = current_user.id
 
     respond_to do |format|
-      if @wiki.save
+      if @major.save
         format.js
       else
-        format.js
+        format.js { head :on_content }
       end
     end
   end
@@ -34,7 +34,7 @@ class MajorsController < ApplicationController
   def pass
     @wiki.status_passed!
 
-    if @wiki == @knowledge.major_records.last
+    if @wiki == @knowledge.major_records.first
       @wiki.set_active
     end
 
@@ -53,8 +53,8 @@ class MajorsController < ApplicationController
 
   private
 
-  def set_wiki
-    @wiki = majorRecord.find params[:id]
+  def set_major
+    @wiki = MajorRecord.find params[:id]
   end
 
   def set_knowledge

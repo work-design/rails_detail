@@ -1,4 +1,4 @@
-<% if @solo.errors.empty? %>
-  $('<%= '#solo_'+@sort.id.to_s %>').replaceWith('<%= j render :partial => 'solo', :locals => { :sort => Sort.find(params[:sort_id]), :wiki => @solo } %>').fadeIn('fast');
-  $('<%= '#solo_'+@solo.sort.id.to_s+'_form' %>').fadeOut('fast');
+<% if @major.errors.empty? %>
+  $('#major_<%= @knowledge.id %>').html('<%= j render partial: 'knowledges/major', locals: {  knowledge: @knowledge } %>').fadeIn('fast');
+  $('#new_wiki').fadeOut('fast');
 <% end %>
