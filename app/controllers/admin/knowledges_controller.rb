@@ -1,19 +1,13 @@
 class Admin::KnowledgesController < Admin::BaseController
-  before_action :set_knowledge, only: [:show, :edit, :update, :destroy]
+  before_action :set_knowledge, only: [:show, :child, :edit, :update, :destroy]
 
   def index
     @knowledges = Knowledge.roots.page(params[:page])
   end
 
-  def show
-  end
-
   def new
     parent_id = params[:parent_id] || 0
     @knowledge = Knowledge.new(parent_id: parent_id)
-  end
-
-  def edit
   end
 
   def create
@@ -24,6 +18,20 @@ class Admin::KnowledgesController < Admin::BaseController
     else
       render :new
     end
+  end
+
+  def show
+  end
+
+  def child
+    @knowledges = @knowledge.children
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit
   end
 
   def update

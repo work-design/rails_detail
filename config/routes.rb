@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
     resources :items
     resources :knowledges do
-
+      get :child, on: :member
     end
     get 'detail' => 'detail#index'
   end

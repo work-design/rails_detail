@@ -1,4 +1,4 @@
-<%= form_for @wiki, as: :wiki, url: knowledge_minors_path(@knowledge), html: { class: 'ui form' }, remote: true do |f| %>
+<%= form_for @wiki, as: :wiki, url: knowledge_minors_path(@knowledge), html: { class: 'ui form', id: 'new_wiki_' + @knowledge.id.to_s }, remote: true do |f| %>
 
   <%= f.text_area :body, rows: 10, placeholder: '内容：', class: 'field' %>
   <%= f.text_area :commit_message, rows: 3, placeholder: '修改备注：', class: 'field' %>

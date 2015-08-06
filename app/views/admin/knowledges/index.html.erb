@@ -11,9 +11,10 @@
     </div>
   </div>
 
-  <table class="ui attached table">
-    <thead>
+  <table class="ui attached definition table">
+    <thead class="full-width">
     <tr>
+      <th class="one wide"></th>
       <th>ID</th>
       <th>名称</th>
       <th>类型</th>
@@ -25,6 +26,11 @@
     <tbody>
     <% @knowledges.each do |knowledge| %>
       <tr>
+        <td class="center aligned">
+          <%= link_to child_admin_knowledge_path(knowledge), remote: true do %>
+            <i class="plus icon"></i>
+          <% end %>
+        </td>
         <td><%= knowledge.id %></td>
         <td><%= knowledge.name %></td>
         <td><%= link_to '详细', knowledge_path(knowledge), target: '_blank' %></td>

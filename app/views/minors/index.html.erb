@@ -2,7 +2,7 @@
 <div class="sixteen wide column">
 
   <ol class="ui breadcrumb">
-    <%= link_to @knowledge.name, knowledge_path(@knowledge), class: 'section' %>
+    <%= link_to @knowledge.parent.name, knowledge_path(@knowledge.parent), class: 'section' %>
     <li class="divider"> / </li>
     <li class="section active">历史列表</li>
   </ol>
