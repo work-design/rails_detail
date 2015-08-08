@@ -1,5 +1,13 @@
 class KnowledgesController < ApplicationController
 
+  def search
+    @knowledges = Knowledge.where('name like ?', "%#{params[:q]}%")
+    
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def show
     @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
   end

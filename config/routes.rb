@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :minors do
       patch :pass, on: :member
     end
+    get 'search/:q' => :search, as: :search, on: :collection
   end
 
   namespace :admin do

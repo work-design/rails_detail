@@ -20,6 +20,19 @@ class Admin::KnowledgesController < Admin::BaseController
     end
   end
 
+  def new_belong
+    if params[:type].present? && params[:id].present?
+      @knowable = params[:type].safe_constantize.find(params[:id])
+    end
+  end
+
+  def create_belong
+    if params[:type].present? && params[:id].present?
+      @knowable = params[:type].safe_constantize.find(params[:id])
+      @knowable.update(knowledge_id: @knowledge)
+    end
+  end
+
   def show
   end
 
