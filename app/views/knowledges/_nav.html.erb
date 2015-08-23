@@ -1,16 +1,5 @@
-<ul class="nav nav-chapters">
-  <% sorts.each do |brother| %>
-
-  <li class="<%= active_model(brother) %>"><%= link_to brother.name, url_for(:action => :show, :id => brother) %>
-    <% unless brother.children.blank? %>
-    <ul class="nav nav-chapters">
-    <% brother.children.each do |son| %>
-      <li class="<%= active_model(son) %>"><%= link_to son.name, url_for(:action => :show, :id => son)  %></li>
-    <% end %>
-    </ul>
-    <% end %>
-  </li>
-
-  <% end %>
-
-</ul>
+<div class="ui secondary vertical menu">
+  <div class="item">
+    <%= link_to '编辑', edit_knowledge_path(@knowledge), class: 'ui button' %>
+  </div>
+</div>

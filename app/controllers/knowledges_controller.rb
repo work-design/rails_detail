@@ -12,6 +12,10 @@ class KnowledgesController < ApplicationController
     @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
   end
 
+  def edit
+    @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
+  end
+
   def sub
     if params[:sup]
       @sup = Sort.find params[:sup]

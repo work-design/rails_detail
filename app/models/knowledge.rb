@@ -11,7 +11,9 @@ class Knowledge < ActiveRecord::Base
   has_one :major
   has_one :minor
   has_one :wiki
+  has_one :major_record
   has_many :major_records
+  has_one :minor_record
   has_many :minor_records
   has_many :wiki_records
   validates :name, presence: true

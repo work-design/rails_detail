@@ -1,7 +1,7 @@
 <div class="content">
 
   <div class="description">
-    <%= ex_simple_format knowledge.major.try(:body) %>
+    <%= ex_simple_format knowledge.major_record.try(:body) %>
   </div>
 
   <div class="extra">
@@ -14,7 +14,7 @@
     <% if knowledge.major %>
       <div class="right floated">
         <span>最近贡献：</span>
-        <%= link_to knowledge.major.commit.name, person_path(knowledge.major.commit) %>
+        <%= link_to knowledge.major.commit.name, person_path(knowledge.major_record.commit) %>
       </div>
     <% end %>
   </div>
