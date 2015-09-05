@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :lists, except: [:show] do
+    resources :lists do
     end
     resources :items
     resources :knowledges do

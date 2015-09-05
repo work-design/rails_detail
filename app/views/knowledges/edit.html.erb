@@ -2,9 +2,11 @@
 <% content_for :meta_description, '' %>
 
 <div class="sixteen wide column">
-  <ol class="ui breadcrumb">
-    <li class="section active"><%= @knowledge.name %></li>
-  </ol>
+  <ul class="ui breadcrumb">
+    <li class="section"><%= link_to @knowledge.name, knowledge_path(@knowledge) %></li>
+    <li class="divider">/</li>
+    <li class="section active">编辑</li>
+  </ul>
 </div>
 
 <div class="twelve wide column">
