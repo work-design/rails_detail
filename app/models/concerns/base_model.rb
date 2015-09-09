@@ -1,8 +1,8 @@
-module GoodItem
+require 'active_support/concern'
+module BaseModel
+  extend ActiveSupport::Concern
 
   included do
-    mount_uploader :picture, PictureUploader
-
     belongs_to :item
     belongs_to :good
     belongs_to :list

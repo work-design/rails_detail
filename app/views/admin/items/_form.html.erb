@@ -1,17 +1,6 @@
 <%= render 'shared/error_messages', target: @item %>
 
 <%= f.text_field :name, label: '名称：' %>
-<%= f.text_area :content, label: '内容：' %>
-<div class="inline field">
-  <%= f.label :photo, '图片：' %>
-  <%= f.attachment_field :photo %>
-  <% if @item.photo_id? %>
-    <div class="inlile fields">
-      <div class="six wide field"></div>
-      <%= image_tag attachment_url(@item, :photo) %>
-    </div>
-  <% end %>
-</div>
 <%= f.submit %>
 
 

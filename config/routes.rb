@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :lists do
+      resources :items
     end
-    resources :items
     resources :knowledges do
       get :child, on: :member
     end

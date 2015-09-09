@@ -1,4 +1,4 @@
-class Text::SourcesController < ApplicationController
+class SourcesController < ApplicationController
 
   def index
     @sources = Source.all

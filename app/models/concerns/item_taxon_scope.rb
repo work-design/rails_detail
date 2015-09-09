@@ -1,3 +1,4 @@
+require 'active_support/concern'
 # include by Item Model
 module ItemTaxonScope
   extend ActiveSupport::Concern

@@ -4,7 +4,6 @@ class Knowledge < ActiveRecord::Base
 
   scope :roots, -> { where(parent_id: 0) }
 
-
   belongs_to :parent, class_name: Knowledge, foreign_key: 'parent_id', inverse_of: :children
   has_many :children, class_name: Knowledge, foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
 
