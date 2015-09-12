@@ -1,4 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="three wide column">
+  <%= render 'admin/detail/nav' %>
+</div>
 
-<%= link_to 'Edit', edit_knowledge_path(@knowledge) %> |
-<%= link_to 'Back', knowledges_path %>
+<div class="thirteen wide column">
+
+  <div class="ui top attached menu borderless">
+    <div class="item"><strong>知识</strong></div>
+  </div>
+
+  <table class="ui attached definition table">
+    <thead class="full-width">
+    <tr>
+      <th class="one wide"></th>
+      <th>名称</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @knowledge.children.each do |knowledge| %>
+      <tr class="active">
+        <td class="center aligned">
+          <i class="caret down icon"></i>
+        </td>
+        <%= render partial: 'td', locals: { knowledge: knowledge } %>
+      </tr>
+      <% knowledge.children.each do |child| %>
+      <tr>
+        <td class="center aligned">
+          <i class="caret right icon"></i>
+        </td>
+        <%= render partial: 'td', locals: { knowledge: child } %>
+      </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

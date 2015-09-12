@@ -14,7 +14,11 @@ class Admin::KnowledgesController < Admin::BaseController
     @knowledge = Knowledge.new(knowledge_params)
 
     if @knowledge.save
-      redirect_to admin_knowledges_url, notice: 'Knowledge was successfully created.'
+      if knowledge_params[:parent_id] == 0
+        redirect_to admin_knowledges_url, notice: 'Knowledge was successfully created.'
+      else
+        redirect_to admin_knowledge_url(knowledge_params[:parent_id]), notice: 'Knowledge was successfully created.'
+      end
     else
       render :new
     end

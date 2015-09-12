@@ -15,29 +15,28 @@
     <thead class="full-width">
     <tr>
       <th class="one wide"></th>
-      <th>ID</th>
       <th>名称</th>
-      <th>类型</th>
-      <th>描述</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
     </tr>
     </thead>
 
     <tbody>
     <% @knowledges.each do |knowledge| %>
-      <tr>
+      <tr class="active">
         <td class="center aligned">
-          <%= link_to child_admin_knowledge_path(knowledge), remote: true do %>
-            <i class="plus icon"></i>
-          <% end %>
+          <i class="caret down icon"></i>
         </td>
-        <td><%= knowledge.id %></td>
-        <td><%= knowledge.name %></td>
-        <td><%= link_to '详细', knowledge_path(knowledge), target: '_blank' %></td>
-        <td><%= link_to '编辑', edit_admin_knowledge_path(knowledge) %></td>
-        <td><%= link_to '添加章节', new_admin_knowledge_path(parent_id: knowledge) %></td>
-        <td><%= link_to '删除', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render partial: 'td', locals: { knowledge: knowledge } %>
       </tr>
+      <% knowledge.children.each do |child| %>
+        <tr>
+          <td class="center aligned">
+            <i class="caret right icon"></i>
+          </td>
+          <%= render partial: 'td', locals: { knowledge: child } %>
+        </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>

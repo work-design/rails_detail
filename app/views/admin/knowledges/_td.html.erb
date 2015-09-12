@@ -1,0 +1,12 @@
+<td><%= knowledge.name %></td>
+<td>
+  <%= link_to '详细', knowledge_path(knowledge), target: '_blank', class: 'ui green label' %>
+  <%= link_to '编辑', edit_admin_knowledge_path(knowledge), class: 'ui orange label' %>
+  <%= link_to '添加章节', new_admin_knowledge_path(parent_id: knowledge), class: 'ui brown label' %>
+  <%= link_to '删除', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+</td>
+<td>
+  <%= link_to admin_knowledge_path(knowledge) do %>
+    <i class="chevron right icon"></i>
+  <% end %>
+</td>
