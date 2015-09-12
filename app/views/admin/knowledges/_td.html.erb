@@ -6,7 +6,9 @@
   <%= link_to '删除', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
 </td>
 <td>
+  <% if knowledge.children.present? %>
   <%= link_to admin_knowledge_path(knowledge) do %>
     <i class="chevron right icon"></i>
+  <% end %>
   <% end %>
 </td>
