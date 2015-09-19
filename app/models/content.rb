@@ -1,4 +1,4 @@
-class Wiki < ActiveRecord::Base
+class Content < ActiveRecord::Base
 
   paginates_per 10
 
@@ -11,6 +11,5 @@ class Wiki < ActiveRecord::Base
 end
 
 # :body, :text
-# :knowable_type, :string
-# :knowable_id, :integer
+# :knowledge_id, :integer
 # :items_count, :integer, default: 0

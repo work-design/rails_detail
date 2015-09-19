@@ -1,6 +1,0 @@
-class Minor < Wiki
-
-
-end
-
-

@@ -1,0 +1,6 @@
+class Minor < Content
+
+
+end
+
+
