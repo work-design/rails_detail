@@ -1,0 +1,17 @@
+%nav#primary
+  %ul
+    %li{class: ('active' if %w[inquiries].include? controller_name)}
+      - if @new_messages.present?
+        = link_to inbox_site_inquiries_path, data: {badge: "#{@new_messages.size}"} do
+          = icon('mail')
+      - else
+        = link_to site_inquiries_path do
+          = icon('mail')
+
+    %li{class: ('active' if %w[accounts users tenants].include? controller_name)}
+      = link_to edit_site_account_path do
+        = icon('cog')
+
+    %li.bottom
+      = link_to logout_path, data: {no_turbolink: true} do
+        = icon('power-off')

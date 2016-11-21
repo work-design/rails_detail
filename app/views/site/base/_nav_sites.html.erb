@@ -1,0 +1,9 @@
+<div class="ui menu vertical fluid">
+  <div class="item">
+    <span>Site Admin</span>
+    <div class="menu">
+      <%= link_to 'Pages', site_pages_path, class: active_controller('pages') %>
+      <%= link_to 'Navigations', site_navigations_path, class: active_controller('navigations') %>
+    </div>
+  </div>
+</div>

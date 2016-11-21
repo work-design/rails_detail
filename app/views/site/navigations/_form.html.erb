@@ -1,0 +1,6 @@
+<%= default_form_for [:site, @navigation] do |f| %>
+  <%= f.text_field :title, label: 'title:' %>
+  <%= f.collection_select :parent_id, Navigation.all, :id, :title, label: 'Parent:', include_blank: true %>
+  <%= f.collection_select :page_id, @pages, :id, :title, label: 'Page', include_blank: true %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,4 @@
+class BottomNav < Navigation
+
+
+end

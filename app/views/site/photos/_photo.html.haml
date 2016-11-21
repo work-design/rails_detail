@@ -1,0 +1,9 @@
+.item
+  .overlay
+    = radio_button_tag :photo_id, photo.id
+    = check_box_tag 'photo_ids[]', photo.id
+    = link_to site_photo_path(photo), class: 'icon-only', data: {aviary: true} do
+      = icon('brush')
+    = link_to site_photo_path(photo), method: :delete, class: 'icon-only', data: {confirm: t('spina.photos.delete_confirmation')} do
+      = icon('trash')
+  = image_tag attachment_url(photo, :file), id: "photo_#{photo.id}", data: { posturl: enhance_site_photo_path(photo), image: attachment_url(photo, :file)}

@@ -1,0 +1,25 @@
+<header class="ui borderless menu">
+  <div class="ui container">
+    <div class="ui dropdown item">
+      Current Site:
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item"><%= current_site.name %></a>
+        <a class="item">Automotive</a>
+        <a class="item">Home</a>
+      </div>
+    </div>
+    <%= link_to 'Site lists', site_sites_path, class: 'item' %>
+    <%= link_to 'Pages', site_pages_path, class: 'item' %>
+    <div class="right menu">
+      <%= link_to logout_path, class: 'item' do %>
+        Logout
+      <% end %>
+    </div>
+
+  </div>
+</header>
+
+<script>
+  $('.ui.dropdown').dropdown();
+</script>

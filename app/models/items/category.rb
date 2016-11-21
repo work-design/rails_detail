@@ -1,5 +1,0 @@
-class Category < Item
-
-
-
-end

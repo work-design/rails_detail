@@ -1,0 +1,26 @@
+<header class="ui borderless menu">
+  <div class="ui container">
+    <%= link_to 'Home', main_app.root_path, class: 'item' %>
+
+    <% pages = current_user.present? ? Page.active : Page.live %>
+
+    <% pages.in_menu.roots.each do |p| %>
+      <div class="ui dropdown item">
+        <%= p.title %> <i class="dropdown icon"></i>
+        <div class="menu">
+        <% p.children.each do |c| %>
+          <%= link_to c.title, spina.page_path(c.slug), class: 'item' %>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="right menu">
+      <%= link_to 'CMS Admin', spina.site_root_path, class: 'item' %>
+    </div>
+  </div>
+</header>
+
+<script>
+  $('.ui.dropdown').dropdown();
+</script>

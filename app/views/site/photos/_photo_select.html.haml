@@ -1,0 +1,22 @@
+.modal.modal-large
+  %header
+    = link_to "", "#", class: 'close_modal', data: {dismiss: 'modal', icon: 'm'}
+    %h3=t 'spina.photos.insert_photo'
+
+  %section
+    .gallery-select.gallery
+      .item.item-small
+        = form_for [:site, @photo], html: {multipart: true} do |f|
+          = f.file_field :file, data: {customfileinput: true}
+
+      = form_tag insert_photo_site_photos_path(params[:page_part_id]), remote: true, class: 'gallery-prepend-image' do
+        - @photos.each do |photo|
+          .item{class: ('selected' if photo == @selected_photo)}
+            .overlay= radio_button_tag :photo_id, photo.id, photo == @selected_photo
+            = image_tag attachment_url(photo, :file)
+
+        %footer
+          = link_to t('spina.cancel'), "#", data: {dismiss: 'modal'}
+          = button_tag type: 'submit', class: 'primary' do
+            %i.icon.icon-plus
+            = t('spina.photos.insert_photo')

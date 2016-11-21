@@ -1,0 +1,5 @@
+<%= default_form_for [:site, @page] do |f| %>
+  <%= f.text_field :title, label: '标题:' %>
+  <%= f.text_area :body, label: '内容:' %>
+  <%= f.submit %>
+<% end %>

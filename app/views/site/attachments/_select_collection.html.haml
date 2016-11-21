@@ -1,0 +1,25 @@
+.modal.modal-large
+  %header
+    = link_to "", "#", class: 'close_modal', data: {dismiss: 'modal', icon: 'm'}
+    %h3= t('spina.attachments.insert_multiple')
+
+  %section
+    -# = form_for [spina, :site, @attachment], html: {multipart: true} do |f|
+    -#   = f.file_field :file, data: {customfileinput: true}
+
+    = form_tag spina.insert_collection_site_attachments_path(params[:page_part_id]), remote: true, class: 'gallery-prepend-attachment' do
+      .table-container
+        %table.table.table-clickable
+          %thead
+            %tr
+              %th 
+              %th= Spina::Attachment.human_attribute_name(:name)
+          %tbody
+            - @attachments.each do |attachment|
+              %tr
+                %td= check_box_tag 'attachment_ids[]', attachment.id
+                %td= attachment.name
+
+      %footer
+        = link_to t('spina.cancel'), "#", data: {dismiss: 'modal'}
+        = button_tag t('spina.attachments.insert_multiple'), type: 'submit', class: 'primary', data: {icon: 't '}
