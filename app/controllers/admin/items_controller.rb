@@ -71,7 +71,7 @@ class Admin::ItemsController < Admin::BaseController
   def item_params
     params[:item].permit(:parent_id,
                          :name,
-                         :content,
+                         :contents,
                          :photo,
                          :photo_cache)
   end

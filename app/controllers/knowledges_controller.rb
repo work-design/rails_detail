@@ -9,7 +9,7 @@ class KnowledgesController < ApplicationController
   end
 
   def show
-    @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
+    @knowledge = Knowledge.includes(:children => :content).find params[:id]
   end
 
   def edit
