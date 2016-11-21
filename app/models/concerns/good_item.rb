@@ -1,4 +1,3 @@
-require 'active_support/concern'
 module GoodItem
   extend ActiveSupport::Concern
 

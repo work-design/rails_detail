@@ -1,5 +1,3 @@
-
-# 使用方法 include Helper::TaxonBase
 module Helper
   module TaxonBase
 
