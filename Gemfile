@@ -1,5 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 gemspec
 
-gem 'rails', '4.2.4'
 
