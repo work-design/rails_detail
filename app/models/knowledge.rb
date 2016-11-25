@@ -2,9 +2,6 @@ class Knowledge < ApplicationRecord
 
   paginates_per 10
 
-  belongs_to :parent, class_name: Knowledge, foreign_key: 'parent_id', inverse_of: :children
-  has_many :children, class_name: Knowledge, foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
-
   has_one :content
   has_one :major
   has_one :minor

@@ -2,9 +2,9 @@ class Content < ApplicationRecord
 
   paginates_per 10
 
-  #belongs_to :knowledge
-  #belongs_to :commit, class_name: 'User', foreign_key: 'commit_id'
-  #validates :commit_id, presence: true
+  belongs_to :knowledge
+  belongs_to :commit, class_name: 'User', foreign_key: 'commit_id'
+  validates :commit_id, presence: true
 
   include ContentModel
 

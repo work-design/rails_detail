@@ -1,4 +1,3 @@
-# coding: utf-8
 class Text::SourcesController < ApplicationController
 
   def index
