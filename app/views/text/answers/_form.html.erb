@@ -1,0 +1,16 @@
+<%= form_for [@ask, @answer], :html => { :class => 'form-horizontal well', :role => 'form' } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :body, '答案：', :class => 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= f.text_area :body, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-5">
+      <%= f.submit :class => 'btn btn-success btn-lg' %>
+    </div>
+  </div>
+
+<% end %>

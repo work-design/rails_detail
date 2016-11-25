@@ -1,0 +1,17 @@
+<%= render :partial => 'panel/sorts/head' %>
+
+<div class="row">
+  <%= render :partial => 'panel/sorts/side' %>
+
+  <div class="span9">
+
+    <h1>编辑分类</h1>
+
+    <%= form_for @section, :url => section_path do |f| %>
+      <%= render :partial => 'form', :locals => { :f => f }  %>
+    <% end %>
+
+    <%= link_to '删除', section_path(@section), :method => :delete, :data => { confirm: '确认删除' } %>
+
+  </div>
+</div>

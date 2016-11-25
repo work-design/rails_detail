@@ -1,0 +1,59 @@
+<div class="passage" id="<%= "part_"+sort.id.to_s %>">
+
+<div class="passage-head">
+  <h2>
+    <%= link_to baike_path(sort) do %>
+      <%= sort.name %><small><%= sort.subname %></small>
+    <% end %>
+  </h2>
+</div>
+
+<% if wiki %>
+
+  <% if wiki.picture %>
+  <div class="passage-img">
+    <%= image_tag wiki.picture %>
+  </div>
+  <% end %>
+
+  <div class="passage-content">
+    <%= ex_simple_format wiki.content %>
+  </div>
+
+  <div class="passage-nav">
+    <% wiki.sort.children.each do |son| %>
+      <span><%= link_to son.name, baike_path(son) %></span>
+    <% end %>
+  </div>
+
+<% end %>
+
+<div class="passage-info clearfix">
+
+  <div class="pull-left">
+    <%= link_to '插入段落', sub_sort_path(@sort, :sup => sort.id), :remote => true %>
+    <span>丨</span><%= link_to '编辑内容', new_sort_part_path(sort), :remote => true %>
+    <span>丨所有版本：</span><%= link_to sort.parts_count, sort_parts_path(sort) %>
+  </div>
+
+  <% if wiki %>
+  <div class="pull-right">
+    <span>最近贡献：</span>
+    <%= link_to wiki.user.name, person_path(wiki.user) %>
+  </div>
+  <% end %>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

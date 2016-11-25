@@ -1,0 +1,22 @@
+
+  <div class="field">
+    <%= f.label :name, "节点名称" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sort_ids, '包含类' %>
+    <%= f.collection_select :sort_ids, Sort.all, :id, :name, {}, { :multiple => 'multiple', :class => 'input-xlarge' } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary btn-large' %>
+  </div>
+
+
+
+<script>
+  $('#section_sort_ids').select2();
+</script>
+
+

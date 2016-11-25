@@ -1,0 +1,10 @@
+<% if @part.errors.empty? %>
+
+  $('<%= '#part_'+@sort.id.to_s %>').replaceWith('<%= j render :partial => 'part', :locals => { :sort => @sort, :wiki => @part } %>').hide().fadeIn('fast');
+  $('<%= '#part_'+@sort.id.to_s+'_form' %>').fadeOut('fast');
+
+<% else %>
+
+  $('<span class="error-message"><%= escape_javascript(@part.errors.full_messages.join(',')) %></span>').appendTo($('#new_reply_form'))
+
+<% end %>

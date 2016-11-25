@@ -1,0 +1,13 @@
+<%= render :partial => 'panel/sorts/head' %>
+
+<div class="row">
+
+  <%= render :partial => 'panel/sorts/side' %>
+
+  <div class="span9">
+    <%= form_for @section, :url => sort_sections_path(@sort) do |f| %>
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    <% end %>
+  </div>
+
+</div>

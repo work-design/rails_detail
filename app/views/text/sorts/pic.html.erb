@@ -1,0 +1,46 @@
+<%= render :partial => 'head' %>
+
+<div class="row">
+
+  <%= render :partial => 'side' %>
+
+  <div class="span9">
+
+    <%= form_for @picture, :url => pic_sort_path(params[:id]), :html => { :class => "well", :multipart => true } do |f| %>
+    <fieldset>
+
+      <div class="control-group">
+        <%= f.label :title, "标题：", :class => "control-label" %>
+        <div class="controls"><%= f.text_field :title, :class => "input-xxlarge" %></div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :picture, "上传配图：", :class => "control-label" %>
+        <div class="controls">
+          <%= image_tag(@picture.picture_url) if @picture.picture? %>
+          <%= f.file_field :picture %>
+          <%= f.hidden_field :picture_cache %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :description, "配图描述：", :class => "control-label" %>
+        <div class="controls"><%= f.text_area :description, :rows => 3, :class => "input-xxlarge" %></div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit :class => "btn btn-primary btn-large" %>
+      </div>
+
+    </fieldset>
+    <% end %>
+
+  </div>
+
+</div>
+
+
+
+
+
+

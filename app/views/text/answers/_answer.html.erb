@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">答案</div>
+  <div class="panel-body">
+    <%= ex_simple_format answer.body %>
+  </div>
+  <div class="panel-footer">
+    <span><%= link_to answer.user.name, doctor_path(answer.user_id) %></span>
+    <% if can? :manage, Answer %>
+      <span class="pull-right"><%= link_to '编辑', edit_ask_answer_path(ask, answer) %></span>
+    <% end %>
+  </div>
+</div>
+
+

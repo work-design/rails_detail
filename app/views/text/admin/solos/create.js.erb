@@ -1,0 +1,4 @@
+<% if @solo.errors.empty? %>
+  $('<%= '#solo_'+@sort.id.to_s %>').replaceWith('<%= j render :partial => 'solo', :locals => { :sort => Sort.find(params[:sort_id]), :wiki => @solo } %>').fadeIn('fast');
+  $('<%= '#solo_'+@solo.sort.id.to_s+'_form' %>').fadeOut('fast');
+<% end %>

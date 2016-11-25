@@ -1,0 +1,22 @@
+<ul class="breadcrumb">
+  <li><%= link_to @sort.parent.name, baike_path(@sort.parent) %></li>
+  <li><%= link_to @sort.name, baike_path(@sort.parent, :anchor => 'part_'+@sort.id.to_s) %></li>
+  <li>词条版本</li>
+
+  <li class="pull-right">
+    <%= link_to "返回版本对比", sort_parts_path(@sort) %>
+  </li>
+  <%- if @sort.parts.last.id != @part.id -%>
+    <li class="pull-right">
+      <%= link_to '查看最新版本', sort_part_path(@sort, @sort.parts.last) %>
+    </li>
+  <%- end -%>
+</ul>
+
+<h2><%= @sort.name %><small><%= @sort.subname %></small></h2>
+
+<p class='text-right'>这是本词条的历史版本，由<%= @part.try(:user).try(:name)%>于<%= format_time @part.created_at %>贡献。</p>
+
+<div class='well'>
+  <%= @part.content %>
+</div>

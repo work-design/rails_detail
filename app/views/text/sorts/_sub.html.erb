@@ -1,0 +1,16 @@
+<%- if params[:position]-%>
+  <%- area = "position-#{params[:position]}"-%>
+<%- elsif params[:sup] -%>
+  <%- area = "sup-#{params[:sup]}"-%>
+<%- else -%>
+  <%- area = params[:id]-%>
+<%- end -%>
+
+<div class="passage" id="sort-form-<%= area %>">
+  <%= form_for @sort, :url => sub_sort_path(params[:id]), :html => {:class => "form-horizontal well"} do |f| %>
+    <h3>插入段落</h3>
+    <hr />
+
+    <%= render :partial => 'form', :locals => { :id => area, :f => f } %>
+  <% end %>
+</div>

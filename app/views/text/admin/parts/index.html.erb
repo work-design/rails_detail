@@ -1,0 +1,39 @@
+<ul class="breadcrumb">
+  <li><%= link_to @sort.parent.name, baike_path(@sort.parent) %></li>
+  <li><%= link_to @sort.name, baike_path(@sort.parent, :anchor => 'part_'+@sort.id.to_s) %></li>
+  <li>版本对比</li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>更新时间</th>
+      <th>版本</th>
+      <th>贡献者</th>
+      <th>修改原因</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @parts.each do |part| %>
+      <tr>
+        <td><%= part.id %></td>
+        <td><%= format_time part.updated_at %></td>
+        <td><%= link_to '查看', sort_part_path(@sort, part) %></td>
+        <td><%= part.try(:user).try(:name) %></td>
+        <td><%= truncate part.reason, :length => 80 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>最近两个版本对比</h3>
+<div class='well'>
+  <% if @parts.size > 1 %>
+    <div class="diff">
+      <%= simple_format Diff.diff(@parts[-2].content, @parts[-1].content) %>
+    </div>
+  <% elsif @parts.size == 1 %>
+    <div><%= simple_format @parts[0].content %></div>
+  <% end %>
+</div>
