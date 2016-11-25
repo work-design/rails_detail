@@ -1,4 +1,0 @@
-class MainNav < Navigation
-
-
-end

@@ -1,4 +1,4 @@
-class Knowledge < ActiveRecord::Base
+class Knowledge < ApplicationRecord
 
   paginates_per 10
 

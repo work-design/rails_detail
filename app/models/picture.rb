@@ -1,8 +1,5 @@
-class Photo < ActiveRecord::Base
+class Picture < ApplicationRecord
 
-  attachment :photo
-
-  belongs_to :knowledge
 
 
 end

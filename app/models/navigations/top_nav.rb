@@ -1,4 +1,0 @@
-class TopNav < Navigation
-
-
-end
