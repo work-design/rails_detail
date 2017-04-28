@@ -1,5 +1,4 @@
-# coding: utf-8
-class Text::Admin::SolosController < Text::Admin::BaseController
+class Admin::SolosController < Admin::BaseController
   before_action :set_solo, only: [:edit, :update]
 
   def index

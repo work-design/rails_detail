@@ -1,6 +1,4 @@
-# coding: utf-8
-class Text::Admin::WikisController < Text::Admin::BaseController
-  respond_to :html, :js, :json
+class Admin::WikisController < Admin::BaseController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
   
   def index

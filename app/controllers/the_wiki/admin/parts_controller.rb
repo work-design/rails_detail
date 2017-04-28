@@ -1,5 +1,4 @@
-# coding: utf-8
-class Text::Admin::PartsController < Text::Admin::BaseController
+class Admin::PartsController < Admin::BaseController
   before_action :set_wiki, :only => [:new, :create]
 
   def index
