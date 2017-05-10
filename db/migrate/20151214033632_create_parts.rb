@@ -8,6 +8,5 @@ class CreateParts < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    remove_columns :page_parts, :
   end
 end

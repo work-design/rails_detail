@@ -1,12 +1,9 @@
 class Content < ApplicationRecord
 
-  paginates_per 10
-
-  belongs_to :knowledge
-  belongs_to :commit, class_name: 'User', foreign_key: 'commit_id'
-  validates :commit_id, presence: true
-
-  include ContentModel
+  belongs_to :picture
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :describe, polymorphic: true
+  has_many :links
 
 
 end
