@@ -1,0 +1,11 @@
+<% @task.pictures.each do |picture| %>
+  <div class="ui image">
+    <%= image_tag QiniuHelper.qiniu_url(picture.key) %>
+  </div>
+<% end %>
+<div id="task_pictures_add">
+  <%= link_to new_my_task_picture_path(@task), remote: true do %>
+    <i class="grey photo icon"></i>
+  <% end %>
+</div>
+

@@ -1,0 +1,22 @@
+$('#content_<%= @content.id %>').html('<%= j(render 'form') %>');
+
+attachToInput({
+  input: document.getElementById('content_body'),
+  fileInput: document.getElementById('file_input'),
+  uploadUrl: 'http://upload.qiniu.com/',
+  extraParams: {
+    token: '<%= QiniuHelper.generate_uptoken %>'
+  },
+  jsonFieldName: 'key',
+  onFileUploaded: function(filename) {
+    var domain = '<%= QINIU['host'] %>';
+    var sourceLink = domain + '/' + filename;
+
+    var img_content = new Image()
+    img_content.src = sourceLink
+    img_content.classList = 'ui image'
+    $('#pickfiles').append(img_content);
+
+    $('#key').val(filename);
+  }
+});

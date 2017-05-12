@@ -1,0 +1,20 @@
+<% @task.contents.each do |content| %>
+  <% if content.picture %>
+  <div class="ui image">
+    <%= image_tag QiniuHelper.qiniu_url(content.picture.key) %>
+  </div>
+  <% end %>
+  <div id="content_<%= content.id %>">
+    <%= content.body %>
+    <%= link_to edit_task_content_path(@task, content), remote: true, class: 'grey text' do %>
+      <i class="grey write square icon"></i>
+    <% end %>
+  </div>
+<% end %>
+<div id="task_contents_add">
+  <%= link_to new_task_content_path(@task), remote: true do %>
+    <i class="grey photo icon"></i>
+  <% end %>
+</div>
+
+

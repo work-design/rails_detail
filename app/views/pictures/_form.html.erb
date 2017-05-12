@@ -1,0 +1,22 @@
+<%= form_for [:my, @task, @picture], remote: true, html: { class: 'ui form' } do |f| %>
+  <% if @picture.key.present? %>
+    <div class="inline field">
+      <%= image_tag(QiniuHelper.qiniu_url(@picture.key), size: '100x100') %>
+    </div>
+  <% end %>
+  <%= f.hidden_field :key %>
+  <%= text_field_tag :file %>
+  <%= file_field_tag :file_input %>
+  <div id="container">
+    <div class="ui image">
+      <div class="ui teal top attached progress" id="upload_progress">
+        <div class="bar"></div>
+      </div>
+      <%= image_tag 'image.png', id: 'pickfiles' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.text_area :title, label: '标题:', class: 'field' %>
+  </div>
+  <%= f.submit '添加', class: 'ui button' %>
+<% end %>
