@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :knowledges do
-    resources :majors do
-      patch :pass, on: :member
-    end
-    resources :minors do
-      patch :pass, on: :member
-    end
-    get 'search/:q' => :search, as: :search, on: :collection
-  end
 
-  namespace :admin do
+  scope module: :the_detail do
+
+    resources :details do
+      resources :contents
+
+      resources :majors do
+        patch :pass, on: :member
+      end
+      resources :minors do
+        patch :pass, on: :member
+      end
+      get 'search/:q' => :search, as: :search, on: :collection
+    end
+
     resources :lists do
       resources :items
     end
