@@ -1,4 +1,4 @@
-class Picture < ApplicationRecord
+class Picture < Content
 
 
 

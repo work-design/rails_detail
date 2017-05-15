@@ -8,6 +8,8 @@ class Content < ApplicationRecord
 
 end
 
+# :picture_key, :string
+# :title, :string
 # :body, :text
-# :knowledge_id, :integer
+# :detail_id, :integer
 # :items_count, :integer, default: 0

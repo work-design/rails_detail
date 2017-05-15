@@ -1,5 +1,5 @@
 class TheDetail::ContentsController < TheDetail::BaseController
-  before_action :set_task
+  before_action :set_detail
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -54,8 +54,8 @@ class TheDetail::ContentsController < TheDetail::BaseController
   end
 
   private
-  def set_task
-    @task = Task.find params[:task_id]
+  def set_detail
+    @task = Detail.find params[:detail_id]
   end
 
   def set_content
