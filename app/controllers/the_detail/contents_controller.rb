@@ -1,4 +1,4 @@
-class ContentsController < ApplicationController
+class TheDetail::ContentsController < TheDetail::BaseController
   before_action :set_task
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 

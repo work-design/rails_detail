@@ -1,4 +1,4 @@
-class TheWiki::BaseController < ApplicationController
+class TheDetail::BaseController < ApplicationController
 
 
 end

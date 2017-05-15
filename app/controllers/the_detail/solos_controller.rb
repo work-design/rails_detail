@@ -1,4 +1,4 @@
-class Admin::SolosController < Admin::BaseController
+class TheDetail::SolosController < TheDetail::BaseController
   before_action :set_solo, only: [:edit, :update]
 
   def index

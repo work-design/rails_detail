@@ -1,4 +1,4 @@
-class Admin::ListsController < Admin::BaseController
+class TheDetail::ListsController < TheDetail::BaseController
   before_action :set_list, only: [:edit, :update, :destroy]
 
   def index

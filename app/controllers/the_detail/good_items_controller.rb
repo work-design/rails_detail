@@ -1,4 +1,4 @@
-class Admin::GoodItemsController < Admin::BaseController
+class TheDetail::GoodItemsController < TheDetail::BaseController
   before_action :set_good_item, only: [:show, :edit, :update, :destroy]
   before_action :set_good
 

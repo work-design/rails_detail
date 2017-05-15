@@ -1,4 +1,4 @@
-class SectionsController < ApplicationController
+class TheDetail::SectionsController < TheDetail::BaseController
 
   def index
     @sort = Sort.find(params[:sort_id])

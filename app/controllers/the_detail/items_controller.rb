@@ -1,4 +1,4 @@
-class Admin::ItemsController < Admin::BaseController
+class TheDetail::ItemsController < TheDetail::BaseController
   before_action :set_list
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 

@@ -1,7 +1,0 @@
-.gallery
-  .item
-    = form_for [:site, @photo], html: {multipart: true} do |f|
-      = f.file_field :file, data: {customfileinput: true}
-
-  .gallery-prepend-image
-    = render partial: 'site/photos/photo', collection: @photos
