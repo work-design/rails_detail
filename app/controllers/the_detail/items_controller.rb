@@ -1,10 +1,10 @@
 class TheDetail::ItemsController < TheDetail::BaseController
-  before_action :set_list
+  before_action :set_detail
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:list_id].present?
-      @items = set_list.items
+    if params[:detail_id].present?
+      @items = @detail.items
     else
       @items = Item.page(params[:page])
     end
@@ -12,15 +12,15 @@ class TheDetail::ItemsController < TheDetail::BaseController
   end
 
   def new
-    @item = @list.items.build
+    @item = @detail.items.build
   end
 
   def create
-    @item = @list.items.build item_params
+    @item = @detail.items.build item_params
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to admin_list_items_url(params[:list_id]), :notice => '商品描述创建成功' }
+        format.html { redirect_to admin_detail_items_url(params[:detail_id]), :notice => '商品描述创建成功' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -34,14 +34,14 @@ class TheDetail::ItemsController < TheDetail::BaseController
   end
 
   def edit
-    @list = @item.list
+    @detail = @item.detail
   end
 
   def update
 
     respond_to do |format|
       if @item.update item_params
-        format.html { redirect_to admin_list_items_url(@item.list_id), notice: '更新成功' }
+        format.html { redirect_to admin_detail_items_url(@item.detail_id), notice: '更新成功' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -54,7 +54,7 @@ class TheDetail::ItemsController < TheDetail::BaseController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to list_items_url(@item.list_id) }
+      format.html { redirect_to detail_items_url(@item.detail_id) }
       format.json { head :no_content }
     end
   end
@@ -64,8 +64,8 @@ class TheDetail::ItemsController < TheDetail::BaseController
     @item = Item.find params[:id]
   end
 
-  def set_list
-    @list = List.find params[:list_id]
+  def set_detail
+    @detail = Detail.find params[:detail_id]
   end
 
   def item_params

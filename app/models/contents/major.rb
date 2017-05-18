@@ -1,6 +1,0 @@
-class Major < Content
-
-
-
-end
-

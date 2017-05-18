@@ -1,0 +1,6 @@
+class Description < Content
+
+
+
+end
+

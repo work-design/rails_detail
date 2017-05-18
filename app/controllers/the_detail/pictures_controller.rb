@@ -1,23 +1,23 @@
 class TheDetail::PicturesController < TheDetail::BaseController
-  before_action :set_task
+  before_action :set_detail
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pictures = @task.pictures
+    @pictures = @detail.pictures
   end
 
   def show
   end
 
   def new
-    @picture = @task.pictures.build
+    @picture = @detail.pictures.build
   end
 
   def edit
   end
 
   def create
-    @picture = @task.pictures.build(picture_params)
+    @picture = @detail.pictures.build(picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -52,8 +52,8 @@ class TheDetail::PicturesController < TheDetail::BaseController
   end
 
   private
-  def set_task
-    @task = Task.find params[:task_id]
+  def set_detail
+    @detail = Detail.find params[:detail_id]
   end
 
   def set_picture

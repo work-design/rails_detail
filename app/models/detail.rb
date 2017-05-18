@@ -2,6 +2,8 @@ class Detail < ApplicationRecord
   paginates_per 10
 
   has_many :contents
+  has_many :pictures
+  has_many :links
   has_one :major
   has_one :minor
   validates :name, presence: true

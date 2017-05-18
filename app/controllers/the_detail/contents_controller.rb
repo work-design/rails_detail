@@ -3,18 +3,18 @@ class TheDetail::ContentsController < TheDetail::BaseController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = @task.contents
+    @contents = @detail.contents
   end
 
   def show
   end
 
   def new
-    @content = @task.contents.build
+    @content = @detail.contents.build
   end
 
   def create
-    @content = @task.contents.build(content_params)
+    @content = @detail.contents.build(content_params)
 
     respond_to do |format|
       if @content.save
@@ -55,7 +55,7 @@ class TheDetail::ContentsController < TheDetail::BaseController
 
   private
   def set_detail
-    @task = Detail.find params[:detail_id]
+    @detail = Detail.find params[:detail_id]
   end
 
   def set_content
@@ -63,7 +63,7 @@ class TheDetail::ContentsController < TheDetail::BaseController
   end
   
   def content_params
-    params[:content].permit!
+    params[:content].permit(:title, :body, :key)
   end
 
 end
