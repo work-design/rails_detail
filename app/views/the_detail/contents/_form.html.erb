@@ -1,7 +1,7 @@
-<%= form_for [@task, @content], remote: true, html: { class: 'ui form' } do |f| %>
-  <% if @content.picture&.key.present? %>
+<%= form_for [@detail, @content], remote: true, html: { class: 'ui form' } do |f| %>
+  <% if @content.key.present? %>
     <div class="inline field">
-      <%= image_tag(QiniuHelper.qiniu_url(@content.picture.key), size: '100x100') %>
+      <%= image_tag(QiniuHelper.qiniu_url(@content.key), size: '100x100') %>
     </div>
   <% end %>
   <%= hidden_field_tag :key %>

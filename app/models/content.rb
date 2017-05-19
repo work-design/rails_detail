@@ -1,8 +1,7 @@
 class Content < ApplicationRecord
 
-  belongs_to :detail, optional: true
+  belongs_to :detail
   belongs_to :author, class_name: 'User', foreign_key: 'author_id', optional: true
-  belongs_to :describe, polymorphic: true
   has_many :links
 
 

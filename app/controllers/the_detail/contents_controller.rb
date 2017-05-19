@@ -16,6 +16,8 @@ class TheDetail::ContentsController < TheDetail::BaseController
   def create
     @content = @detail.contents.build(content_params)
 
+    binding.pry
+
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'content was successfully created.' }
