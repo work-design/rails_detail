@@ -2,3 +2,14 @@
 *= require semantic
 *= require_self
 */
+
+.ui.form textarea {
+  border-radius: 0;
+}
+
+.ui.form .attached.segment {
+  width: 100%;
+  border-top: none;
+}
+
+

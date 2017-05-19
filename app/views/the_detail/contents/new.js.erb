@@ -1,8 +1,8 @@
-$('#task_contents_add').html('<%= j(render 'form') %>');
+$('#detail_contents_add').html('<%= j(render 'form') %>');
 
 attachToInput({
-  input: document.getElementById('content_body'),
-  fileInput: document.getElementById('file_input'),
+  input: 'content_body',
+  fileInput: 'file_input',
   uploadUrl: 'http://upload.qiniu.com/',
   extraParams: {
     token: '<%= QiniuHelper.generate_uptoken %>'
