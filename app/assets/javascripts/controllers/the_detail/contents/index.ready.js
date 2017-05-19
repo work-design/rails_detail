@@ -1,2 +1,1 @@
-//= require inline-attachment
-//= require input.inline-attachment
+//= require input-attachment

@@ -4,7 +4,8 @@
       <%= image_tag(QiniuHelper.qiniu_url(@content.key), size: '100x100') %>
     </div>
   <% end %>
-  <%= hidden_field_tag :key %>
+  <%= f.hidden_field :key %>
+  <%= f.hidden_field :type %>
   <div id="container">
     <div class="ui image" id="pickfiles">
     </div>
@@ -12,7 +13,7 @@
   <div class="field">
     <%= f.text_area :body, label: '标题:', class: 'attached' %>
     <div class="ui bottom attached segment">
-      <%= file_field_tag :file_input %>
+      <%= file_field_tag nil, id: 'file_input' %>
     </div>
   </div>
   <%= f.submit '添加', class: 'ui button' %>

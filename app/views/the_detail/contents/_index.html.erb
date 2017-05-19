@@ -1,5 +1,5 @@
 <% @detail.contents.each do |content| %>
-  <% if content.key %>
+  <% if content.is_a?(Picture) %>
   <div class="ui image">
     <%= image_tag QiniuHelper.qiniu_url(content.key) %>
   </div>

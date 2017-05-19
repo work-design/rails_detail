@@ -63,7 +63,7 @@ class TheDetail::ContentsController < TheDetail::BaseController
   end
   
   def content_params
-    params[:content].permit(:title, :body, :key)
+    params[:content].permit(:title, :body, :key, :type)
   end
 
 end
