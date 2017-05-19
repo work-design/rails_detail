@@ -17,7 +17,7 @@ class CreateKnowledge < ActiveRecord::Migration
       t.integer :position, limit: 4, default: 0
       t.string :list, limit: 50
       t.references :detail
-      t.references :committer
+      t.references :author
       t.timestamps null: false
     end
 

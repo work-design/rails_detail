@@ -6,7 +6,6 @@ class Detail < ApplicationRecord
   has_many :links
   has_one :major
   has_one :minor
-  validates :name, presence: true
 
 
 end
