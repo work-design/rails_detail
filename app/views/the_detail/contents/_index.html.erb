@@ -1,20 +1,23 @@
+<div id="contents">
 <% @detail.contents.each do |content| %>
-  <% if content.is_a?(Picture) %>
-  <div class="ui image">
-    <%= image_tag QiniuHelper.qiniu_url(content.key) %>
-  </div>
-  <% end %>
   <div id="content_<%= content.id %>">
-    <%= content.body %>
-    <%= link_to edit_detail_content_path(@detail, content), remote: true, class: 'grey text' do %>
-      <i class="grey write square icon"></i>
+    <% if content.is_a?(Picture) %>
+      <div class="ui image">
+        <%= image_tag QiniuHelper.qiniu_url(content.key) %>
+      </div>
     <% end %>
+    <div>
+      <%= content.body %>
+      <%= link_to edit_detail_content_path(@detail, content), remote: true, class: 'grey text' do %>
+        <i class="grey write square icon"></i>
+      <% end %>
+    </div>
   </div>
 <% end %>
+</div>
+
 <div id="detail_contents_add">
-  <%= link_to new_detail_content_path(@detail), remote: true do %>
-    <i class="grey photo icon"></i>
-  <% end %>
+  <%= render 'add_link' %>
 </div>
 
 
