@@ -1,7 +1,7 @@
 <% @detail.contents.each do |content| %>
-  <% if content.picture %>
+  <% if content.key %>
   <div class="ui image">
-    <%= image_tag QiniuHelper.qiniu_url(content.picture.key) %>
+    <%= image_tag QiniuHelper.qiniu_url(content.key) %>
   </div>
   <% end %>
   <div id="content_<%= content.id %>">

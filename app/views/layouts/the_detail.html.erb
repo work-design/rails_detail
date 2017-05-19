@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Detail</title>
+  <%= stylesheet_link_tag 'the_detail/application', media: 'all', 'data-turbolinks-track': true %>
+  <%= javascript_include_tag 'the_detail/application', 'data-turbolinks-track': true %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+</head>
+
+<body>
+
+  <div class="ui container">
+    <%= yield %>
+  </div>
+  <%= js_load(root: RailsLog::Engine.root) %>
+
+</body>
+
+</html>
