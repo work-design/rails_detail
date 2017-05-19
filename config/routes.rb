@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
     resources :details do
       resources :contents
-      resources :pictures
       resources :items
       resources :majors do
         patch :pass, on: :member
