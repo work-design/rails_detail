@@ -1,4 +1,4 @@
-<%= form_for [@detail, @content], remote: true, html: { class: 'ui form' } do |f| %>
+<%= form_for @content, as: :content, url: detail_content_path(@detail), remote: true, html: { class: 'ui form' } do |f| %>
   <% if @content.key.present? %>
     <div class="inline field">
       <%= image_tag(QiniuHelper.qiniu_url(@content.key), size: '100x100') %>
@@ -6,10 +6,6 @@
   <% end %>
   <%= f.hidden_field :key %>
   <%= f.hidden_field :type %>
-  <div id="container">
-    <div class="ui image" id="pickfiles">
-    </div>
-  </div>
   <div class="field">
     <%= f.text_area :body, label: '标题:', class: 'attached' %>
     <div class="ui bottom attached segment">
