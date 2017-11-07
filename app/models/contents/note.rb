@@ -1,0 +1,6 @@
+class Note < Content
+
+
+
+end
+
