@@ -13,25 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150130123018) do
 
-  create_table "administrators", force: :cascade do |t|
-    t.integer "user_id",    limit: 4
-    t.integer "admin_id",   limit: 4
-    t.string  "admin_type", limit: 255
-  end
-
-  create_table "areas", force: :cascade do |t|
-    t.string  "name",      limit: 255, null: false
-    t.string  "province",  limit: 255
-    t.string  "city",      limit: 255
-    t.string  "district",  limit: 255
-    t.integer "parent_id", limit: 4
-  end
-
-  create_table "contributions", force: :cascade do |t|
-    t.integer "user_id",         limit: 4
-    t.integer "contribute_id",   limit: 4
-    t.string  "contribute_type", limit: 255
-  end
 
   create_table "good_items", force: :cascade do |t|
     t.integer "good_id",  limit: 4
@@ -75,9 +56,6 @@ ActiveRecord::Schema.define(version: 20150130123018) do
   end
 
 
-
-
-
   create_table "photos", force: :cascade do |t|
     t.string   "title",          limit: 255
     t.string   "description",    limit: 255
@@ -99,21 +77,6 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.datetime "updated_at"
   end
 
-  create_table "promotes", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.integer  "price_reduce", limit: 4
-    t.datetime "start_at"
-    t.datetime "finish_at"
-  end
-
-
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name",        limit: 255,   null: false
-    t.string "title",       limit: 255,   null: false
-    t.text   "description", limit: 65535, null: false
-    t.text   "the_role",    limit: 65535, null: false
-  end
 
   create_table "shipments", force: :cascade do |t|
     t.integer "user_id", limit: 4
@@ -129,11 +92,108 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.datetime "updated_at"
   end
 
-  create_table "user_promotes", force: :cascade do |t|
-    t.integer "user_id",    limit: 4
-    t.integer "promote_id", limit: 4
+  create_table "category_taxons", force: true do |t|
+    t.integer "child_id",  limit: 4
+    t.integer "parent_id", limit: 4
+    t.integer "position",  limit: 4, default: 0
   end
 
+  create_table "contributions", force: true do |t|
+    t.integer "user_id",         limit: 4
+    t.integer "contribute_id",   limit: 4
+    t.string  "contribute_type", limit: 255
+  end
+
+
+
+
+
+  create_table "measure_values", force: true do |t|
+    t.integer "measure_id", limit: 4
+    t.string  "value",      limit: 255
+  end
+
+  create_table "options", force: true do |t|
+    t.string   "content",     limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "question_id", limit: 4
+  end
+
+  create_table "part_solos", force: true do |t|
+    t.integer "part_id", limit: 4
+    t.integer "solo_id", limit: 4
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "title",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name",        limit: 255,   null: false
+    t.string   "title",       limit: 255,   null: false
+    t.text     "description", limit: 65535, null: false
+    t.text     "the_role",    limit: 65535, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sample_signs", force: true do |t|
+    t.integer "sample_id",        limit: 4
+    t.integer "sign_id",          limit: 4
+    t.integer "measure_value_id", limit: 4
+    t.string  "value",            limit: 255
+    t.string  "sign_name",        limit: 255
+    t.string  "sign_type",        limit: 255
+  end
+
+  create_table "samples", force: true do |t|
+    t.string   "title",      limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", force: true do |t|
+    t.string  "name",        limit: 255
+    t.integer "sort_id",     limit: 4
+    t.integer "position",    limit: 4,   default: 0
+    t.integer "add_sort_id", limit: 4
+  end
+
+  create_table "sign_items", force: true do |t|
+    t.integer "sign_id", limit: 4
+    t.integer "item_id", limit: 4
+  end
+
+  create_table "sign_options", force: true do |t|
+    t.integer "option_id", limit: 4
+    t.integer "sign_id",   limit: 4
+    t.integer "user_id",   limit: 4
+    t.string  "reason",    limit: 255
+  end
+
+  create_table "signs", force: true do |t|
+    t.string  "name",    limit: 255
+    t.text    "content", limit: 65535
+    t.integer "wiki_id", limit: 4
+    t.string  "type",    limit: 255
+  end
+
+  create_table "solo_parts", force: true do |t|
+    t.integer "solo_id",  limit: 4
+    t.integer "part_id",  limit: 4
+    t.integer "position", limit: 4, default: 0
+  end
+
+  create_table "solo_taxons", force: true do |t|
+    t.integer "child_id",  limit: 4
+    t.integer "parent_id", limit: 4
+    t.integer "position",  limit: 4, default: 0
+  end
 
 
 end

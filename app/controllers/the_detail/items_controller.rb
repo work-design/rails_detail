@@ -1,5 +1,4 @@
 class TheDetail::ItemsController < TheDetail::BaseController
-  before_action :set_detail
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -62,10 +61,6 @@ class TheDetail::ItemsController < TheDetail::BaseController
   private
   def set_item
     @item = Item.find params[:id]
-  end
-
-  def set_detail
-    @detail = Detail.find params[:detail_id]
   end
 
   def item_params
