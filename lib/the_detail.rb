@@ -1,4 +1,5 @@
-require "the_detail/engine"
+require 'the_detail/engine'
+require 'the_detail/config'
 
 module TheDetail
   module Model

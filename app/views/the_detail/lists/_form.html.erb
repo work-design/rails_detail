@@ -1,9 +1,0 @@
-<%= default_form_for [:admin, @list] do |f| %>
-  <%= f.text_field :name, label: '名称：' %>
-  <%= f.select :kind, options_for_select(List.enum_trans(:kind)), { label: '类别：' }, { include_blank: true } %>
-  <%= f.submit %>
-<% end %>
-
-<script>
-  $('select.dropdown').dropdown();
-</script>

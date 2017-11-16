@@ -1,25 +1,22 @@
-class TheDetail::ItemsController < TheDetail::BaseController
+class TheDetailAdmin::ItemsController < TheDetailAdmin::BaseController
+  before_action :set_list
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:detail_id].present?
-      @items = @detail.items
-    else
-      @items = Item.page(params[:page])
-    end
-
+    @items = @list.items.page(params[:page])
   end
 
   def new
-    @item = @detail.items.build
+    @item = @list.items.build
   end
 
   def create
-    @item = @detail.items.build item_params
+    @item = @list.items.build item_params
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to admin_detail_items_url(params[:detail_id]), :notice => '商品描述创建成功' }
+        @item.logo.attach(logo_params) if logo_params.present?
+        format.html { redirect_to admin_list_items_url(params[:list_id]), :notice => '商品描述创建成功' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -33,14 +30,15 @@ class TheDetail::ItemsController < TheDetail::BaseController
   end
 
   def edit
-    @detail = @item.detail
+    @list = @item.list
   end
 
   def update
+    @item.logo.attach(logo_params) if logo_params.present?
 
     respond_to do |format|
       if @item.update item_params
-        format.html { redirect_to admin_detail_items_url(@item.detail_id), notice: '更新成功' }
+        format.html { redirect_to admin_list_items_url(@item.list_id), notice: '更新成功' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -53,22 +51,26 @@ class TheDetail::ItemsController < TheDetail::BaseController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to detail_items_url(@item.detail_id) }
+      format.html { redirect_to admin_list_items_url(@item.list_id) }
       format.json { head :no_content }
     end
   end
 
   private
+  def set_list
+    @list = List.find params[:list_id]
+  end
+
   def set_item
     @item = Item.find params[:id]
   end
 
   def item_params
-    params[:item].permit(:parent_id,
-                         :name,
-                         :contents,
-                         :photo,
-                         :photo_cache)
+    params[:item].permit(:name, :logo, :desc, :key)
+  end
+
+  def logo_params
+    params.fetch(:item, {}).permit(:logo).fetch(:logo, {})
   end
 
 end

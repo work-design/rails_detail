@@ -1,4 +1,4 @@
-class TheDetail::ListsController < TheDetail::BaseController
+class TheDetailAdmin::ListsController < TheDetailAdmin::BaseController
   before_action :set_list, only: [:edit, :update, :destroy]
 
   def index
@@ -54,7 +54,7 @@ class TheDetail::ListsController < TheDetail::BaseController
   end
 
   def list_params
-    params[:list].permit(:name, :kind)
+    params.fetch(:list, {}).permit(:name, :kind)
   end
 
 end
