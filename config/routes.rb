@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
+  scope module: 'the_detail' do
+    resources :items, only: [] do
+      get :search, on: :collection
+    end
+  end
+
   scope :admin, as: 'admin', module: 'the_detail_admin' do
     resources :lists do
       resources :items
