@@ -1,0 +1,10 @@
+<tr id="taxon_item_<%= taxon_item.id %>">
+  <td><%= taxon_item.id %></td>
+  <td><%= taxon_item.item.name %></td>
+  <td><%= taxon_item.value %></td>
+  <td>
+    <%= link_to 'Show', my_taxon_item_path(taxon_item), class: 'ui blue label' %>
+    <%= link_to 'Edit', edit_my_taxon_item_path(taxon_item), remote: true, class: 'ui pink label' %>
+    <%= link_to 'Destroy', my_taxon_item_path(taxon_item), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'ui red label' %>
+  </td>
+</tr>
