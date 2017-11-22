@@ -18,6 +18,21 @@ class CreateLists < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
+    create_table :taxon_items do |t|
+      t.references :taxon, polymorphic: true
+      t.references :list
+      t.references :item
+      t.timestamps
+    end
+
+    create_table :entity_items do |t|
+      t.references :entity, polymorphic: true
+      t.references :list
+      t.references :item
+      t.string :value
+      t.timestamps
+    end
+
   end
 end
 

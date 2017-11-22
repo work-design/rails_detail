@@ -1,9 +1,8 @@
 class TheDetail::TaxonItemsController < TheDetail::BaseController
-  before_action :set_taxon, only: [:index, :new, :create]
   before_action :set_taxon_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @taxon_items = @taxon.taxon_items.page(params[:page])
+    @taxon_items = TaxonItem.where(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id]).page(params[:page])
   end
 
   def show
@@ -49,10 +48,6 @@ class TheDetail::TaxonItemsController < TheDetail::BaseController
   end
 
   private
-  def set_taxon
-    @taxon = Taxon.find params[:taxon_id]
-  end
-
   def set_taxon_item
     @taxon_item = TaxonItem.find(params[:id])
   end
