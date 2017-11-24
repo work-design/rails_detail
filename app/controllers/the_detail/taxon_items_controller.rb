@@ -10,14 +10,14 @@ class TheDetail::TaxonItemsController < TheDetail::BaseController
 
   def new
     @lists = List.all.map { |list| [list.name, list.id] }
-    @taxon_item = @taxon.taxon_items.build
+    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
   end
 
   def edit
   end
 
   def create
-    @taxon_item = @taxon.taxon_items.build(taxon_item_params)
+    @taxon_item = TaxonItem.new(taxon_item_params)
 
     respond_to do |format|
       if @taxon_item.save
@@ -53,7 +53,7 @@ class TheDetail::TaxonItemsController < TheDetail::BaseController
   end
 
   def taxon_item_params
-    params.fetch(:taxon_item, {}).permit(:list_id, :item_id, :value)
+    params.fetch(:taxon_item, {}).permit(:list_id, :item_id).merge(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
   end
 
 end

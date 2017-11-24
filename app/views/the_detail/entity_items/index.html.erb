@@ -1,0 +1,34 @@
+<div>
+
+  <div class="ui top attached menu borderless">
+    <div class="item"><strong>Space Items</strong></div>
+  </div>
+
+  <div class="ui segment bottom attached">
+  </div>
+
+  <div class="ui segment top attached">
+    <%= link_to 'New Space Item', new_taxon_item_path(params[:taxon_type], params[:taxon_id]), remote: true, class: 'ui teal button' %>
+  </div>
+
+  <table class="ui bottom attached table">
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody id="taxon_item_tbody">
+    <% @taxon_items.each do |taxon_item| %>
+      <%= render partial: 'taxon_item', locals: { taxon_item: taxon_item } %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @taxon_items %>
+</div>
+
+
