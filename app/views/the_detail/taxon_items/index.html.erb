@@ -22,7 +22,12 @@
 
     <tbody id="taxon_item_tbody">
     <% @items_hash.each do |list, items| %>
-      <tr><td colspan="3"><%= list.name %></td></tr>
+      <tr>
+        <td colspan="3">
+          <%= list.name %>
+          <%= link_to 'New Space Item', new_taxon_item_path(params[:taxon_type], params[:taxon_id]), remote: true, class: 'ui mini teal button' %>
+        </td>
+      </tr>
       <% items.each do |item| %>
         <%= render partial: 'taxon_item', locals: { taxon_item: item } %>
       <% end %>
