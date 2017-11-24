@@ -17,18 +17,19 @@
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
     </thead>
 
     <tbody id="taxon_item_tbody">
-    <% @taxon_items.each do |taxon_item| %>
-      <%= render partial: 'taxon_item', locals: { taxon_item: taxon_item } %>
+    <% @items_hash.each do |list, items| %>
+      <tr><td colspan="3"><%= list.name %></td></tr>
+      <% items.each do |item| %>
+        <%= render partial: 'taxon_item', locals: { taxon_item: item } %>
+      <% end %>
     <% end %>
     </tbody>
   </table>
 
-  <%= paginate @taxon_items %>
 </div>
 
 

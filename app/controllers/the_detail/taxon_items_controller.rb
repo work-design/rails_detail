@@ -2,7 +2,8 @@ class TheDetail::TaxonItemsController < TheDetail::BaseController
   before_action :set_taxon_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @taxon_items = TaxonItem.where(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id]).page(params[:page])
+    taxon_items = TaxonItem.includes(:list).where(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
+    @items_hash = taxon_items.group_by { |i| i.list }
   end
 
   def show
