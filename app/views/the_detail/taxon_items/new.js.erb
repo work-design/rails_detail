@@ -1,4 +1,8 @@
-$('#taxon_item_tbody').append('<%= j(render 'new') %>');
+<% if params[:list_id] %>
+  $("#taxon_list_<%= params[:list_id] %>").after('<%= j(render 'new') %>');
+<% else %>
+  $('#taxon_item_tbody').append('<%= j(render 'new') %>');
+<% end %>
 
 $('#taxon_item_list_id').dropdown({
   onChange: function(value, text, $selectedItem){
