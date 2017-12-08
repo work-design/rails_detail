@@ -1,7 +1,9 @@
 class TheDetail::EntityItemsController < TheDetail::BaseController
+  before_action :set_entity
   before_action :set_entity_item, only: [:show, :edit, :update, :destroy]
 
   def index
+    @taxon_items = @entity.taxon.taxon_items
     @entity_items = EntityItem.where(entity_type: params[:entity_type], entity_id: params[:entity_id]).page(params[:page])
   end
 
@@ -48,6 +50,10 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
   end
 
   private
+  def set_entity
+    @entity = params[:entity_type].safe_constantize&.find_by(id: params[:entity_id])
+  end
+
   def set_entity_item
     @entity_item = EntityItem.find(params[:id])
   end
