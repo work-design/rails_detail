@@ -22,8 +22,15 @@
     </thead>
 
     <tbody id="taxon_item_tbody">
-    <% @taxon_items.each do |taxon_item| %>
-      <%= render partial: 'taxon_item', locals: { taxon_item: taxon_item } %>
+    <% @items_hash.each do |list, items| %>
+      <tr id="taxon_list_<%= list.id %>">
+        <td colspan="3">
+          <%= list.name %>
+        </td>
+      </tr>
+      <% items.each do |item| %>
+        <%= render partial: 'taxon_item', locals: { taxon_item: item } %>
+      <% end %>
     <% end %>
     </tbody>
   </table>

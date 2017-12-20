@@ -3,7 +3,8 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
   before_action :set_entity_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @taxon_items = @entity.taxon.taxon_items
+    taxon_items = @entity.taxon.taxon_items
+    @items_hash = taxon_items.group_by { |i| i.list }
     @entity_items = EntityItem.where(entity_type: params[:entity_type], entity_id: params[:entity_id]).page(params[:page])
   end
 
