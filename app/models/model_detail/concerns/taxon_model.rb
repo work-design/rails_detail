@@ -5,6 +5,5 @@ module TaxonModel
     has_many :taxon_items, as: :taxon
   end
 
-
 end
 

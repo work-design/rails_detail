@@ -1,5 +1,5 @@
 <% if params[:list_id] %>
-  $("#taxon_list_<%= params[:list_id] %>").after('<%= j(render 'new') %>');
+  $("#taxon_list_<%= params[:list_id] %>").after('<%= j(render 'new_list') %>');
 <% else %>
   $('#taxon_item_tbody').append('<%= j(render 'new') %>');
 <% end %>

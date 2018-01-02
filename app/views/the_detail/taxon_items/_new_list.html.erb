@@ -2,8 +2,8 @@
   <%= uid = rand(99999) %>
   <td><%= form_with model: @taxon_item, url: taxon_items_path, remote: true, id: "taxon_item_new_#{uid}" %></td>
   <td>
-    <%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, class: 'four wide field', form: "taxon_item_new_#{uid}" %>
-    <%= select_tag 'taxon_item[item_id]', options_for_select([], @taxon_item.item_id), class: 'three wide field', form: "taxon_item_new_#{uid}" %>
+    <%= select_tag 'taxon_item[list_id]', options_for_select([[@list.name, @list.id]], @taxon_item.list_id), include_blank: true, class: 'four wide field', form: "taxon_item_new_#{uid}" %>
+    <%= select_tag 'taxon_item[item_id]', options_for_select(@taxon_item.item_options(@list.id)), class: 'three wide field', form: "taxon_item_new_#{uid}" %>
     <%= hidden_field_tag 'taxon_item[item_id]', @taxon_item.item_id, id: 'taxon_item_real_item_id', form: "taxon_item_new_#{uid}" %>
   </td>
   <td>
