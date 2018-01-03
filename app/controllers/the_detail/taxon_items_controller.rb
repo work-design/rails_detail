@@ -10,8 +10,14 @@ class TheDetail::TaxonItemsController < TheDetail::BaseController
   end
 
   def new
-    @lists = List.all.map { |list| [list.name, list.id] }
-    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
+    @taxon = params[:taxon_type].safe_constantize.find params[:taxon_id]
+    if params[:list_id]
+      @list = List.find params[:list_id]
+    else
+      @lists = List.all.map { |list| [list.name, list.id] }
+    end
+
+    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id], list_id: params[:list_id])
   end
 
   def edit
