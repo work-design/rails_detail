@@ -9,7 +9,7 @@ $('.ui.slider.checkbox').checkbox({
         'X-CSRF-Token': document.head.querySelector("[name=csrf-token]").content
       },
       body: {
-        
+
       }
     };
     fetch(url, params).then(function(response) {
