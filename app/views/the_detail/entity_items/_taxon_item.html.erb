@@ -5,7 +5,7 @@
   </td>
   <td>
     <div class="ui slider checkbox" id="checkbox_<%= taxon_item.item_id %>">
-      <%= check_box_tag :entity_item, taxon_item.id, false, data: { url: new_entity_item_path(params[:entity_type], params[:entity_id]) } %>
+      <%= check_box_tag :entity_item, taxon_item.id, false, data: { url: entity_items_path(params[:entity_type], params[:entity_id]) } %>
       <label></label>
     </div>
   </td>
