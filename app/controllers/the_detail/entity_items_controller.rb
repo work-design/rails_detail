@@ -3,24 +3,19 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
   before_action :set_entity_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    taxon_items = @entity.taxon.taxon_items
-    @items_hash = taxon_items.group_by { |i| i.list }
-    @entity_items = EntityItem.where(entity_type: params[:entity_type], entity_id: params[:entity_id]).page(params[:page])
+    @items_hash = @entity.items
+    @entity_items = EntityItem.includes(:taxon_item).where(entity_type: params[:entity_type], entity_id: params[:entity_id]).page(params[:page])
   end
 
   def show
   end
 
   def new
-    @lists = List.all.map { |list| [list.name, list.id] }
-    @entity_item = @entity.entity_items.build
-  end
-
-  def edit
+    @entity_item = @entity.entity_items.find_or_initialize_by(taxon_item_id: params[:taxon_item_id])
   end
 
   def create
-    @entity_item = @entity.entity_items.build(entity_item_params)
+    @entity_item = @entity.entity_items.find_or_initialize_by(taxon_item_id: entity_item_params[:taxon_item_id])
 
     respond_to do |format|
       if @entity_item.save
@@ -32,18 +27,6 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
       end
     end
 
-  end
-
-  def update
-    respond_to do |format|
-      if @entity_item.update(entity_item_params)
-        format.js
-        format.html { redirect_to @entity_item, notice: 'Taxon item was successfully created.' }
-      else
-        format.js
-        format.html { render :edit }
-      end
-    end
   end
 
   def destroy

@@ -8,7 +8,9 @@
       <label></label>
     </div>
     <% else %>
-      <%= check_box_tag :entity_item, taxon_item.id, false, data: { url: entity_items_path(params[:entity_type], params[:entity_id]) } %>
+      <%= link_to new_entity_item_path(params[:entity_type], params[:entity_id], taxon_item_id: taxon_item.id), remote: true do %>
+        <div class="ui label" style="cursor: text"><%# entity_item.value %>edit</div>
+      <% end %>
     <% end %>
   </td>
   <td>
