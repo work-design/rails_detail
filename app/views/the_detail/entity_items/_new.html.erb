@@ -1,39 +1,23 @@
-<tr id="taxon_item_add">
-  <td><%= form_tag [, @taxon_item], remote: true, id: "taxon_item_new_#{uid}" %></td>
-  <td><%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, class: 'four wide field', form: "taxon_item_new_#{uid}" %></td>
-  <td>
-    <%= select_tag 'taxon_item[item_id]', options_for_select([], @taxon_item.item_id), class: 'three wide field', form: "taxon_item_new_#{uid}" %>
-    <%= hidden_field_tag 'taxon_item[item_id]', @taxon_item.item_id, id: 'taxon_item_real_item_id', form: "taxon_item_new_#{uid}" %>
-  </td>
-  <td>
-    <div class="ui input">
-      <%= text_field_tag 'taxon_item[value]', @taxon_item.value, placeholder: 'Result:', class: 'three wide field', form: "taxon_item_new_#{uid}" %>
-    </div>
-  </td>
-  <td>
-    <%= submit_tag 'Save', class: 'ui green button', form: "taxon_item_new_#{uid}" %>
-    <a class="ui grey button" onclick="removeForm()">取消</a>
-  </td>
-</tr>
-
 <tr id="taxon_item_<%= @entity_item.taxon_item_id %>">
-  <td><%= @entity_item.taxon_item_id %></td>
+  <td>
+    <%= form_tag entity_items_path(params[:entity_type], params[:entity_id]), remote: true, id: "entity_item_new_#{@entity_item.taxon_item_id}" %>
+    <%= @entity_item.taxon_item_id %>
+  </td>
   <td><%= @entity_item.item.name %></td>
   <td>
-    <% if taxon_item.item.key == 'boolean' %>
-      <div class="ui slider checkbox" id="checkbox_<%= taxon_item.item_id %>">
-        <%= check_box_tag :entity_item, taxon_item.id, false, data: { url: entity_items_path(params[:entity_type], params[:entity_id]) } %>
+    <% if @entity_item.item.key == 'boolean' %>
+      <div class="ui slider checkbox" id="checkbox_<%= @entity_item.item_id %>">
+        <%= check_box_tag :entity_item, @entity_item.taxon_item_id, false, data: { url: entity_items_path(params[:entity_type], params[:entity_id]) } %>
         <label></label>
       </div>
     <% else %>
-      <%= text_field_tag :entity_item, taxon_item.id, false, data: { url: entity_items_path(params[:entity_type], params[:entity_id]) } %>
-      <%= link_to new_entity_item_path(params[:entity_type], params[:entity_id], serve_id: serve_charge.serve_id), remote: true do %>
-        <div class="ui label" style="cursor: text"><%= serve_charge.subtotal %></div>
-      <% end %>
+      <div class="ui input">
+        <%= text_field_tag 'entity_item[value]', @entity_item.value, placeholder: 'Result:', class: 'three wide field', form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
+      </div>
     <% end %>
   </td>
   <td>
-    <%# link_to 'Edit', edit_entity_item_path(params[:entity_type], params[:entity_id]), remote: true, class: 'ui pink label' %>
-    <%# link_to 'Destroy', entity_item_path(params[:entity_type], params[:entity_id]), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'ui red label' %>
+    <%= submit_tag 'Save', class: 'ui green button', form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
+    <a class="ui grey button" onclick="removeForm()">取消</a>
   </td>
 </tr>
