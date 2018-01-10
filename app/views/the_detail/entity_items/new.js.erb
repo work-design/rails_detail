@@ -1,6 +1,5 @@
 $('#taxon_item_<%= @entity_item.taxon_item_id %>').replaceWith('<%= j(render 'new') %>');
 
 
-function removeForm() {
-  $('#taxon_item_add').remove();
-}
+var input = document.getElementById('entity_item_value');
+input.focus();

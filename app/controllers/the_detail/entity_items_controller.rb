@@ -16,6 +16,7 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
 
   def create
     @entity_item = @entity.entity_items.find_or_initialize_by(taxon_item_id: entity_item_params[:taxon_item_id])
+    @entity_item.value = entity_item_params[:value]
 
     respond_to do |format|
       if @entity_item.save
@@ -43,7 +44,7 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
   end
 
   def entity_item_params
-    params.fetch(:entity_item, {}).permit(:list_id, :item_id, :value)
+    params.fetch(:entity_item, {}).permit(:taxon_item_id, :value)
   end
 
 end

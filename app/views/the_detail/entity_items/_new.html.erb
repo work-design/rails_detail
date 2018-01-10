@@ -1,23 +1,16 @@
 <tr id="taxon_item_<%= @entity_item.taxon_item_id %>">
   <td>
     <%= form_tag entity_items_path(params[:entity_type], params[:entity_id]), remote: true, id: "entity_item_new_#{@entity_item.taxon_item_id}" %>
+    <%= hidden_field_tag 'entity_item[taxon_item_id]', @entity_item.taxon_item_id, form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
     <%= @entity_item.taxon_item_id %>
   </td>
   <td><%= @entity_item.item.name %></td>
   <td>
-    <% if @entity_item.item.key == 'boolean' %>
-      <div class="ui slider checkbox" id="checkbox_<%= @entity_item.item_id %>">
-        <%= check_box_tag :entity_item, @entity_item.taxon_item_id, false, data: { url: entity_items_path(params[:entity_type], params[:entity_id]) } %>
-        <label></label>
-      </div>
-    <% else %>
-      <div class="ui input">
-        <%= text_field_tag 'entity_item[value]', @entity_item.value, placeholder: 'Result:', class: 'three wide field', form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
-      </div>
-    <% end %>
+    <div class="ui input">
+      <%= text_field_tag 'entity_item[value]', @entity_item.value, placeholder: @entity_item.value, class: 'three wide field', form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
+    </div>
   </td>
   <td>
-    <%= submit_tag 'Save', class: 'ui green button', form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
-    <a class="ui grey button" onclick="removeForm()">取消</a>
+    <%= submit_tag 'Save', style: 'display: none;', form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
   </td>
 </tr>

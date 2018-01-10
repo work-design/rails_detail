@@ -9,4 +9,10 @@ class EntityItem < ApplicationRecord
     self.item_id = self.taxon_item.item_id
   end
 
+  def taxon_item
+    _taxon_item = super
+    _taxon_item.value = self.value
+    _taxon_item
+  end
+
 end
