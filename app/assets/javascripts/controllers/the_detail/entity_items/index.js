@@ -5,12 +5,12 @@ $('.ui.slider.checkbox').checkbox({
       method: 'POST',
       credentials: 'include',
       headers: {
-        'Content-Type': 'application/javascript',
+        'Content-Type': 'application/json',
         'X-CSRF-Token': document.head.querySelector("[name=csrf-token]").content
       },
-      body: {
-
-      }
+      body: JSON.stringify({
+        taxon_item_id: this.value
+      })
     };
     fetch(url, params).then(function(response) {
       return response.text()

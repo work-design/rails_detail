@@ -13,6 +13,7 @@ module TheDetail
     config.mapping.string = { input: 'text', output: 'to_s' }
     config.mapping.text = { input: 'textarea', output: 'to_s' }
     config.mapping.array = { input: 'array', output: 'to_s' }
+    config.mapping.boolean = { input: 'checkbox', output: 'to_s' }
   end
 
 end
