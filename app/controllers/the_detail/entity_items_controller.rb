@@ -32,6 +32,7 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
 
   def destroy
     @entity_item.destroy
+    head :no_content
   end
 
   private

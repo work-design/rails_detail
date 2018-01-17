@@ -10,7 +10,10 @@ module ItemModel
 
     taxon_items.each do |taxon_item|
       entity_item = entity_items.find { |entity_item| entity_item.taxon_item_id == taxon_item.id  }
-      taxon_item.value = entity_item.value if entity_item
+      if entity_item
+        taxon_item.value = entity_item.value
+        taxon_item.entity_item_id = entity_item.id
+      end
     end
 
     taxon_items.group_by { |i| i.list }
