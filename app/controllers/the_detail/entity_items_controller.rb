@@ -20,6 +20,7 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
 
     respond_to do |format|
       if @entity_item.save
+        @entity_item.taxon_item.entity_item_id = @entity_item.id
         format.js
         format.html { redirect_to @entity_item, notice: 'Taxon item was successfully created.' }
       else
@@ -32,7 +33,6 @@ class TheDetail::EntityItemsController < TheDetail::BaseController
 
   def destroy
     @entity_item.destroy
-    head :no_content
   end
 
   private
