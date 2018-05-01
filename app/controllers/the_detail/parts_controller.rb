@@ -3,7 +3,7 @@ class TheDetail::PartsController < TheDetail::BaseController
 
   def index
     @sort = Sort.find params[:sort_id]
-    @parts = @sort.parts.order("id DESC")
+    @parts = @sort.parts.order(id: :desc)
 
     respond_to do |format|
       format.html
