@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope module: 'the_detail' do
     scope path: ':detail_type/:detail_id' do
       resource :note
+      resources :pictures
       resources :majors do
         patch :pass, on: :member
       end

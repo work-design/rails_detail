@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 5.0'
   s.add_dependency 'acts_as_list'
-  
+  s.add_dependency 'rails_com'
+
   s.add_development_dependency 'mysql2'
 end
