@@ -130,7 +130,6 @@ PLATFORMS
 
 DEPENDENCIES
   mysql2
-  rails_com (= 1.2.1)
   the_detail!
 
 BUNDLED WITH
