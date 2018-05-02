@@ -98,7 +98,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_com (1.2.0)
+    rails_com (1.2.1)
       rails
       rucaptcha
     railties (5.2.0)
@@ -130,7 +130,7 @@ PLATFORMS
 
 DEPENDENCIES
   mysql2
-  rails_com
+  rails_com (= 1.2.1)
   the_detail!
 
 BUNDLED WITH
