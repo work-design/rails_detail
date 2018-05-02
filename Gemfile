@@ -1,2 +1,5 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
+
+gem 'rails_com', github: 'qinmingyuan/rails_com'

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/qinmingyuan/rails_com.git
+  revision: b5ffb4c62809bb910738075379aef655eaf1473f
+  specs:
+    rails_com (1.2.1)
+      rails
+      rucaptcha
+
 PATH
   remote: .
   specs:
@@ -98,9 +106,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_com (1.2.1)
-      rails
-      rucaptcha
     railties (5.2.0)
       actionpack (= 5.2.0)
       activesupport (= 5.2.0)
@@ -130,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   mysql2
+  rails_com!
   the_detail!
 
 BUNDLED WITH
