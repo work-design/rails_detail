@@ -1,10 +1,9 @@
 GIT
   remote: https://github.com/qinmingyuan/rails_com.git
-  revision: b5ffb4c62809bb910738075379aef655eaf1473f
+  revision: 4846553f8105ff18c69dff382b50586d845ba3e7
   specs:
     rails_com (1.2.1)
       rails
-      rucaptcha
 
 PATH
   remote: .
@@ -113,8 +112,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.1)
-    rucaptcha (2.2.0)
-      railties (>= 3.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
