@@ -2,20 +2,28 @@ class TheDetail::PicturesController < TheDetail::BaseController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pictures = Picture.page(params[:page])
+    @pictures = @pictures.page(params[:page])
   end
 
   def new
     @picture = Picture.new
+    @picture.detail_type = params[:detail_type]
+    @picture.detail_id = params[:detail_id]
   end
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.detail_type = params[:detail_type]
+    @picture.detail_id = params[:detail_id]
 
-    if @picture.save
-      redirect_to the_detail_pictures_url, notice: 'Picture was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @picture.save
+        format.html { redirect_to the_detail_pictures_url, notice: 'Picture was successfully created.' }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
     end
   end
 
@@ -39,12 +47,18 @@ class TheDetail::PicturesController < TheDetail::BaseController
   end
 
   private
+  def set_pictures
+    @pictures = Picture.where(detail_type: params[:detail_type], detail_id: params[:detail_id])
+  end
+
   def set_picture
     @picture = Picture.find(params[:id])
   end
 
-  def the_detail_picture_params
+  def picture_params
     params.fetch(:picture, {}).permit(
+      :title,
+      :body
     )
   end
 
