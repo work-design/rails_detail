@@ -1,16 +1,14 @@
-<%= form_for @content, as: :content, url: detail_content_path(@detail), remote: true, html: { class: 'ui form' } do |f| %>
-  <% if @content.key.present? %>
+<%= form_with model: @picture, url: pictures_path, remote: true, html: { class: 'ui form' } do |f| %>
+  <% if @picture.file.attached? %>
     <div class="inline field">
-      <%= image_tag(QiniuHelper.qiniu_url(@content.key), size: '100x100') %>
+      <%= image_tag @picture.file, size: '100x100' %>
     </div>
   <% end %>
-  <%= f.hidden_field :key %>
-  <%= f.hidden_field :type %>
   <div class="field">
     <%= f.text_area :body, label: '标题:', class: 'attached' %>
     <div class="ui bottom attached segment">
       <%= file_field_tag nil, id: 'file_input' %>
     </div>
   </div>
-  <%= f.submit '添加', class: 'ui button' %>
+  <%= f.submit '添加' %>
 <% end %>
