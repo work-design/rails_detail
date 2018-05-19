@@ -58,6 +58,7 @@ class TheDetail::PicturesController < TheDetail::BaseController
   def picture_params
     params.fetch(:picture, {}).permit(
       :title,
+      :file,
       :body
     )
   end

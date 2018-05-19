@@ -1,11 +1,11 @@
-<% if @content.is_a?(Picture) %>
+<% if @picture.is_a?(Picture) %>
 <div class="ui image">
-  <%= image_tag QiniuHelper.qiniu_url(@content.key) %>
+  <%= image_tag @picture.file %>
 </div>
 <% end %>
-<div id="content_<%= @content.id %>">
-  <%= @content.body %>
-  <%= link_to edit_detail_content_path(@detail, @content), remote: true, class: 'grey text' do %>
+<div id="content_<%= @picture.id %>">
+  <%= @picture.body %>
+  <%= link_to edit_detail_content_path(@detail, @picture), remote: true, class: 'grey text' do %>
     <i class="grey write square icon"></i>
   <% end %>
 </div>

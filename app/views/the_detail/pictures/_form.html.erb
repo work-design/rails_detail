@@ -1,14 +1,6 @@
-<%= form_with model: @picture, url: pictures_path, remote: true, html: { class: 'ui form' } do |f| %>
-  <% if @picture.file.attached? %>
-    <div class="inline field">
-      <%= image_tag @picture.file, size: '100x100' %>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.text_area :body, class: 'attached' %>
-    <div class="ui bottom attached segment">
-      <%= file_field_tag nil, id: 'file_input' %>
-    </div>
-  </div>
+<%= form_with model: @picture, url: pictures_path, remote: true do |f| %>
+  <%= f.file_field :file %>
+  <%= render 'active_storage/attachments/list', target: @picture.file %>
+  <%= f.text_area :body %>
   <%= f.submit '添加' %>
 <% end %>
