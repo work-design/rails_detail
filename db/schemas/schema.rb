@@ -50,12 +50,6 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.integer "position",  limit: 4, default: 0
   end
 
-  create_table "order_shipments", force: :cascade do |t|
-    t.integer "order_id",    limit: 4
-    t.integer "shipment_id", limit: 4
-  end
-
-
   create_table "photos", force: :cascade do |t|
     t.string   "title",          limit: 255
     t.string   "description",    limit: 255
@@ -75,13 +69,6 @@ ActiveRecord::Schema.define(version: 20150130123018) do
     t.datetime "finish_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-
-  create_table "shipments", force: :cascade do |t|
-    t.integer "user_id", limit: 4
-    t.integer "area_id", limit: 4
-    t.string  "address", limit: 255
   end
 
   create_table "stars", force: :cascade do |t|
