@@ -35,16 +35,20 @@ class TheDetail::PicturesController < TheDetail::BaseController
   end
 
   def update
-    if @picture.update(picture_params)
-      redirect_to the_detail_pictures_url, notice: 'Picture was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @picture.update(picture_params)
+        format.html { redirect_to detail_pictures_url(params[:detail_type], ), notice: 'Picture was successfully updated.' }
+        format.json { render json: { filename: url_for(@picture.file) } }
+      else
+        format.html { render :edit }
+        format.json { }
+      end
     end
   end
 
   def destroy
     @picture.destroy
-    redirect_to the_detail_pictures_url, notice: 'Picture was successfully destroyed.'
+    redirect_to detail_pictures_url, notice: 'Picture was successfully destroyed.'
   end
 
   private

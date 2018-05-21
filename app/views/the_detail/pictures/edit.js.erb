@@ -1,22 +1,22 @@
-$('#content_<%= @content.id %>').html('<%= j(render 'form') %>');
+$('#picture_<%= @picture.id %>').html('<%= j(render 'edit') %>');
 
 attachToInput({
-  input: document.getElementById('content_body'),
-  fileInput: document.getElementById('file_input'),
-  uploadUrl: 'http://upload.qiniu.com/',
+  input: 'picture_body',
+  fileInput: 'picture_file',
+  uploadUrl: '<%= detail_picture_path(params[:detail_type], params[:detail_id], @picture.id) %>',
+  uploadFieldName: 'picture[file]',
   extraParams: {
-    token: '<%= QiniuHelper.generate_uptoken %>'
+    token: '',
+    _method: 'patch'
   },
-  jsonFieldName: 'key',
-  onFileUploaded: function(filename) {
-    var domain = '<%= QINIU['host'] %>';
-    var sourceLink = domain + '/' + filename;
-
+  extraHeaders: {
+    'Accept': 'application/json',
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  },
+  onFileUploaded: function (filename) {
     var img_content = new Image()
-    img_content.src = sourceLink
+    img_content.src = filename
     img_content.classList = 'ui image'
-    $('#pickfiles').append(img_content);
-
-    $('#key').val(filename);
+    $('#<%= "picture_attachments_#{@picture.id}" %>').append(img_content);
   }
 });
