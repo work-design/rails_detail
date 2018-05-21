@@ -21,6 +21,7 @@ class TheDetail::PicturesController < TheDetail::BaseController
       if @picture.save
         format.html { redirect_to the_detail_pictures_url, notice: 'Picture was successfully created.' }
         format.js
+        format.json { render json: { picture: @picture.as_json, filename: url_for(@picture.file) } }
       else
         format.html { render :new }
         format.js
