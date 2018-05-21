@@ -1,4 +1,4 @@
-<%= form_with model: @picture, url: pictures_path, remote: true do |f| %>
+<%= form_with model: @picture, url: detail_pictures_path, remote: true do |f| %>
   <%= f.file_field :file %>
   <%= render 'active_storage/attachments/list', target: @picture.file %>
   <%= f.text_area :body %>

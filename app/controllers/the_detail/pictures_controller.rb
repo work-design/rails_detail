@@ -1,4 +1,5 @@
 class TheDetail::PicturesController < TheDetail::BaseController
+  before_action :set_pictures, only: [:index]
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index

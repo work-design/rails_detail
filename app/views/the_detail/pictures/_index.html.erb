@@ -1,14 +1,14 @@
-<div id="contents">
-<% @detail.contents.each do |content| %>
-  <div id="content_<%= content.id %>">
-    <% if content.is_a?(Picture) %>
+<div id="pictures">
+<% @pictures.each do |picture| %>
+  <div id="picture_<%= picture.id %>">
+    <% if picture.is_a?(Picture) %>
       <div class="ui image">
-        <%= image_tag QiniuHelper.qiniu_url(content.key) %>
+        <%= image_tag picture.file if picture.file.attached? %>
       </div>
     <% end %>
     <div>
-      <%= content.body %>
-      <%= link_to edit_detail_content_path(@detail, content), remote: true, class: 'grey text' do %>
+      <%= picture.body %>
+      <%= link_to edit_detail_picture_path(params[:detail_type], params[:detail_id], picture), remote: true, class: 'grey text' do %>
         <i class="grey write square icon"></i>
       <% end %>
     </div>
@@ -16,8 +16,8 @@
 <% end %>
 </div>
 
-<div id="detail_contents_add">
-  <%= render 'the_detail/contents/add_link' %>
+<div id="detail_pictures_add">
+  <%= render 'the_detail/pictures/add_link' %>
 </div>
 
 
