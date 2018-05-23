@@ -1,6 +1,6 @@
 <div id="content_<%= note.id %>">
   <%= simple_format note.body %>
-  <%= link_to edit_note_path(note.detail_type, note.detail_id), remote: true, class: 'grey text' do %>
+  <%= link_to edit_detail_note_path(note.detail_type, note.detail_id), remote: true, class: 'grey text' do %>
     <i class="grey write square icon"></i>
   <% end %>
 </div>
