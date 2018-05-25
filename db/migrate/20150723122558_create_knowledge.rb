@@ -1,4 +1,4 @@
-class CreateKnowledge < ActiveRecord::Migration
+class CreateKnowledge < ActiveRecord::Migration[5.2]
   def change
 
     create_table :contents do |t|
