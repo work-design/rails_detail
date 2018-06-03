@@ -1,6 +1,6 @@
-<div id="pictures">
+<div class="ui raised segments" id="pictures">
 <% @pictures.each do |picture| %>
-  <div id="picture_<%= picture.id %>">
+  <div class="ui basic segment" id="picture_<%= picture.id %>">
     <% if picture.is_a?(Picture) %>
       <div class="ui image">
         <%= image_tag picture.file if picture.file.attached? %>
@@ -19,5 +19,3 @@
 <div id="detail_pictures_add">
   <%= render 'the_detail/pictures/add_link' %>
 </div>
-
-

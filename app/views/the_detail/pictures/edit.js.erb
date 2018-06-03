@@ -1,4 +1,21 @@
+
+
+
 $('#picture_<%= @picture.id %>').html('<%= j(render 'edit') %>');
+
+import { Application, Controller } from 'stimulus'
+
+class HelloController extends Controller {
+  greet() {
+    console.log("Hello, Stimulus!", this.element)
+  }
+
+  connect() {
+    console.log("Connect, Stimulus!", this.element)
+  }
+}
+const application = Application.start()
+application.register('attachment', HelloController)
 
 attachToInput({
   input: 'picture_body',
@@ -17,6 +34,8 @@ attachToInput({
     var img_content = new Image()
     img_content.src = filename
     img_content.classList = 'ui image'
-    $('#<%= "picture_attachments_#{@picture.id}" %>').append(img_content);
+    img_content.height = 30
+    img_content.width = 30
+    $('#<%= "picture_attachments_#{@picture.id}" %> > .field').last().append(img_content);
   }
 });
