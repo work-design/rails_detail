@@ -1,41 +1,34 @@
-
-
-
 $('#picture_<%= @picture.id %>').html('<%= j(render 'edit') %>');
 
-import { Application, Controller } from 'stimulus'
-
-class HelloController extends Controller {
+class HelloController extends Stimulus.Controller {
   greet() {
-    console.log("Hello, Stimulus!", this.element)
+    console.log("Hellos, Stimulus!", this.element)
   }
 
   connect() {
-    console.log("Connect, Stimulus!", this.element)
+    console.log("Connects, Stimulus!", this.element)
+    var app = this;
+    attachToInput({
+      input: 'picture_body',
+      fileInput: 'picture_file',
+      uploadUrl: '<%= detail_picture_path(params[:detail_type], params[:detail_id], @picture.id) %>',
+      uploadFieldName: 'picture[file]',
+      extraParams: {
+        token: '',
+        _method: 'patch'
+      },
+      extraHeaders: {
+        'Accept': 'application/json',
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      onFileUploaded: function (filename) {
+        app.srcTargets[0].src = filename
+      }
+    });
   }
+  
+  
 }
-const application = Application.start()
+HelloController.targets = ['src']
+const application = Stimulus.Application.start()
 application.register('attachment', HelloController)
-
-attachToInput({
-  input: 'picture_body',
-  fileInput: 'picture_file',
-  uploadUrl: '<%= detail_picture_path(params[:detail_type], params[:detail_id], @picture.id) %>',
-  uploadFieldName: 'picture[file]',
-  extraParams: {
-    token: '',
-    _method: 'patch'
-  },
-  extraHeaders: {
-    'Accept': 'application/json',
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-  },
-  onFileUploaded: function (filename) {
-    var img_content = new Image()
-    img_content.src = filename
-    img_content.classList = 'ui image'
-    img_content.height = 30
-    img_content.width = 30
-    $('#<%= "picture_attachments_#{@picture.id}" %> > .field').last().append(img_content);
-  }
-});
