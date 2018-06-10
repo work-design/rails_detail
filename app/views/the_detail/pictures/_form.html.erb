@@ -1,5 +1,6 @@
 <%= f.hidden_field :id %>
 <%= f.file_field :file %>
-<%= render 'active_storage/attachments/list', target: @picture.file %>
+<%= render 'active_storage/attachments/list_form', target: @picture.file %>
+<%= f.text_field :title %>
 <%= f.text_area :body %>
 <%= f.submit %>

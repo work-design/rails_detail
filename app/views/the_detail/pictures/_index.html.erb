@@ -6,6 +6,7 @@
         <%= image_tag picture.file if picture.file.attached? %>
       </div>
     <% end %>
+    <h5><%= picture.title %></h5>
     <div>
       <%= picture.body %>
       <%= link_to edit_detail_picture_path(params[:detail_type], params[:detail_id], picture), remote: true, class: 'grey text' do %>
