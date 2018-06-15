@@ -5,7 +5,7 @@
 <% end %>
 <div id="content_<%= @picture.id %>">
   <%= @picture.body %>
-  <%= link_to edit_detail_content_path(@detail, @picture), remote: true, class: 'grey text' do %>
+  <%= link_to edit_detail_picture_path(@detail, @picture), remote: true, class: 'grey text' do %>
     <i class="grey write square icon"></i>
   <% end %>
 </div>
