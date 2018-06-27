@@ -1,6 +1,6 @@
 <tr id="taxon_item_add">
   <%= uid = rand(99999) %>
-  <td><%= form_with model: @taxon_item, url: taxon_items_path, remote: true, id: "taxon_item_new_#{uid}" %></td>
+  <td><%= form_with model: @taxon_item, url: detail_taxon_items_path, remote: true, id: "taxon_item_new_#{uid}" %></td>
   <td>
     <%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, class: 'four wide field', form: "taxon_item_new_#{uid}" %>
     <%= select_tag 'taxon_item[item_id]', options_for_select([], @taxon_item.item_id), class: 'three wide field', form: "taxon_item_new_#{uid}" %>
