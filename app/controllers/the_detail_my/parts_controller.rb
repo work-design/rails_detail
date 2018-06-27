@@ -1,4 +1,4 @@
-class TheDetail::PartsController < TheDetail::BaseController
+class TheDetailMy::PartsController < TheDetailMy::BaseController
   before_action :set_wiki, :only => [:new, :create]
 
   def index

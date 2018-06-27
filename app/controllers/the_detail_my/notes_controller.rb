@@ -1,11 +1,11 @@
-class TheDetail::NotesController < TheDetail::BaseController
+class TheDetailMy::NotesController < TheDetailMy::BaseController
   before_action :set_note
 
   def show
   end
 
   def edit
-    
+
   end
 
   def update
@@ -34,7 +34,7 @@ class TheDetail::NotesController < TheDetail::BaseController
   def set_note
     @note = Note.find_or_initialize_by(detail_type: params[:detail_type], detail_id: params[:detail_id])
   end
-  
+
   def note_params
     params[:note].permit(:title, :body, :key, :type)
   end

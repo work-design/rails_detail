@@ -1,4 +1,4 @@
-class TheDetail::KnowledgesController < TheDetail::BaseController
+class TheDetailMy::KnowledgesController < TheDetailMy::BaseController
 
   def index
     @knowledges = Knowledge.roots.page(params[:page])
@@ -76,7 +76,7 @@ class TheDetail::KnowledgesController < TheDetail::BaseController
 
   def search
     @knowledges = Knowledge.where('name like ?', "%#{params[:q]}%")
-    
+
     respond_to do |format|
       format.json
     end

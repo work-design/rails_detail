@@ -1,4 +1,4 @@
-class TheDetail::SourcesController < TheDetail::BaseController
+class TheDetailMy::SourcesController < TheDetailMy::BaseController
 
   def index
     @sources = Source.all

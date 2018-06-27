@@ -1,4 +1,4 @@
-class TheDetail::ItemsController < TheDetail::BaseController
+class TheDetailMy::ItemsController < TheDetailMy::BaseController
 
   def search
     @items = Item.where(list_id: params[:list_id])

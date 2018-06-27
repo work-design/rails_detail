@@ -1,4 +1,4 @@
-class TheDetail::WikisController < TheDetail::BaseController
+class TheDetailMy::WikisController < TheDetailMy::BaseController
 
 
   def search

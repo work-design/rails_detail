@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'the_detail', as: 'detail' do
+  scope module: 'the_detail_my', as: 'detail' do
     scope path: ':detail_type/:detail_id' do
       resource :note
       resources :pictures

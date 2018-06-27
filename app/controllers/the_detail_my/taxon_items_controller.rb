@@ -1,4 +1,4 @@
-class TheDetail::TaxonItemsController < TheDetail::BaseController
+class TheDetailMy::TaxonItemsController < TheDetailMy::BaseController
   before_action :set_taxon_item, only: [:show, :edit, :update, :destroy]
 
   def index

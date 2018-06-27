@@ -1,20 +1,41 @@
-<div class="row">
 
-  <div class="col-md-2">
-    <%= render :partial => 'nav' %>
-  </div>
+<div class="sixteen wide column">
 
-  <div class="col-md-10">
+  <ol class="ui breadcrumb">
+    <%= link_to @knowledge.name, knowledge_path(@knowledge), class: 'section' %>
+    <li class="divider"> / </li>
+    <li class="section active">历史列表</li>
+  </ol>
 
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= link_to '新建', new_admin_sort_path %></div>
-    </div>
-
-    <table class="table">
-    <% @sorts.each do |sort| %>
-      <%= render :partial => 'sort', :locals => { :sort => sort } %>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>内容</th>
+        <th>提交信息</th>
+        <th>提交人</th>
+        <th>提交时间</th>
+        <th>状态</th>
+        <th colspan="2">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @wikis.each do |wiki| %>
+      <tr>
+        <td><%= wiki.id %></td>
+        <td><%= ex_simple_format wiki.body %></td>
+        <td><%= wiki.commit_message %></td>
+        <td><%= wiki.commit.name %></td>
+        <td><%= wiki.updated_at.localtime.to_s(:db) %></td>
+        <th><%= wiki.status %></th>
+        <td>
+          <%= link_to '通过', pass_knowledge_wi_path(@knowledge, wiki), method: :patch, data: { confirm: '审核通过' } %>
+        </td>
+      </tr>
     <% end %>
-    </table>
-  </div>
+    </tbody>
+  </table>
 
 </div>
+
+

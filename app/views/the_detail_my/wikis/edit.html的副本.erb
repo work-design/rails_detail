@@ -1,0 +1,14 @@
+<ul class="breadcrumb">
+  <li><%= link_to '百科频道', wikis_path %></li>
+  <li><%= link_to @wiki.name, wiki_path(@wiki) %></li>
+  <li class="active">编辑</li>
+</ul>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for @wiki, url: wiki_path, :html => {:class => "form-horizontal"} do |f| %>
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    <% end %>
+  </div>
+</div>
+

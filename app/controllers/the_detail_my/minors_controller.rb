@@ -1,4 +1,4 @@
-class TheDetail::MinorsController < TheDetail::BaseController
+class TheDetailMy::MinorsController < TheDetailMy::BaseController
   before_action :set_minor, :only => [:pass]
   before_action :set_knowledge
 

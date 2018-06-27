@@ -1,25 +1,17 @@
 <div class="row">
 
-  <div class="col-md-2">
-    <%= render :partial => 'nav' %>
+  <div>
+    <%= render :partial => 'nav', :locals => { :sorts => @sorts } %>
   </div>
 
-  <div class="col-md-10">
-    <ul class="breadcrumb">
-      <li><%= link_to '百科频道', admin_sorts_path %></li>
-      <% @sort.ancestors.each do |sort| %>
-        <li><%= link_to sort.name, admin_sort_path(sort) %></li>
-      <% end %>
-      <li class="active"><%= @sort.name %></li>
-      <li class="pull-right"><%= link_to '新建', new_admin_sort_path %></li>
-    </ul>
-
-
-    <table class="table">
-    <% @sort.children.each do |child| %>
-      <%= render :partial => 'sort', :locals => { :sort => child } %>
+  <div class="span9">
+    <% if @wiki.size > 1 %>
+      <div class="diff">
+        <%= simple_format Diff.diff(@wiki[-2].content, @wiki[-1].content) %>
+      </div>
+    <% else %>
+      <div><%= simple_format @wiki[0].content %></div>
     <% end %>
-    </table>
   </div>
 
 </div>

@@ -1,4 +1,4 @@
-class TheDetail::PicturesController < TheDetail::BaseController
+class TheDetailMy::PicturesController < TheDetailMy::BaseController
   before_action :set_pictures, only: [:index]
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 

@@ -8,7 +8,7 @@
   </div>
 
   <div class="ui segment top attached">
-    <%= link_to 'New Space Item', new_taxon_item_path(params[:taxon_type], params[:taxon_id]), remote: true, class: 'ui teal button' %>
+    <%= link_to 'New Space Item', new_detail_taxon_item_path(params[:taxon_type], params[:taxon_id]), remote: true, class: 'ui teal button' %>
   </div>
 
   <table class="ui bottom attached table">
@@ -25,7 +25,7 @@
       <tr id="taxon_list_<%= list.id %>">
         <td colspan="3">
           <%= list.name %>
-          <%= link_to 'New Space Item', new_taxon_item_path(params[:taxon_type], params[:taxon_id], list_id: list.id), remote: true, class: 'ui mini teal button' %>
+          <%= link_to 'New Space Item', new_detail_taxon_item_path(params[:taxon_type], params[:taxon_id], list_id: list.id), remote: true, class: 'ui mini teal button' %>
         </td>
       </tr>
       <% items.each do |item| %>

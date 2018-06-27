@@ -1,0 +1,34 @@
+<ul class="breadcrumb breadcrumb-product">
+
+  <% if @sort.parent_id %>
+  <li class="first">
+    <%= link_to father(@sort).name, baike_path(father(@sort)) %>
+    <span class="divider">&rsaquo;</span>
+  </li>
+  <% end %>
+
+  <li>
+    <%= link_to @sort.name, about_path(@sort) %>
+    <span class="divider">&rsaquo;</span>
+  </li>
+
+  <li>编辑</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
