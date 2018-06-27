@@ -49,7 +49,11 @@ class TheDetail::PicturesController < TheDetail::BaseController
 
   def destroy
     @picture.destroy
-    redirect_to detail_pictures_url, notice: 'Picture was successfully destroyed.'
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to detail_pictures_url, notice: 'Picture was successfully destroyed.' }
+    end
   end
 
   private
