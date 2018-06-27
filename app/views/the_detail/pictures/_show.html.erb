@@ -1,14 +1,15 @@
-<% if @picture.is_a?(Picture) %>
-<div class="ui image">
-  <%= image_tag @picture.file if @picture.file.attached? %>
-</div>
-<% end %>
-<div id="picture_<%= @picture.id %>">
-  <%= @picture.body %>
-  <%= link_to edit_detail_picture_path(params[:detail_type], params[:detail_id], @picture), remote: true, class: 'grey text' do %>
-    <i class="grey write square icon"></i>
+<div class="ui basic segment" id="picture_<%= @picture.id %>">
+  <% if @picture.is_a?(Picture) %>
+  <div class="ui image">
+    <%= image_tag @picture.file if @picture.file.attached? %>
+  </div>
   <% end %>
+  <div id="picture_<%= @picture.id %>">
+    <%= @picture.body %>
+    <%= link_to edit_detail_picture_path(params[:detail_type], params[:detail_id], @picture), remote: true, class: 'grey text' do %>
+      <i class="grey write square icon"></i>
+    <% end %>
+  </div>
 </div>
-
 
 

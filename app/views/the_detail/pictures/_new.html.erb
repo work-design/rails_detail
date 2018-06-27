@@ -3,13 +3,7 @@
   <%= f.file_field :file %>
   <div class="top attached inline fields">
     <div class="six wide field"></div>
-    <div class="field" id="file_preview">
-      <div class="ui small image" data-controller="attachment">
-        <%= link_to '', method: :delete, data: {confirm: 'Are you sure?', target: 'attachment.remove'}, remote: true, style: 'display: none', class: 'ui grey right corner mini label' do %>
-          <i class="times icon"></i>
-        <% end %>
-        <%= image_tag '', data: { target: 'attachment.src' }, style: 'max-width: 100%' %>
-      </div>
+    <div class="field" id="file_preview" data-controller="attachment">
     </div>
   </div>
   <%= f.text_field :title %>
