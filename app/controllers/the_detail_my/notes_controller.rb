@@ -36,7 +36,12 @@ class TheDetailMy::NotesController < TheDetailMy::BaseController
   end
 
   def note_params
-    params[:note].permit(:title, :body, :key, :type)
+    params[:note].permit(
+      :title,
+      :body,
+      :key,
+      :type
+    )
   end
 
 end
