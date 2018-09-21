@@ -3,9 +3,9 @@
 
 <head>
   <title>The Detail</title>
-  <%= stylesheet_link_tag 'the_detail/application', media: 'all', 'data-turbolinks-track': true %>
-  <%= javascript_include_tag 'the_detail/application', 'data-turbolinks-track': true %>
-  <%= js_ready root: TheDetail::Engine.root, 'data-turbolinks-track': true %>
+  <%= stylesheet_link_tag 'rails_detail/application', media: 'all', 'data-turbolinks-track': true %>
+  <%= javascript_include_tag 'rails_detail/application', 'data-turbolinks-track': true %>
+  <%= js_ready root: RailsDetail::Engine.root, 'data-turbolinks-track': true %>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
 </head>
@@ -15,7 +15,7 @@
   <div class="ui container">
     <%= yield %>
   </div>
-  <%= js_load(root: TheDetail::Engine.root) %>
+  <%= js_load(root: RailsDetail::Engine.root) %>
 
 </body>
 

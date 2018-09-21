@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class TheDetail::PicturesControllerTest < ActionDispatch::IntegrationTest
+class RailsDetail::PicturesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @the_detail_picture = the_detail_pictures(:one)
+    @rails_detail_picture = rails_detail_pictures(:one)
   end
 
   test "should get index" do
-    get the_detail_pictures_url
+    get rails_detail_pictures_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_the_detail_picture_url
+    get new_rails_detail_picture_url
     assert_response :success
   end
 
-  test "should create the_detail_picture" do
+  test "should create rails_detail_picture" do
     assert_difference('Picture.count') do
-      post the_detail_pictures_url, params: { the_detail_picture: {  } }
+      post rails_detail_pictures_url, params: { rails_detail_picture: {  } }
     end
 
-    assert_redirected_to the_detail_picture_url(Picture.last)
+    assert_redirected_to rails_detail_picture_url(Picture.last)
   end
 
-  test "should show the_detail_picture" do
-    get the_detail_picture_url(@the_detail_picture)
+  test "should show rails_detail_picture" do
+    get rails_detail_picture_url(@rails_detail_picture)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_the_detail_picture_url(@the_detail_picture)
+    get edit_rails_detail_picture_url(@rails_detail_picture)
     assert_response :success
   end
 
-  test "should update the_detail_picture" do
-    patch the_detail_picture_url(@the_detail_picture), params: { the_detail_picture: {  } }
-    assert_redirected_to the_detail_picture_url(@the_detail_picture)
+  test "should update rails_detail_picture" do
+    patch rails_detail_picture_url(@rails_detail_picture), params: { rails_detail_picture: {  } }
+    assert_redirected_to rails_detail_picture_url(@rails_detail_picture)
   end
 
-  test "should destroy the_detail_picture" do
+  test "should destroy rails_detail_picture" do
     assert_difference('Picture.count', -1) do
-      delete the_detail_picture_url(@the_detail_picture)
+      delete rails_detail_picture_url(@rails_detail_picture)
     end
 
-    assert_redirected_to the_detail_pictures_url
+    assert_redirected_to rails_detail_pictures_url
   end
 end

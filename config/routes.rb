@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'the_detail_my', as: 'detail' do
+  scope module: 'rails_detail_my', as: 'detail' do
     scope path: ':detail_type/:detail_id' do
       resource :note
       resources :pictures
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :admin, as: 'admin', module: 'the_detail_admin' do
+  scope :admin, as: 'admin', module: 'rails_detail_admin' do
     resources :lists do
       resources :items
     end

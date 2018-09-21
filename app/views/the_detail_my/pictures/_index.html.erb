@@ -1,9 +1,0 @@
-<div class="ui raised segments" id="pictures">
-<% @pictures.each do |picture| %>
-  <%= render partial: 'show', locals: { picture: picture } %>
-<% end %>
-</div>
-
-<div id="detail_pictures_add">
-  <%= render 'the_detail_my/pictures/add_link' %>
-</div>
