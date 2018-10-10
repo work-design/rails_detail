@@ -1,4 +1,4 @@
-class RailsDetailMy::NotesController < RailsDetailMy::BaseController
+class Detail::My::NotesController < Detail::My::BaseController
   before_action :set_note
 
   def show

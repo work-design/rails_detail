@@ -1,4 +1,4 @@
-class RailsDetailAdmin::ListsController < RailsDetailAdmin::BaseController
+class Detail::Admin::ListsController < Detail::Admin::BaseController
   before_action :set_list, only: [:edit, :update, :destroy]
 
   def index

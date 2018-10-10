@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/rails_com.git
-  revision: cbda446c3d27338bfb5ed1fb4a5e3c341f83fadc
+  revision: bddfd2424bd479d2b7cb9d1116dd688096de093f
   branch: master
   specs:
     rails_com (1.2.4)
@@ -161,4 +161,4 @@ DEPENDENCIES
   turbolinks (~> 5)
 
 BUNDLED WITH
-   1.16.3
+   1.16.6

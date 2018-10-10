@@ -1,4 +1,4 @@
-class RailsDetailMy::SourcesController < RailsDetailMy::BaseController
+class Detail::My::SourcesController < Detail::My::BaseController
 
   def index
     @sources = Source.all

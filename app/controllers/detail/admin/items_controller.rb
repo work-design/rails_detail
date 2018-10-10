@@ -1,4 +1,4 @@
-class RailsDetailAdmin::ItemsController < RailsDetailAdmin::BaseController
+class Detail::Admin::ItemsController < Detail::Admin::BaseController
   before_action :set_list
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 

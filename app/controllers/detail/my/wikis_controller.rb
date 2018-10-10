@@ -1,4 +1,4 @@
-class RailsDetailMy::WikisController < RailsDetailMy::BaseController
+class Detail::My::WikisController < Detail::My::BaseController
 
 
   def search

@@ -1,4 +1,4 @@
-class RailsDetailMy::SolosController < RailsDetailMy::BaseController
+class Detail::My::SolosController < Detail::My::BaseController
   before_action :set_solo, only: [:edit, :update]
 
   def index

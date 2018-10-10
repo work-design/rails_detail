@@ -1,4 +1,4 @@
-class RailsDetailMy::MajorsController < RailsDetailMy::BaseController
+class Detail::My::MajorsController < Detail::My::BaseController
   before_action :set_major, only: [:pass, :update]
   before_action :set_knowledge
 

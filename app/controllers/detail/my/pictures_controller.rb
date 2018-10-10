@@ -1,4 +1,4 @@
-class RailsDetailMy::PicturesController < RailsDetailMy::BaseController
+class Detail::My::PicturesController < Detail::My::BaseController
   before_action :set_pictures, only: [:index]
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 

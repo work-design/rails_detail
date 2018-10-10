@@ -1,4 +1,4 @@
-class RailsDetailMy::KnowledgesController < RailsDetailMy::BaseController
+class Detail::My::KnowledgesController < Detail::My::BaseController
 
   def index
     @knowledges = Knowledge.roots.page(params[:page])

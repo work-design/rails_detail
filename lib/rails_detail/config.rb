@@ -6,8 +6,8 @@ module RailsDetail
   configure do |config|
     config.mapping = ActiveSupport::OrderedOptions.new
 
-    config.admin_class = 'Admin::BaseController'
-    config.my_class = 'My::BaseController'
+    config.admin_class = 'AdminController'
+    config.my_class = 'MyController'
     config.mapping.date = { input: 'date', output: 'to_date' }
     config.mapping.integer = { input: 'number', output: 'to_i' }
     config.mapping.string = { input: 'text', output: 'to_s' }
