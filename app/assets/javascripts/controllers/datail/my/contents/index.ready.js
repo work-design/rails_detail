@@ -1,1 +1,1 @@
-//= require input-attachment
+//= require rails_com/attachment

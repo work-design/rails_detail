@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/rails_com.git
-  revision: bddfd2424bd479d2b7cb9d1116dd688096de093f
+  revision: 8282915ff0e890d5d70faf092a712af9f58f0d84
   branch: master
   specs:
     rails_com (1.2.4)
