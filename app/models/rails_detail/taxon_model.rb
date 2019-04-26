@@ -1,4 +1,4 @@
-module TaxonModel
+module RailsTaxon::TaxonModel
   extend ActiveSupport::Concern
 
   included do

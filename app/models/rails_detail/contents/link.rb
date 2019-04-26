@@ -1,5 +1,0 @@
-class Link < Content
-
-
-end
-

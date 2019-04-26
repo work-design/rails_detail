@@ -1,10 +1,9 @@
 require 'rails_com'
 module RailsDetail
   class Engine < ::Rails::Engine
-    config.eager_load_paths += Dir[
-      "#{config.root}/app/models/rails_detail",
-      "#{config.root}/app/models/rails_detail/concerns",
-      "#{config.root}/app/models/rails_detail/contents"
+    
+    config.autoload_paths += Dir[
+      "#{config.root}/app/models/content"
     ]
 
     initializer 'rails_detail.assets.precompile' do |app|

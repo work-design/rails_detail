@@ -1,7 +1,10 @@
-class Content < ApplicationRecord
-  belongs_to :detail, polymorphic: true
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id', optional: true
-
+module RailsDetail::Content
+  extend ActiveSupport::Concern
+  included do
+    belongs_to :detail, polymorphic: true
+    belongs_to :author, class_name: 'User', foreign_key: 'author_id', optional: true
+  end
+  
 end
 
 # :picture_key, :string
