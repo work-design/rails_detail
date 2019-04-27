@@ -1,6 +1,8 @@
-class List < ApplicationRecord
-  has_many :items
-
+module RailsDetail::List
+  extend ActiveSupport::Concern
+  included do
+    has_many :items
+  end
 
 end
 

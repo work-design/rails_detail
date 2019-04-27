@@ -1,5 +1,4 @@
-
-module ContentModel
+module RailsDetail::ContentModel
   extend ActiveSupport::Concern
 
   included do

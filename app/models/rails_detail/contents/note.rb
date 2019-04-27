@@ -1,6 +1,0 @@
-class Note < Content
-
-
-
-end
-
