@@ -16,7 +16,7 @@ module ItemModel
       end
     end
 
-    taxon_items.group_by { |i| i.list }
+    taxon_items.group_by(&:list)
   end
 
 
