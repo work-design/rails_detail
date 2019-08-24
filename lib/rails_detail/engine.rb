@@ -6,10 +6,6 @@ module RailsDetail
       "#{config.root}/app/models/content"
     ]
 
-    initializer 'rails_detail.assets.precompile' do |app|
-      app.config.assets.precompile += ['rails_detail_manifest.js']
-    end
-
     initializer 'rails_com.add_generator_templates' do |app|
       app.config.paths['lib/templates'].unshift File.expand_path('lib/templates', RailsCom::Engine.root)
     end

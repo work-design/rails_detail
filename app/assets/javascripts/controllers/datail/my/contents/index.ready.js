@@ -1,1 +1,1 @@
-//= require rails_com/attachment
+import 'rails_com/attachment'

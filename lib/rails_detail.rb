@@ -1,5 +1,5 @@
-require 'rails_detail/engine'
-require 'rails_detail/config'
+require_relative 'rails_detail/engine'
+require_relative 'rails_detail/config'
 
 module RailsDetail
   module Model
