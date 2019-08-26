@@ -1,4 +1,4 @@
-class Detail::Admin::BaseController < RailsDetail.config.admin_class.constantize
+class Detail::Admin::BaseController < RailsDetail.config.admin_controller.constantize
 
 
 
