@@ -17,9 +17,10 @@ Gem::Specification.new do |s|
     'Rakefile',
     'README.md'
   ]
-  s.test_files = Dir['test/**/*']
+  s.test_files = Dir[
+    'test/**/*'
+  ]
 
-  s.add_dependency 'rails', '>= 5.0', '<= 6.0'
-  s.add_dependency 'acts_as_list', '~> 0.9'
   s.add_dependency 'rails_com', '~> 1.2'
+  s.add_dependency 'acts_as_list', '~> 0.9'
 end
