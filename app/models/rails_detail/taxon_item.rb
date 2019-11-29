@@ -1,12 +1,14 @@
 module RailsDetail::TaxonItem
   extend ActiveSupport::Concern
+  
   included do
+    attribute :value, :string
+    
     belongs_to :taxon, polymorphic: true
     belongs_to :item
     belongs_to :list
+    
     has_many :entity_items
-  
-    attr_accessor :value, :entity_item_id
   end
   
   def item_options(list_id)

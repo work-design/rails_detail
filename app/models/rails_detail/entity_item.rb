@@ -1,6 +1,8 @@
 module RailsDetail::EntityItem
   extend ActiveSupport::Concern
   included do
+    attribute :value, :string
+    
     belongs_to :entity, polymorphic: true
     belongs_to :taxon_item
     belongs_to :item
