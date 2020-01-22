@@ -6,10 +6,6 @@ module RailsDetail
       "#{config.root}/app/models/content"
     ]
 
-    initializer 'rails_com.add_generator_templates' do |app|
-      app.config.paths['lib/templates'].unshift File.expand_path('lib/templates', RailsCom::Engine.root)
-    end
-
     config.generators do |g|
       g.stylesheets false
       g.javasricpts false
