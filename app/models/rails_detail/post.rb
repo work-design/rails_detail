@@ -7,7 +7,7 @@ module RailsDetail::Post
     attribute :link, :string
     attribute :code, :string
 
-    has_many :post_syncs, dependent: :destroy, inverse_of: :post
+    has_many :post_syncs, dependent: :destroy
   end
 
 end
