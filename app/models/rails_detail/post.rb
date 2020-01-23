@@ -7,6 +7,7 @@ module RailsDetail::Post
     attribute :link, :string
     attribute :code, :string
 
+    belongs_to :organ, optional: true
     has_many :post_syncs, dependent: :destroy
   end
 
