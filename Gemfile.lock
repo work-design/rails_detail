@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: b7a658759540c2215f3a599d8a73d94a3041ccb9
+  revision: 3e804660113ba183c48b95c27c88e2ef410f612e
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)

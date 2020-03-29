@@ -1,4 +1,4 @@
-<%= form_with model: @note, as: :note, url: detail_note_path(@note.detail_type, @note.detail_id), method: :patch, remote: true, on: { wrap_all: false, label: false, wrap_input: false, offset: false } do |f| %>
+<%= form_with model: @note, as: :note, url: detail_note_path(@note.detail_type, @note.detail_id), method: :patch, remote: true, can: { wrap_all: false, label: false, wrap_input: false, offset: false } do |f| %>
   <%= f.text_area :body %>
   <%= f.submit '添加' %>
 <% end %>
