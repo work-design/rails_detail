@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 3e804660113ba183c48b95c27c88e2ef410f612e
+  revision: 5b3dbccf07005da76ab742b0a621250afb709ad5
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -81,6 +81,11 @@ GEM
     default_where (2.2.0)
       activerecord (>= 4.0.0)
     erubi (1.9.0)
+    factory_bot (5.1.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.1.1)
+      factory_bot (~> 5.1.0)
+      railties (>= 4.2.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.2.6)
@@ -156,6 +161,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  factory_bot_rails
   rails
   rails_com!
   rails_detail!
