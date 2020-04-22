@@ -4,12 +4,6 @@ class Detail::Admin::TaxonItemsController < Detail::Admin::BaseController
   def index
     taxon_items = TaxonItem.includes(:list).where(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
     @items_hash = taxon_items.group_by { |i| i.list }
-
-    @lists = List.all.map { |list| [list.name, list.id] }
-    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id], list_id: params[:list_id])
-  end
-
-  def show
   end
 
   def new
@@ -23,33 +17,29 @@ class Detail::Admin::TaxonItemsController < Detail::Admin::BaseController
     @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id], list_id: params[:list_id])
   end
 
-  def edit
-  end
-
   def create
     @taxon_item = TaxonItem.new(taxon_item_params)
 
-    respond_to do |format|
-      if @taxon_item.save
-        format.js
-        format.html { redirect_to @taxon_item, notice: 'Taxon item was successfully created.' }
-      else
-        format.js
-        format.html { render :new }
-      end
+    unless @taxon_item.save
+      render :new, locals: { model: @taxon_item }, status: :unprocessable_entity
     end
+  end
 
+  def items
+    @items = Item.where(list_id: taxon_item_params[:list_id])
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   def update
-    respond_to do |format|
-      if @taxon_item.update(taxon_item_params)
-        format.js
-        format.html { redirect_to @taxon_item, notice: 'Taxon item was successfully created.' }
-      else
-        format.js
-        format.html { render :edit }
-      end
+    @taxon_item.update(taxon_item_params)
+
+    unless @taxon_item.save
+      render :edit, locals: { model: @taxon_item }, status: :unprocessable_entity
     end
   end
 

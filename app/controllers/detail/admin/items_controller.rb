@@ -6,13 +6,6 @@ class Detail::Admin::ItemsController < Detail::Admin::BaseController
     @items = @list.items.order(id: :asc).page(params[:page])
   end
 
-  def search
-    @items = Item.where(list_id: params[:list_id])
-    results = @items.map { |x| { value: x.id, text: x.name, name: x.name } }
-
-    render json: { values: results }
-  end
-
   def new
     @item = @list.items.build
   end

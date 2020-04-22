@@ -1,0 +1,4 @@
+<div class="select">
+  <%= select_tag 'taxon_item[item_id]', options_from_collection_for_select(@items, :id, :name, @taxon_item.item_id), class: 'three wide field', form: "taxon_item_new_#{uid}" %>
+</div>
+<%= hidden_field_tag 'taxon_item[item_id]', @taxon_item.item_id, id: 'taxon_item_real_item_id', form: "taxon_item_new_#{uid}" %>
