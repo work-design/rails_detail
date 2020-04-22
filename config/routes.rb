@@ -11,20 +11,23 @@ Rails.application.routes.draw do
         patch :pass, on: :member
       end
     end
-    scope path: ':taxon_type/:taxon_id' do
-      resources :taxon_items
-    end
-    scope path: ':entity_type/:entity_id' do
-      resources :entity_items
-    end
-    resources :items, only: [] do
-      get :search, on: :collection
-    end
   end
 
   scope :admin, module: 'detail/admin', as: :admin do
     resources :lists do
-      resources :items
+      resources :items do
+        get :search, on: :collection
+      end
+    end
+    scope path: ':taxon_type/:taxon_id' do
+      resources :taxon_items do
+        collection do
+          get 'list' => :new_list
+        end
+      end
+    end
+    scope path: ':entity_type/:entity_id' do
+      resources :entity_items
     end
   end
 

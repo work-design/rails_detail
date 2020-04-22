@@ -1,4 +1,4 @@
-class Detail::My::TaxonItemsController < Detail::My::BaseController
+class Detail::Admin::TaxonItemsController < Detail::Admin::BaseController
   before_action :set_taxon_item, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -60,7 +60,13 @@ class Detail::My::TaxonItemsController < Detail::My::BaseController
   end
 
   def taxon_item_params
-    params.fetch(:taxon_item, {}).permit(:list_id, :item_id).merge(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
+    params.fetch(:taxon_item, {}).permit(
+      :list_id,
+      :item_id
+    ).merge(
+      taxon_type: params[:taxon_type],
+      taxon_id: params[:taxon_id]
+    )
   end
 
 end

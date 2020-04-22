@@ -1,4 +1,4 @@
-class Detail::My::EntityItemsController < Detail::My::BaseController
+class Detail::Admin::EntityItemsController < Detail::Admin::BaseController
   before_action :set_entity
   before_action :set_entity_item, only: [:show, :edit, :update, :destroy]
 

@@ -3,7 +3,14 @@ class Detail::Admin::ItemsController < Detail::Admin::BaseController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = @list.items.page(params[:page])
+    @items = @list.items.order(id: :asc).page(params[:page])
+  end
+
+  def search
+    @items = Item.where(list_id: params[:list_id])
+    results = @items.map { |x| { value: x.id, text: x.name, name: x.name } }
+
+    render json: { values: results }
   end
 
   def new
