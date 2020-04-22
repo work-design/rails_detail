@@ -2,8 +2,8 @@
   <% uid = rand(99999) %>
   <td><%= form_with model: @taxon_item, url: admin_taxon_items_path, remote: true, id: "taxon_item_new_#{uid}" %></td>
   <td>
-    <div class="select">
-      <%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, form: "taxon_item_new_#{uid}" %>
+    <div class="select" data-controller="input">
+      <%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, data: { remote: true, url: search_admin_items_url, action: 'input#submit' }, form: "taxon_item_new_#{uid}" %>
     </div>
     <div class="select">
       <%= select_tag 'taxon_item[item_id]', options_for_select([], @taxon_item.item_id), class: 'three wide field', form: "taxon_item_new_#{uid}" %>

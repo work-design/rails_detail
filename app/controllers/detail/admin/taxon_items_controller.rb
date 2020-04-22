@@ -4,6 +4,9 @@ class Detail::Admin::TaxonItemsController < Detail::Admin::BaseController
   def index
     taxon_items = TaxonItem.includes(:list).where(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
     @items_hash = taxon_items.group_by { |i| i.list }
+
+    @lists = List.all.map { |list| [list.name, list.id] }
+    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id], list_id: params[:list_id])
   end
 
   def show

@@ -15,9 +15,10 @@ Rails.application.routes.draw do
 
   scope :admin, module: 'detail/admin', as: :admin do
     resources :lists do
-      resources :items do
-        get :search, on: :collection
-      end
+      resources :items
+    end
+    resources :items, only: [] do
+      get :search, on: :collection
     end
     scope path: ':taxon_type/:taxon_id' do
       resources :taxon_items do
