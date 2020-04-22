@@ -1,50 +1,37 @@
-<div class="thirteen wide column">
+<% content_for :breadcrumb do %>
+  <ul>
+    <li><%= link_to '所有类别', admin_lists_path %></li>
+    <li class="is-active"><%= @list.name %></li>
+  </ul>
+<% end %>
 
-  <div class="ui breadcrumb">
-    <%= link_to '所有类别', admin_lists_path, class: 'section' %>
-    <div class="divider"> / </div>
-    <div class="section active"><%= @list.name %></div>
-  </div>
-
-  <div class="ui top attached menu borderless">
-    <div class="item"><strong>分类列表</strong></div>
-    <div class="right menu">
-      <div class="item"><%= link_to '新建', new_admin_list_item_path(@list), class: 'button is-link is-small' %></div>
-    </div>
-  </div>
-
-  <table class="ui attached table">
-    <thead>
+<table class="table is-hoverable is-fullwidth">
+  <thead>
     <tr>
-      <th>ID</th>
-      <th>Logo</th>
-      <th>Name</th>
-      <th>Key</th>
-      <th colspan="3"></th>
+      <th><%= Item.human_attribute_name(:name) %></th>
+      <th><%= Item.human_attribute_name(:key) %></th>
+      <th>
+        <%= link_to new_admin_list_item_path(@list), remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
     </tr>
-    </thead>
+  </thead>
 
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= image_tag item.logo, size: '50x50' if item.logo_attachment %></td>
-        <td><%= item.name %></td>
-        <td><%= item.key %></td>
-        <td><%= link_to '详细', admin_list_item_path(@list, item) %></td>
-        <td><%= link_to '编辑', edit_admin_list_item_path(@list, item) %></td>
-        <td><%= link_to '删除', admin_list_item_path(@list, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        <%= image_tag item.logo, class: 'image is-24x24' if item.logo.attached? %>
+        <span><%= item.name %></span>
+      </td>
+      <td><%= item.key %></td>
+      <td>
+        <%= link_to '详细', admin_list_item_path(@list, item) %>
+        <%= link_to '编辑', edit_admin_list_item_path(@list, item), remote: true %>
+        <%= link_to '删除', admin_list_item_path(@list, item), method: :delete, data: { confirm: t('.confirm') } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
 
-</div>
-
-
-
-
-
-
-
-
-
-
+<%= paginate @items %>

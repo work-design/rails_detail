@@ -1,5 +1,5 @@
 <%= render 'shared/error_messages', target: @item %>
-<%= f.text_field :name, label: '名称：' %>
+<%= f.text_field :name %>
 <%= f.file_field :logo %>
 <%= f.select :key, options_for_select(RailsDetail.config.mapping.keys), class: 'six wide field ui dropdown selection' %>
 <%= f.text_area :desc %>

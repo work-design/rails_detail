@@ -2,7 +2,10 @@ class Detail::Admin::ListsController < Detail::Admin::BaseController
   before_action :set_list, only: [:edit, :update, :destroy]
 
   def index
-    @lists = List.page(params[:page])
+    q_params = {}
+    q_params.merge! default_params
+
+    @lists = List.default_where(q_params).page(params[:page])
   end
 
   def new
@@ -12,14 +15,8 @@ class Detail::Admin::ListsController < Detail::Admin::BaseController
   def create
     @list = List.new list_params
 
-    respond_to do |format|
-      if @list.save
-        format.html { redirect_to admin_lists_url notice: 'Item type was successfully created.' }
-        format.json { render json: @list, status: :created, location: @list }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    unless @list.save
+      render :new, locals: { model: @list }, status: :unprocessable_entity
     end
   end
 
@@ -27,25 +24,15 @@ class Detail::Admin::ListsController < Detail::Admin::BaseController
   end
 
   def update
+    @list.assign_attributes list_params
 
-    respond_to do |format|
-      if @list.update list_params
-        format.html { redirect_to admin_lists_url, notice: 'Item type was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    unless @list.save
+      render :edit, locals: { model: @list }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @list.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_lists_url }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -54,7 +41,11 @@ class Detail::Admin::ListsController < Detail::Admin::BaseController
   end
 
   def list_params
-    params.fetch(:list, {}).permit(:name, :kind)
+    p = params.fetch(:list, {}).permit(
+      :name,
+      :kind
+    )
+    p.merge! default_form_params
   end
 
 end

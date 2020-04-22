@@ -1,36 +1,29 @@
-<div class="thirteen wide column">
+<%= render 'filter_form' %>
 
-  <div class="ui top attached menu borderless">
-    <div class="item"><strong>分类列表</strong></div>
-    <div class="right menu">
-      <div class="item"><%= link_to '新建', new_admin_list_path, class: 'ui teal button' %></div>
-    </div>
-  </div>
-
-  <table class="ui attached table">
-    <thead>
+<table class="table is-hoverable is-fullwidth">
+  <thead>
     <tr>
-      <th>ID</th>
-      <th>名称</th>
-      <th>位置</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= List.human_attribute_name(:name) %></th>
+      <th><%= List.human_attribute_name(:position) %></th>
+      <th>
+        <%= link_to new_admin_list_path, remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
     </tr>
-    </thead>
+  </thead>
 
-    <% @lists.each do |list| %>
-      <tr>
-        <td><%= list.id %></td>
-        <td><%= list.name %></td>
-        <td><%= list.position %></td>
-        <td><%= link_to '详细', admin_list_items_path(list) %></td>
-        <td><%= link_to '编辑', edit_admin_list_path(list) %></td>
-        <td><%= link_to '删除', admin_list_path(list), :method => :delete, :data => { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+  <% @lists.each do |list| %>
+    <tr>
+      <td><%= list.name %></td>
+      <td><%= list.position %></td>
+      <td>
+        <%= link_to '详细', admin_list_items_path(list) %>
+        <%= link_to '编辑', edit_admin_list_path(list), remote: true %>
+        <%= link_to '删除', admin_list_path(list), method: :delete, data: { confirm: t('.confirm') } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
 
-
-
+<%= paginate @lists %>

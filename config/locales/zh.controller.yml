@@ -1,0 +1,10 @@
+zh:
+  detail:
+    admin:
+      title: 内容管理
+      lists:
+        index:
+          title: 类别
+      items:
+        index:
+          title: 条目
