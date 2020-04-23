@@ -45,7 +45,10 @@ class Detail::Admin::EntityItemsController < Detail::Admin::BaseController
   end
 
   def entity_item_params
-    params.fetch(:entity_item, {}).permit(:taxon_item_id, :value)
+    params.fetch(:entity_item, {}).permit(
+      :taxon_item_id,
+      :value
+    )
   end
 
 end

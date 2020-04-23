@@ -13,7 +13,7 @@ class Detail::Admin::ItemsController < Detail::Admin::BaseController
   def create
     @item = @list.items.build item_params
 
-    if @item.save
+    unless @item.save
       render :new, locals: { model: @item }, status: :unprocessable_entity
     end
   end

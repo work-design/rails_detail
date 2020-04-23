@@ -1,5 +1,4 @@
 <tr id="taxon_item_<%= taxon_item.id %>">
-  <td><%= taxon_item.id %></td>
   <td><%= taxon_item.item.name %></td>
   <td>
     <% if taxon_item.item.key == 'boolean' %>
@@ -12,9 +11,9 @@
         <label></label>
       </div>
     <% else %>
-      <%= link_to new_entity_item_path(params[:entity_type], params[:entity_id], taxon_item_id: taxon_item.id), remote: true do %>
+      <%= link_to new_admin_entity_item_path(params[:entity_type], params[:entity_id], taxon_item_id: taxon_item.id), remote: true do %>
         <div class="ui input">
-          <%= text_field_tag nil, taxon_item.value, placeholder: 'Input Value', readonly: true, class: 'three wide field' %>
+          <%= text_field_tag nil, taxon_item.value, readonly: true, class: 'three wide field' %>
         </div>
       <% end %>
     <% end %>
