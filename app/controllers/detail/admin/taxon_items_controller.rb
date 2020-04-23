@@ -30,7 +30,11 @@ class Detail::Admin::TaxonItemsController < Detail::Admin::BaseController
   end
 
   def new_list
-    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id], list_id: params[:list_id])
+    x_params = params.permit(:taxon_type, :taxon_id, :list_id)
+    @taxon_item = TaxonItem.new(x_params)
+
+    item_ids = TaxonItem.where(x_params).pluck(:item_id)
+    @items = Item.where(list_id: params[:list_id]).where.not(id: item_ids).pluck(:name, :id)
   end
 
   def show
