@@ -1,5 +1,6 @@
 <tr id="taxon_item_<%= taxon_item.id %>">
-  <td><%= taxon_item.id %></td>
   <td><%= taxon_item.item.name %></td>
-  <td><%= link_to 'Destroy', detail_taxon_item_path(taxon_item.taxon_type, taxon_item.taxon_id, taxon_item.id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'ui red label' %></td>
+  <td>
+    <%= link_to t('.destroy'), admin_taxon_item_path(taxon_item.taxon_type, taxon_item.taxon_id, taxon_item.id), method: :delete, data: { confirm: t('.confirm') }, remote: true, class: 'button is-danger is-small' %>
+  </td>
 </tr>

@@ -25,8 +25,12 @@ class Detail::Admin::TaxonItemsController < Detail::Admin::BaseController
     end
   end
 
-  def items
+  def new_item
     @items = Item.where(list_id: taxon_item_params[:list_id])
+  end
+
+  def new_list
+    @taxon_item = TaxonItem.new(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id], list_id: params[:list_id])
   end
 
   def show

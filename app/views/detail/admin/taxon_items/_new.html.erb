@@ -1,13 +1,14 @@
-<tr id="taxon_item_add">
+<tr data-controller="input">
   <% uid = rand(99999) %>
-  <td><%= form_with model: @taxon_item, url: admin_taxon_items_path, remote: true, id: "taxon_item_new_#{uid}" %></td>
   <td>
-    <div class="select" data-controller="input">
-      <%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, data: { remote: true, url: search_admin_items_url, action: 'input#submit' }, form: "taxon_item_new_#{uid}" %>
-    </div>
+    <%= form_with model: @taxon_item, url: admin_taxon_items_path, remote: true, class: 'field-body', id: "taxon_item_new_#{uid}" do %>
+      <div class="select field is-narrow" id="taxon_item_list_id_<%= uid %>">
+        <%= select_tag 'taxon_item[list_id]', options_for_select(@lists, @taxon_item.list_id), include_blank: true, data: { remote: true, url: url_for(action: 'new_item'), params: "uid=#{uid}", action: 'input#submit' }, form: "taxon_item_new_#{uid}" %>
+      </div>
+    <% end %>
   </td>
   <td>
-    <%= submit_tag 'Save', class: 'ui green button', form: "taxon_item_new_#{uid}" %>
-    <a class="ui grey button" onclick="removeForm()">取消</a>
+    <%= submit_tag t('.save'), class: 'button is-primary', form: "taxon_item_new_#{uid}" %>
+    <button class="button is-danger" data-action="input#remove">取消</button>
   </td>
 </tr>

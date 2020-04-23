@@ -1,1 +1,1 @@
-$("#taxon_list_<%= params[:list_id] %>").after('<%= j(render 'new_list') %>')
+document.getElementById('taxon_list_<%= params[:list_id] %>').insertAdjacentHTML('afterend', '<%= j(render 'new_list') %>')

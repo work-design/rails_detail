@@ -17,12 +17,10 @@ Rails.application.routes.draw do
     resources :lists do
       resources :items
     end
-    resources :items, only: [] do
-      get :search, on: :collection
-    end
     scope path: ':taxon_type/:taxon_id' do
       resources :taxon_items do
         collection do
+          get 'item' => :new_item
           get 'list' => :new_list
         end
       end
