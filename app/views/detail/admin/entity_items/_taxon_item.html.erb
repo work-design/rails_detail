@@ -13,7 +13,7 @@
     <% else %>
       <%= link_to new_admin_entity_item_path(params[:entity_type], params[:entity_id], taxon_item_id: taxon_item.id), remote: true do %>
         <div class="ui input">
-          <%= text_field_tag nil, taxon_item.value, readonly: true, class: 'three wide field' %>
+          <%= text_field_tag nil, taxon_item.default_value, readonly: true, class: 'three wide field' %>
         </div>
       <% end %>
     <% end %>

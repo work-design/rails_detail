@@ -18,17 +18,16 @@ class Detail::Admin::EntityItemsController < Detail::Admin::BaseController
     @entity_item = @entity.entity_items.find_or_initialize_by(taxon_item_id: entity_item_params[:taxon_item_id])
     @entity_item.value = entity_item_params[:value]
 
-    respond_to do |format|
-      if @entity_item.save
-        @entity_item.taxon_item.entity_item_id = @entity_item.id
-        format.js
-        format.html { redirect_to @entity_item, notice: 'Taxon item was successfully created.' }
-      else
-        format.js
-        format.html { render :new }
-      end
-    end
+    if @entity_item.save
+      @entity_item.taxon_item.entity_item_id = @entity_item.id
 
+    end
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   def destroy

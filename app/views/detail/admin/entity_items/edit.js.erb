@@ -1,5 +1,1 @@
 $('#taxon_item_<%= @taxon_item.id %>').replaceWith('<%= j(render 'edit') %>');
-
-function removeForm() {
-  $('#taxon_item_<%= @taxon_item.id %>').replaceWith('<%= j(render partial: 'taxon_item', locals: { taxon_item: @taxon_item }) %>');
-}
