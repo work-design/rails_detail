@@ -22,5 +22,4 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'rails_com', '~> 1.2'
-  s.add_dependency 'acts_as_list', '~> 0.9'
 end

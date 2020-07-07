@@ -1,5 +1,3 @@
-class Detail::Admin::BaseController < RailsDetail.config.admin_controller.constantize
+class Detail::Admin::BaseController < AdminController
 
-
-
-end
+end unless defined? Detail::Admin::BaseController

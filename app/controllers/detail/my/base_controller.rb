@@ -1,4 +1,3 @@
-class Detail::My::BaseController < ApplicationController
+class Detail::My::BaseController < MyController
 
-
-end
+end unless defined? Detail::My::BaseController
