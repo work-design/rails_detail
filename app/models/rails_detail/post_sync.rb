@@ -1,5 +1,6 @@
 module RailsDetail::PostSync
   extend ActiveSupport::Concern
+
   included do
     belongs_to :post
     belongs_to :synced, polymorphic: true
