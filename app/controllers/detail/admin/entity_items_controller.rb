@@ -20,7 +20,6 @@ class Detail::Admin::EntityItemsController < Detail::Admin::BaseController
 
     if @entity_item.save
       @entity_item.taxon_item.entity_item_id = @entity_item.id
-
     end
   end
 

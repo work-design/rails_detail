@@ -1,23 +1,13 @@
 class Detail::My::PartsController < Detail::My::BaseController
-  before_action :set_wiki, :only => [:new, :create]
+  before_action :set_wiki, only: [:new, :create]
 
   def index
     @sort = Sort.find params[:sort_id]
     @parts = @sort.parts.order(id: :desc)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @parts }
-    end
   end
 
   def new
     @part = Part.new
-    respond_to do |format|
-      format.html
-      format.js
-      format.json { render json: @part }
-    end
   end
 
   def create
@@ -41,33 +31,26 @@ class Detail::My::PartsController < Detail::My::BaseController
   def show
     @sort = Sort.find params[:sort_id]
     @part = Part.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.js
-      format.json { render json: @part }
-    end
   end
 
   def destroy
     @sort = Sort.find params[:sort_id]
     @part = Part.find(params[:id])
     @part.destroy
-
-    respond_to do |format|
-      format.html { redirect_to parts_url }
-      format.json { head :no_content }
-    end
   end
 
   private
-
   def set_wiki
     @solo = Solo.find params[:wiki_id]
   end
 
   def part_params
-    params.require(:part).permit(:content, :reason).merge(:user_id => current_user.id)
+    params.fetch(:part, {}).permit(
+      :content,
+      :reason
+    ).merge(
+      user_id: current_user.id
+    )
   end
 
 

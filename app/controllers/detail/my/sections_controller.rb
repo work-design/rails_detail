@@ -52,11 +52,6 @@ class Detail::My::SectionsController < Detail::My::BaseController
     @section = Section.find(params[:id])
     @sort = Sort.find @section.sort_id
     @section.destroy
-
-    respond_to do |format|
-      format.html { redirect_to sort_sections_url(@sort) }
-      format.json { head :no_content }
-    end
   end
 
 end

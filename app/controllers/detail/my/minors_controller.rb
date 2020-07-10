@@ -1,18 +1,13 @@
 class Detail::My::MinorsController < Detail::My::BaseController
-  before_action :set_minor, :only => [:pass]
+  before_action :set_minor, only: [:pass]
   before_action :set_knowledge
 
   def index
     @wikis = @knowledge.minor_records.page(params[:page])
   end
 
-
   def new
     @wiki = @knowledge.minor_records.build
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
@@ -20,10 +15,11 @@ class Detail::My::MinorsController < Detail::My::BaseController
     @minor.body = wiki_params[:body]
     @minor.commit_message = wiki_params[:commit_message]
     @minor.commit_id = current_user.id
-    @minor.save
 
-    respond_to do |format|
-      format.js
+    if @minor.save
+      render 'create'
+    else
+      render :new, locals: { model: @knowledge }, status: :unprocessable_entity
     end
   end
 
@@ -39,13 +35,7 @@ class Detail::My::MinorsController < Detail::My::BaseController
 
   def destroy
     @wiki.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_sorts_url }
-      format.json { head :no_content }
-    end
   end
-
 
   private
   def set_minor
@@ -57,8 +47,10 @@ class Detail::My::MinorsController < Detail::My::BaseController
   end
 
   def wiki_params
-    params[:wiki].permit(:body, :commit_message)
+    params[:wiki].permit(
+      :body,
+      :commit_message
+    )
   end
-
 
 end

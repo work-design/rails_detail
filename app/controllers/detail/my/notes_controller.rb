@@ -5,29 +5,20 @@ class Detail::My::NotesController < Detail::My::BaseController
   end
 
   def edit
-
   end
 
   def update
     @note.assign_attributes note_params
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @content, notice: 'Picture was successfully updated.' }
-        format.json { render :show, status: :ok, location: @content }
-        format.js
-      else
-        format.html { render :edit }
-        format.json { render json: @content.errors, status: :unprocessable_entity }
-      end
+
+    if @note.save
+      render 'update'
+    else
+      render :edit, locals: { model: @note }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @content.destroy
-    respond_to do |format|
-      format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

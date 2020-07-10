@@ -4,6 +4,10 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     @knowledges = Knowledge.roots.page(params[:page])
   end
 
+  def search
+    @knowledges = Knowledge.where('name like ?', "%#{params[:q]}%")
+  end
+
   def new
     parent_id = params[:parent_id] || 0
     @knowledge = Knowledge.new(parent_id: parent_id)
@@ -38,22 +42,19 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   end
 
   def show
+    @knowledge = Knowledge.includes(:children => :content).find params[:id]
   end
 
   def child
     @knowledges = @knowledge.children
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   def edit
+    @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
   end
 
   def update
     if @knowledge.update(knowledge_params)
-      redirect_to admin_knowledges_url, notice: 'Knowledge was successfully updated.'
     else
       render :edit
     end
@@ -64,31 +65,9 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     redirect_to admin_knowledges_url, notice: 'Knowledge was successfully destroyed.'
   end
 
-  private
-  def set_knowledge
-    @knowledge = Knowledge.find(params[:id])
-  end
-
-  def knowledge_params
-    params[:knowledge].permit(:name, :parent_id)
-  end
 
 
-  def search
-    @knowledges = Knowledge.where('name like ?', "%#{params[:q]}%")
 
-    respond_to do |format|
-      format.json
-    end
-  end
-
-  def show
-    @knowledge = Knowledge.includes(:children => :content).find params[:id]
-  end
-
-  def edit
-    @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
-  end
 
   def sub
     if params[:sup]
@@ -116,9 +95,13 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     end
   end
 
-  def fade_form
+  private
+  def set_knowledge
+    @knowledge = Knowledge.find(params[:id])
   end
 
-
+  def knowledge_params
+    params[:knowledge].permit(:name, :parent_id)
+  end
 
 end

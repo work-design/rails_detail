@@ -2,18 +2,12 @@ class Detail::My::MajorsController < Detail::My::BaseController
   before_action :set_major, only: [:pass, :update]
   before_action :set_knowledge
 
-
   def index
     @wikis = @knowledge.major_records.page(params[:page])
   end
 
-
   def new
     @wiki = @knowledge.major_records.build
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
@@ -22,12 +16,10 @@ class Detail::My::MajorsController < Detail::My::BaseController
     @major.commit_message = wiki_params[:commit_message]
     @major.commit_id = current_user.id
 
-    respond_to do |format|
-      if @major.save
-        format.js
-      else
-        format.js { head :on_content }
-      end
+    if @major.save
+      render 'create'
+    else
+      render :new, locals: { model: @knowledge }, status: :unprocessable_entity
     end
   end
 
@@ -43,16 +35,9 @@ class Detail::My::MajorsController < Detail::My::BaseController
 
   def destroy
     @wiki.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_sorts_url }
-      format.json { head :no_content }
-    end
   end
 
-
   private
-
   def set_major
     @wiki = MajorRecord.find params[:id]
   end
@@ -62,7 +47,10 @@ class Detail::My::MajorsController < Detail::My::BaseController
   end
 
   def wiki_params
-    params[:wiki].permit(:body, :commit_message)
+    params[:wiki].permit(
+      :body,
+      :commit_message
+    )
   end
 
 end

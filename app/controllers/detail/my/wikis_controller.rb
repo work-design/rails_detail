@@ -1,6 +1,5 @@
 class Detail::My::WikisController < Detail::My::BaseController
 
-
   def search
     @sorts = Sort.find [params[:id],1]
     #if params[:ids]
@@ -31,10 +30,11 @@ class Detail::My::WikisController < Detail::My::BaseController
     end
   end
 
+  def show
+    @solo = Wiki.includes(:children).find params[:id]
+  end
+
   def edit
-    respond_to do |format|
-      format.html
-    end
   end
 
   def update
@@ -77,11 +77,6 @@ class Detail::My::WikisController < Detail::My::BaseController
 
   def destroy
     @sort.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_sorts_url }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -90,15 +85,11 @@ class Detail::My::WikisController < Detail::My::BaseController
   end
 
   def wiki_params
-    params[:wiki].permit(:name, :subname, :position)
-  end
-
-
-  def show
-    @solo = Wiki.includes(:children).find params[:id]
-  end
-
-  def fade_form
+    params[:wiki].permit(
+      :name,
+      :subname,
+      :position
+    )
   end
 
 end

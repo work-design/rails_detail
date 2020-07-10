@@ -19,11 +19,6 @@ class Detail::My::SolosController < Detail::My::BaseController
       @solo = Solo.new(:content => @sort.solos.last.content||'',
                        :picture => @sort.solos.last.picture)
     end
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def create
@@ -46,19 +41,9 @@ class Detail::My::SolosController < Detail::My::BaseController
   def show
     @sort = Sort.find params[:sort_id]
     @solo = Solo.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.js
-      format.json { render json: @solo }
-    end
   end
 
   def edit
-    respond_to do |format|
-      format.js
-      format.html { render :layout => false }
-    end
   end
 
   def update
@@ -77,11 +62,6 @@ class Detail::My::SolosController < Detail::My::BaseController
     @sort = Sort.find params[:sort_id]
     @solo = Solo.find(params[:id])
     @solo.destroy
-
-    respond_to do |format|
-      format.html { redirect_to solos_url }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -90,7 +70,14 @@ class Detail::My::SolosController < Detail::My::BaseController
   end
 
   def solo_params
-    params[:solo].permit(:name, :subname, :content, :reason).merge(:user_id => current_user.id)
+    params.fetch(:solo, {}).permit(
+      :name,
+      :subname,
+      :content,
+      :reason
+    ).merge(
+      user_id: current_user.id
+    )
   end
 
 end

@@ -2,33 +2,16 @@ class Detail::My::SourcesController < Detail::My::BaseController
 
   def index
     @sources = Source.all
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @sources }
-    end
   end
 
   def show
     @source = Source.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @source }
-    end
   end
-
 
   def new
     @source = Source.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @source }
-    end
   end
 
-  # GET /sources/1/edit
   def edit
     @source = Source.find(params[:id])
   end
@@ -65,15 +48,13 @@ class Detail::My::SourcesController < Detail::My::BaseController
     end
   end
 
-  # DELETE /sources/1
-  # DELETE /sources/1.json
   def destroy
-    @source = Source.find(params[:id])
     @source.destroy
-
-    respond_to do |format|
-      format.html { redirect_to sources_url }
-      format.json { head :no_content }
-    end
   end
+
+  private
+  def set_source
+    @source = Source.find(params[:id])
+  end
+
 end
