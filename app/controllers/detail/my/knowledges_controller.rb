@@ -49,7 +49,7 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   end
 
   def edit
-    @knowledge = Knowledge.includes(:children => :wiki).find params[:id]
+    @knowledge = Knowledge.find params[:id]
   end
 
   def update
@@ -100,6 +100,7 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   def knowledge_params
     params.fetch(:knowledge, {}).permit(
       :title,
+      :body,
       :parent_id
     )
   end

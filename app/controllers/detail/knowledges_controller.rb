@@ -41,6 +41,8 @@ class Detail::KnowledgesController < Detail::BaseController
 
   def show
     @knowledge = Knowledge.includes(:contents, children: :contents).find params[:id]
+
+    render layout: 'detail/show'
   end
 
   def child

@@ -1,16 +1,33 @@
-<div class="breadcrumb">
+<div class="breadcrumb has-succeeds-separator">
   <ul>
     <li><%= link_to '百科频道', knowledges_path %></li>
     <% @knowledge.ancestors.each do |knowledge| %>
       <li><%= link_to knowledge.title, knowledge_path(knowledge) %></li>
     <% end %>
     <li class="is-active"><%= @knowledge.title %></li>
-    <li class="pull-right"><%= link_to '新建', new_my_knowledge_path(parent_id: @knowledge), remote: true %></li>
   </ul>
 </div>
 
-<table class="table">
+<div class="level">
+  <div class="level-item">
+    <h1 class="title has-text-centered"><%= @knowledge.title %></h1>
+  </div>
+  <div class="level-item is-narrow">
+    <%= link_to '新建', new_my_knowledge_path(parent_id: @knowledge), remote: true %>
+  </div>
+</div>
+
+<div class="box">
+  <div class="content">
+    <%= @knowledge.body %>
+  </div>
+  <div>
+    <%= link_to t('.edit'), edit_my_knowledge_path(@knowledge), remote: true %>
+  </div>
+</div>
+
+<div>
 <% @knowledge.children.each do |child| %>
-  <%= render partial: 'knowledge', locals: { knowledge: child } %>
+  <div><%= child.title %></div>
 <% end %>
-</table>
+</div>

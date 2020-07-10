@@ -6,6 +6,7 @@ module RailsDetail::Knowledge
     attribute :body, :text
     attribute :position, :integer
 
+    belongs_to :detail, polymorphic: true
     has_many :contents, as: :detail
   end
 
