@@ -1,5 +1,4 @@
-class Detail::My::KnowledgesController < Detail::My::BaseController
-  before_action :set_knowledge, only: [:show, :edit, :update, :destroy]
+class Detail::KnowledgesController < Detail::BaseController
 
   def index
     q_params = {}
@@ -14,16 +13,16 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
 
   def create
     @knowledge = Knowledge.new(knowledge_params)
+    @parent = Knowledge.find_by(id: knowledge_params[:parent_id])
 
     if @knowledge.save
-      if @knowledge.parent
-        return_to = knowledge_url(@parent.parent)
+      if knowledge_params[:parent_id] == 0
+        redirect_to admin_knowledges_url, notice: 'Knowledge was successfully created.'
       else
-        return_to = knowledges_url
+        redirect_to admin_knowledge_url(@parent.parent), notice: 'Knowledge was successfully created.'
       end
-      render 'create', locals: { return_to: return_to }
     else
-      render :new, locals: { model: @knowledge }, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -53,17 +52,15 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   end
 
   def update
-    @knowledge.assign_attributes knowledge_params
-
-    if @knowledge.save
-      render 'update'
+    if @knowledge.update(knowledge_params)
     else
-      render :edit, locals: { model: @knowledge }, status: :unprocessable_entity
+      render :edit
     end
   end
 
   def destroy
     @knowledge.destroy
+    redirect_to admin_knowledges_url, notice: 'Knowledge was successfully destroyed.'
   end
 
   def sub
@@ -98,10 +95,7 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   end
 
   def knowledge_params
-    params.fetch(:knowledge, {}).permit(
-      :title,
-      :parent_id
-    )
+    params[:knowledge].permit(:name, :parent_id)
   end
 
 end

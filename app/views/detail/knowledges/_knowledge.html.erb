@@ -1,0 +1,10 @@
+<tr>
+  <td><%= knowledge.id %></td>
+  <td><%= knowledge.title %></td>
+  <td><%= knowledge.position %></td>
+  <td><%= knowledge.parent_id %></td>
+  <td><%= knowledge.body %></td>
+  <td><%= link_to '查看子类', my_knowledge_path(knowledge) %></td>
+  <td><%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true %></td>
+  <td><%= link_to t('.destroy'), my_knowledge_path(knowledge), method: :delete, data: { confirm: t('.confirm') } %></td>
+</tr>

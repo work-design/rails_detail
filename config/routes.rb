@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         patch :pass, on: :member
       end
     end
+    resources :knowledges
   end
 
   scope :admin, module: 'detail/admin', as: :admin do
@@ -28,6 +29,10 @@ Rails.application.routes.draw do
     scope path: ':entity_type/:entity_id' do
       resources :entity_items
     end
+  end
+
+  scope module: 'detail' do
+    resources :knowledges
   end
 
 end

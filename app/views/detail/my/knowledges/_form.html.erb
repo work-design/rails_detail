@@ -1,7 +1,5 @@
-<%= default_form_for [:admin, @knowledge] do |f| %>
-
+<%= form_with model: [:my, @knowledge] do |f| %>
   <%= f.hidden_field :parent_id %>
-  <%= f.text_field :name, label: '名称' %>
+  <%= f.text_field :title %>
   <%= f.submit %>
-
 <% end %>

@@ -4,11 +4,6 @@ class Detail::My::SolosController < Detail::My::BaseController
   def index
     @sort = Sort.find params[:sort_id]
     @solos = @sort.solos.order("id DESC")
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @solos }
-    end
   end
 
   def new
