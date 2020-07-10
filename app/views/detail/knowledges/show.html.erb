@@ -1,25 +1,16 @@
-<div class="row">
-
-  <div class="col-md-2">
-    <%= render :partial => 'nav' %>
-  </div>
-
-  <div class="col-md-10">
-    <ul class="breadcrumb">
-      <li><%= link_to '百科频道', admin_sorts_path %></li>
-      <% @sort.ancestors.each do |sort| %>
-        <li><%= link_to sort.name, admin_sort_path(sort) %></li>
-      <% end %>
-      <li class="active"><%= @sort.name %></li>
-      <li class="pull-right"><%= link_to '新建', new_admin_sort_path %></li>
-    </ul>
-
-
-    <table class="table">
-    <% @sort.children.each do |child| %>
-      <%= render :partial => 'sort', :locals => { :sort => child } %>
+<div class="breadcrumb">
+  <ul>
+    <li><%= link_to '百科频道', knowledges_path %></li>
+    <% @knowledge.ancestors.each do |knowledge| %>
+      <li><%= link_to knowledge.title, knowledge_path(knowledge) %></li>
     <% end %>
-    </table>
-  </div>
-
+    <li class="is-active"><%= @knowledge.title %></li>
+    <li class="pull-right"><%= link_to '新建', new_my_knowledge_path(parent_id: @knowledge), remote: true %></li>
+  </ul>
 </div>
+
+<table class="table">
+<% @knowledge.children.each do |child| %>
+  <%= render partial: 'knowledge', locals: { knowledge: child } %>
+<% end %>
+</table>

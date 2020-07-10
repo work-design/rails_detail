@@ -17,7 +17,7 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
 
     if @knowledge.save
       if @knowledge.parent
-        return_to = knowledge_url(@parent.parent)
+        return_to = knowledge_url(@knowledge.parent)
       else
         return_to = knowledges_url
       end

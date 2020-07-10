@@ -40,7 +40,7 @@ class Detail::KnowledgesController < Detail::BaseController
   end
 
   def show
-    @knowledge = Knowledge.includes(:children => :content).find params[:id]
+    @knowledge = Knowledge.includes(:contents, children: :contents).find params[:id]
   end
 
   def child
