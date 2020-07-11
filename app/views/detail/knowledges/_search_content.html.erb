@@ -1,16 +1,18 @@
 <% @knowledges.each do |knowledge| %>
-  <article class="media">
-    <figure class="media-left">
-      <%= image_tag knowledge.main_image if knowledge.main_image.attached? %>
-    </figure>
-    <div class="media-content">
-      <h2 class="title"><%= knowledge.title %></h2>
-      <div class="content">
-        <%= knowledge.body %>
+  <div class="panel-block">
+    <article class="media">
+      <figure class="media-left">
+        <%= image_tag knowledge.main_image if knowledge.main_image.attached? %>
+      </figure>
+      <div class="media-content">
+        <h2 class="title"><%= knowledge.title %></h2>
+        <div class="content">
+          <%= knowledge.body %>
+        </div>
       </div>
-    </div>
-    <div class="media-right">
-      <p><%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true %></p>
-    </div>
-  </article>
+      <div class="media-right">
+        <p><%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true %></p>
+      </div>
+    </article>
+  </div>
 <% end%>

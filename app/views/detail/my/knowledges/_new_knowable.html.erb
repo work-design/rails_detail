@@ -1,7 +1,7 @@
 <%= render layout: 'modal' do %>
   <div class="panel">
     <div class="panel-heading">搜索</div>
-    <div class="panel-block">
+    <div class="panel-block" id="search-content">
       <%= form_with theme: nil, scope: nil, url: search_knowledges_path, method: :get, html: { style: 'width: 100%;' } do |f| %>
         <div class="control has-icons-left">
           <%= f.search_field 'title-like', class: 'input', placeholder: '搜索', data: { controller: 'typer' } %>
@@ -9,7 +9,7 @@
         </div>
       <% end %>
     </div>
-    <div class="box" style="min-height: 300px;" id="search-content">
+    <div class="box" style="min-height: 300px;">
     
     </div>
   </div>
