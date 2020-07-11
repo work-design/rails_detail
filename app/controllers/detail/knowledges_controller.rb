@@ -2,9 +2,16 @@ class Detail::KnowledgesController < Detail::BaseController
 
   def index
     q_params = {}
-    q_params.merge! params.permit('name-like')
+    q_params.merge! params.permit('title-like')
 
     @knowledges = Knowledge.order(updated_at: :desc).page(params[:page])
+  end
+
+  def search
+    q_params = {}
+    q_params.merge! params.permit('title-like')
+
+    @knowledges = Knowledge.default_where(q_params).limit(5)
   end
 
   def show

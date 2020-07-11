@@ -27,13 +27,13 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     end
   end
 
-  def new_belong
+  def new_knowable
     if params[:type].present? && params[:id].present?
       @knowable = params[:type].safe_constantize.find(params[:id])
     end
   end
 
-  def create_belong
+  def create_knowable
     if params[:type].present? && params[:id].present?
       @knowable = params[:type].safe_constantize.find(params[:id])
       @knowable.update(knowledge_id: @knowledge)

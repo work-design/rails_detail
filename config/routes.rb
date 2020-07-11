@@ -11,6 +11,14 @@ Rails.application.routes.draw do
         patch :pass, on: :member
       end
     end
+    scope path: ':knowable_type/:knowable_id' do
+      resources :knowledges, only: [] do
+        collection do
+          get 'knowable' => :new_knowable
+          post 'knowable' => :create_knowable
+        end
+      end
+    end
     resources :knowledges
   end
 
@@ -32,7 +40,11 @@ Rails.application.routes.draw do
   end
 
   scope module: 'detail' do
-    resources :knowledges
+    resources :knowledges, only: [:index, :show] do
+      collection do
+        get :search
+      end
+    end
   end
 
 end
