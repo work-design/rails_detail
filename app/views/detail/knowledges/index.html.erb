@@ -2,8 +2,8 @@
   <div class="panel-heading"><%= link_to t('.new'), new_my_knowledge_path, remote: true %></div>
 </div>
 
-<table class="table">
+<div>
 <% @knowledges.each do |knowledge| %>
   <%= render partial: 'knowledge', locals: { knowledge: knowledge } %>
 <% end %>
-</table>
+</div>

@@ -44,10 +44,6 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     @knowledge = Knowledge.includes(:children => :content).find params[:id]
   end
 
-  def child
-    @knowledges = @knowledge.children
-  end
-
   def edit
     @knowledge = Knowledge.find params[:id]
   end
@@ -69,10 +65,10 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   def sub
     if params[:sup]
       @sup = Sort.find params[:sup]
-      @sort = Sort.new(:position => @sup.position.to_i+1)
+      @sort = Sort.new(position: @sup.position.to_i+1)
     else
       @parent = Sort.find params[:id]
-      @sort = Sort.new(:position => params[:position])
+      @sort = Sort.new(position: params[:position])
     end
   end
 
@@ -81,14 +77,11 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     @sort = @parent.children.new sort_params
     @sort.insert_at(params[:sort][:position].to_i)
 
-    respond_to do |format|
-      if @sort.save
-        format.html { redirect_to :back, :notice => "添加成功" }
-        format.json { render json: @sort, status: :created, location: @sort }
-      else
-        format.html { render :action => 'sub' }
-        format.json { render json: @sort.errors, status: :unprocessable_entity }
-      end
+
+    if @sort.save
+
+    else
+      render :sub, locals: { model: @knowledge }, status: :unprocessable_entity
     end
   end
 

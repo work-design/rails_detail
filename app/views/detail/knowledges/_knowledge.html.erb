@@ -1,10 +1,15 @@
-<tr>
-  <td><%= knowledge.id %></td>
-  <td><%= knowledge.title %></td>
-  <td><%= knowledge.position %></td>
-  <td><%= knowledge.parent_id %></td>
-  <td><%= knowledge.body %></td>
-  <td><%= link_to '查看子类', my_knowledge_path(knowledge) %></td>
-  <td><%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true %></td>
-  <td><%= link_to t('.destroy'), my_knowledge_path(knowledge), method: :delete, data: { confirm: t('.confirm') } %></td>
-</tr>
+<article class="media">
+  <figure class="media-left">
+    <%= image_tag knowledge.main_image if knowledge.main_image.attached? %>
+  </figure>
+  <div class="media-content">
+    <h2 class="title"><%= link_to knowledge.title, knowledge_path(knowledge) %></h2>
+    <div class="content">
+      <%= knowledge.body %>
+    </div>
+  </div>
+  <div class="media-right">
+    <p><%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true %></p>
+    <p><%= link_to t('.destroy'), my_knowledge_path(knowledge), method: :delete, data: { confirm: t('.confirm') } %></p>
+  </div>
+</article>
