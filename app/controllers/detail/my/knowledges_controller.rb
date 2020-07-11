@@ -1,5 +1,5 @@
 class Detail::My::KnowledgesController < Detail::My::BaseController
-  before_action :set_knowledge, only: [:show, :edit, :update, :destroy]
+  before_action :set_knowledge, only: [:show, :edit, :update, :toggle_knowable, :destroy]
 
   def index
     q_params = {}
@@ -28,16 +28,24 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
   end
 
   def new_knowable
-    if params[:type].present? && params[:id].present?
-      @knowable = params[:type].safe_constantize.find(params[:id])
-    end
+    q_params = {}
+    q_params.merge! params.permit(:knowable_type, :knowable_id)
+
+    @select_ids = Knowledge.where(knowable_type: params[:knowable_type], knowable_id: params[:knowable_id]).pluck(:id)
+    @knowledges = Knowledge.where(q_params)
   end
 
-  def create_knowable
-    if params[:type].present? && params[:id].present?
-      @knowable = params[:type].safe_constantize.find(params[:id])
-      @knowable.update(knowledge_id: @knowledge)
-    end
+  def toggle_knowable
+    @knowledge.assign_attributes params.permit(:knowable_type, :knowable_id)
+    @knowledge.save
+  end
+
+  def search
+    q_params = {}
+    q_params.merge! params.permit('title-like')
+
+    @select_ids = Knowledge.where(knowable_type: params[:knowable_type], knowable_id: params[:knowable_id]).pluck(:id)
+    @knowledges = Knowledge.default_where(q_params).limit(5)
   end
 
   def show
