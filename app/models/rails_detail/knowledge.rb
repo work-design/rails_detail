@@ -6,8 +6,8 @@ module RailsDetail::Knowledge
     attribute :body, :text
     attribute :position, :integer
 
-    belongs_to :knowable, polymorphic: true, optional: true
     has_many :contents, as: :detail
+    has_many :knowings, dependent: :destroy
 
     has_one_attached :main_image
   end

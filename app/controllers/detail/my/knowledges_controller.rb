@@ -31,20 +31,28 @@ class Detail::My::KnowledgesController < Detail::My::BaseController
     q_params = {}
     q_params.merge! params.permit(:knowable_type, :knowable_id)
 
-    @select_ids = Knowledge.where(knowable_type: params[:knowable_type], knowable_id: params[:knowable_id]).pluck(:id)
-    @knowledges = Knowledge.where(q_params)
+    @select_ids = Knowing.where(knowable_type: params[:knowable_type], knowable_id: params[:knowable_id]).pluck(:knowledge_id)
+    @knowledges = Knowledge.where(id: @select_ids)
   end
 
   def toggle_knowable
-    @knowledge.assign_attributes params.permit(:knowable_type, :knowable_id)
-    @knowledge.save
+    q_params = {}
+    q_params.merge! params.permit(:knowable_type, :knowable_id)
+
+    @knowing = @knowledge.knowings.find_or_initialize_by(q_params)
+
+    if @knowing.persisted?
+      @knowing.destroy
+    else
+      @knowing.save
+    end
   end
 
   def search
     q_params = {}
     q_params.merge! params.permit('title-like')
 
-    @select_ids = Knowledge.where(knowable_type: params[:knowable_type], knowable_id: params[:knowable_id]).pluck(:id)
+    @select_ids = Knowing.where(knowable_type: params[:knowable_type], knowable_id: params[:knowable_id]).pluck(:knowledge_id)
     @knowledges = Knowledge.default_where(q_params).limit(5)
   end
 
