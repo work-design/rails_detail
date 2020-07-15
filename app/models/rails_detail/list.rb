@@ -12,4 +12,3 @@ module RailsDetail::List
   end
 
 end
-

@@ -6,4 +6,3 @@ module RailsDetail::TaxonModel
   end
 
 end
-

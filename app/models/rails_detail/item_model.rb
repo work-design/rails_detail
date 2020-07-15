@@ -19,6 +19,4 @@ module RailsDetail::ItemModel
     taxon_items.group_by(&:list)
   end
 
-
 end
-
