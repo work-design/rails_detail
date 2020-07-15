@@ -1,3 +1,3 @@
-class Detail::BaseController < ApplicationController
+class Detail::BaseController < BaseController
 
 end unless defined? Detail::BaseController
