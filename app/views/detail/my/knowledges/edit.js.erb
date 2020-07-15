@@ -1,0 +1,2 @@
+document.getElementById('knowledge_<%= @knowledge.id %>').innerHTML = '<%= j(render partial: 'edit_content') %>'
+remote_js_load('<%= raw remote_js_load %>')

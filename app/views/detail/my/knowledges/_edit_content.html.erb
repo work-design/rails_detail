@@ -1,0 +1,5 @@
+<%= form_with model: [:my, @knowledge] do |f| %>
+  <%= f.hidden_field :parent_id %>
+  <%= f.text_area :body, label: nil %>
+  <%= f.submit nil, origin: { offset: nil } %>
+<% end %>
