@@ -1,2 +1,2 @@
-document.getElementById('knowledge_<%= @knowledge.id %>').innerHTML = '<%= j(render partial: 'edit_content') %>'
+document.getElementById('knowledge_<%= params[:edit] %>_<%= @knowledge.id %>').innerHTML = '<%= j(render partial: "edit_#{params[:edit]}") %>'
 remote_js_load('<%= raw remote_js_load %>')

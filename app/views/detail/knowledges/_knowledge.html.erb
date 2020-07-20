@@ -3,16 +3,16 @@
     <%= image_tag knowledge.main_image if knowledge.main_image.attached? %>
   </figure>
   <div class="media-content">
-    <h2 class="title" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
+    <h2 id="knowledge_title_<%= knowledge.id %>" class="title" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
       <%= link_to knowledge.title, knowledge_path(knowledge) %>
-      <%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true, class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } %>
+      <%= link_to t('.edit'), edit_my_knowledge_path(knowledge, edit: 'title'), remote: true, class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } %>
     </h2>
-    <div class="content" id="knowledge_<%= knowledge.id %>">
+    <div class="content" id="knowledge_content_<%= knowledge.id %>">
       <%= simple_format knowledge.body %>
     </div>
   </div>
   <div class="media-right">
-    <p><%= link_to t('.edit'), edit_my_knowledge_path(knowledge), remote: true %></p>
+    <p><%= link_to t('.edit'), edit_my_knowledge_path(knowledge, edit: 'content'), remote: true %></p>
     <p><%= link_to t('.destroy'), my_knowledge_path(knowledge), method: :delete, data: { confirm: t('.confirm') } %></p>
   </div>
 </article>
