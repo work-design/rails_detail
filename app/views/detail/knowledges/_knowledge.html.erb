@@ -5,7 +5,9 @@
   <div class="media-content">
     <h2 id="knowledge_title_<%= knowledge.id %>" class="title" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
       <%= link_to knowledge.title, knowledge_path(knowledge) %>
-      <%= link_to t('.edit'), edit_my_knowledge_path(knowledge, edit: 'title'), remote: true, class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } %>
+      <%= link_to edit_my_knowledge_path(knowledge, edit: 'title'), remote: true, class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } do %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
     </h2>
     <div class="content" id="knowledge_content_<%= knowledge.id %>">
       <%= simple_format knowledge.body %>
