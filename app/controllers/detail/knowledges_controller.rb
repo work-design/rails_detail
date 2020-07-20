@@ -4,7 +4,7 @@ class Detail::KnowledgesController < Detail::BaseController
     q_params = {}
     q_params.merge! params.permit('title-like')
 
-    @knowledges = Knowledge.order(updated_at: :desc).page(params[:page])
+    @knowledges = Knowledge.order(id: :desc).page(params[:page])
   end
 
   def search
