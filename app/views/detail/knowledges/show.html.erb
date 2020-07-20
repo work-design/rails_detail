@@ -22,7 +22,9 @@
     <%= @knowledge.body %>
   </div>
   <div>
-    <%= link_to t('.edit'), edit_my_knowledge_path(@knowledge), remote: true %>
+    <%= link_to edit_my_knowledge_path(@knowledge), remote: true do %>
+      <i class="fas fa-pencil-alt"></i><span><%= t('.edit') %></span>
+    <% end %>
   </div>
 </div>
 

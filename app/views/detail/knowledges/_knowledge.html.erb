@@ -3,9 +3,11 @@
     <%= image_tag knowledge.main_image if knowledge.main_image.attached? %>
   </figure>
   <div class="media-content">
-    <h2 class="title"><%= link_to knowledge.title, knowledge_path(knowledge) %></h2>
+    <h2 class="title">
+      <%= link_to knowledge.title, knowledge_path(knowledge) %>
+    </h2>
     <div class="content" id="knowledge_<%= knowledge.id %>">
-      <%= knowledge.body %>
+      <%= simple_format knowledge.body %>
     </div>
   </div>
   <div class="media-right">

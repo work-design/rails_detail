@@ -1,5 +1,10 @@
 <%= form_with model: [:my, @knowledge] do |f| %>
   <%= f.hidden_field :parent_id %>
   <%= f.text_area :body, label: nil %>
-  <%= f.submit nil, origin: { offset: nil } %>
+  <div class="field is-grouped">
+    <%= f.submit nil, origin: { offset: nil }, wrap: { all: nil, submit: 'control' } %>
+    <div class="control">
+      <%= link_to '取消', knowledge_path(@knowledge), class: 'button is-light' %>
+    </div>
+  </div>
 <% end %>
