@@ -1,4 +1,4 @@
 class Knowledge < ApplicationRecord
   include RailsDetail::Knowledge
-  prepend RailsTaxon::Node
+  include RailsTaxon::Node
 end unless defined? Knowledge
