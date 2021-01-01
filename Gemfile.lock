@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: ad7eefa830386140c9d3a2e23cbb3e038fac5551
+  revision: 595ad445145ebf28b0d03f98468e31d562b1e619
   specs:
     rails_com (1.2.9)
       acme-client
@@ -78,7 +78,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    acts_as_list (1.0.2)
+    acts_as_list (1.0.3)
       activerecord (>= 4.2)
     builder (3.2.4)
     closure_tree (7.2.0)
@@ -94,13 +94,14 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.0.1)
+    faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http-2-next (0.2.6)
+    http-2-next (0.3.0)
     http-form_data (2.3.0)
-    httpx (0.9.0)
+    httpx (0.10.2)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.5)
@@ -163,6 +164,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
+    ruby2_keywords (0.0.2)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
