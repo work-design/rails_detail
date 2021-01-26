@@ -1,9 +1,9 @@
 $('#<%= params[:area] %>').fadeOut('fast');
 <div class="modal-footer">
 <%- if f.options[:html][:id] == "new_solo" -%>
-<%= link_to "取消", fade_form_baike_index_path(:area => "solo_#{wiki.id}_form"), class: "btn btn-default", remote: true %>
+<%= link_to "取消", fade_form_baike_index_path(:area => "solo_#{wiki.id}_form"), class: "btn btn-default" %>
 <%- elsif f.options[:html][:id] == "new_part" -%>
-<%= link_to "取消", fade_form_baike_index_path(:area => "part_#{wiki.id}_form"), class: "btn btn-default", remote: true %>
+<%= link_to "取消", fade_form_baike_index_path(:area => "part_#{wiki.id}_form"), class: "btn btn-default" %>
 <%- end -%>
 <%= f.submit :class => "btn btn-primary" %>
 </div>

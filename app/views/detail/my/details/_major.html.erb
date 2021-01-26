@@ -6,7 +6,7 @@
 
   <div class="extra">
     <div class="left floated">
-      <%= link_to '编辑内容', new_knowledge_major_path(knowledge), remote: true %>
+      <%= link_to '编辑内容', new_knowledge_major_path(knowledge) %>
       <span>丨所有版本：</span><%= link_to knowledge.major_records_count, knowledge_majors_path(knowledge) %>
     </div>
 

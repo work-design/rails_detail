@@ -10,7 +10,7 @@
     <tr id="taxon_list_<%= list.id %>" class="is-selected">
       <td colspan="2">
         <%= list.name %>
-        <%= link_to list_admin_taxon_items_path(params[:taxon_type], params[:taxon_id], list_id: list.id), remote: true, class: 'button is-warning is-small' do %>
+        <%= link_to list_admin_taxon_items_path(params[:taxon_type], params[:taxon_id], list_id: list.id), class: 'button is-warning is-small' do %>
           <i class="fas fa-plus"></i>
         <% end %>
       </td>
@@ -24,7 +24,7 @@
      <tr>
        <th></th>
        <th>
-         <%= link_to new_admin_taxon_item_path(params[:taxon_type], params[:taxon_id]), remote: true, class: 'button is-link is-small' do %>
+         <%= link_to new_admin_taxon_item_path(params[:taxon_type], params[:taxon_id]), class: 'button is-link is-small' do %>
            <i class="fas fa-plus"></i><%= t('.new') %>
          <% end %>
        </th>

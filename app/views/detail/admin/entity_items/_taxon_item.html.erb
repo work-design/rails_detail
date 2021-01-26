@@ -11,7 +11,7 @@
         <label></label>
       </div>
     <% else %>
-      <%= link_to new_admin_entity_item_path(params[:entity_type], params[:entity_id], taxon_item_id: taxon_item.id), remote: true do %>
+      <%= link_to new_admin_entity_item_path(params[:entity_type], params[:entity_id], taxon_item_id: taxon_item.id) do %>
         <div class="ui input">
           <%= text_field_tag nil, taxon_item.default_value, readonly: true, class: 'three wide field' %>
         </div>
@@ -19,7 +19,7 @@
     <% end %>
   </td>
   <td>
-    <%# link_to 'Edit', edit_entity_item_path(params[:entity_type], params[:entity_id]), remote: true, class: 'ui pink label' %>
-    <%# link_to 'Destroy', entity_item_path(params[:entity_type], params[:entity_id]), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'ui red label' %>
+    <%# link_to 'Edit', edit_entity_item_path(params[:entity_type], params[:entity_id]), class: 'ui pink label' %>
+    <%# link_to 'Destroy', entity_item_path(params[:entity_type], params[:entity_id]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
   </td>
 </tr>

@@ -3,7 +3,7 @@
   <td><%= @taxon_item.id %></td>
   <td><%= @taxon_item.item.name %></td>
   <td>
-    <%= form_tag [:my, @taxon_item], method: :patch, remote: true, id: from_id %>
+    <%= form_tag [:my, @taxon_item], method: :patch, id: from_id %>
     <div class="ui input">
       <%= text_field_tag 'taxon_item[value]', @taxon_item.value, placeholder: 'Result:', class: 'three wide field', form: from_id %>
     </div>

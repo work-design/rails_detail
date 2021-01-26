@@ -7,10 +7,10 @@
   <h5><%= picture.title %></h5>
   <div>
     <%= picture.body %>
-    <%= link_to edit_detail_picture_path(params[:detail_type], params[:detail_id], picture), remote: true, class: 'grey text' do %>
+    <%= link_to edit_detail_picture_path(params[:detail_type], params[:detail_id], picture), class: 'grey text' do %>
       <i class="grey write square icon"></i>
     <% end %>
-    <%= link_to detail_picture_path(params[:detail_type], params[:detail_id], picture), method: :delete, data: { confirm: 'Are use sure?' }, remote: true, class: 'grey text' do %>
+    <%= link_to detail_picture_path(params[:detail_type], params[:detail_id], picture), method: :delete, data: { confirm: 'Are use sure?' }, class: 'grey text' do %>
       <i class="times icon"></i>
     <% end %>
   </div>

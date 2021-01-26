@@ -1,7 +1,7 @@
 <tr data-controller="input">
   <% uid = rand(99999) %>
   <td>
-    <%= form_with model: @taxon_item, url: admin_taxon_items_path, remote: true, id: "taxon_item_new_#{uid}" do %>
+    <%= form_with model: @taxon_item, url: admin_taxon_items_path, id: "taxon_item_new_#{uid}" do %>
       <div class="select field is-narrow">
         <%= select_tag 'taxon_item[item_id]', options_for_select(@items), form: "taxon_item_new_#{uid}" %>
       </div>

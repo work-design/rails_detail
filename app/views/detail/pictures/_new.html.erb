@@ -1,4 +1,4 @@
-<%= form_with model: @picture, url: detail_pictures_path, remote: true do |f| %>
+<%= form_with model: @picture, url: detail_pictures_path do |f| %>
   <%= f.hidden_field :id %>
   <%= f.file_field :file %>
   <div class="top attached inline fields">

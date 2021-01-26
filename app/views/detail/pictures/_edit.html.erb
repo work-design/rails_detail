@@ -1,4 +1,4 @@
-<%= form_with model: @picture, url: detail_picture_path(params[:detail_type], params[:detail_id], @picture.id), remote: true do |f| %>
+<%= form_with model: @picture, url: detail_picture_path(params[:detail_type], params[:detail_id], @picture.id) do |f| %>
   <%= f.hidden_field :id %>
   <%= f.file_field :file %>
   <%= render 'active_storage/attachments/list_form', target: @picture.file %>

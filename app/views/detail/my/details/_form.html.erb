@@ -23,7 +23,7 @@
   <%- if f.options[:html][:id] == "edit_sort" -%>
     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
   <%- elsif f.options[:html][:id] == "new_sort" -%>
-    <%= link_to "取消", fade_form_baike_index_path(:area => "sort-form-#{id}"), class: "btn btn-default", remote: true %>
+    <%= link_to "取消", fade_form_baike_index_path(:area => "sort-form-#{id}"), class: "btn btn-default" %>
   <%- end -%>
   <%= f.submit :class => "btn btn-primary" %>
 </div>

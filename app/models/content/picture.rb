@@ -1,3 +1,5 @@
-class Picture < Content
-  include RailsDetail::Content::Picture
-end unless defined? Picture
+module Detail
+  class Picture < Content
+    include Model::Content::Picture
+  end
+end

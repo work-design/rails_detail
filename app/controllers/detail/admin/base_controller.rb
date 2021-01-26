@@ -1,3 +1,4 @@
-class Detail::Admin::BaseController < AdminController
-
-end unless defined? Detail::Admin::BaseController
+module Detail
+  class Admin::BaseController < AdminController
+  end
+end

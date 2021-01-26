@@ -1,6 +1,6 @@
 <tr id="taxon_item_<%= @entity_item.taxon_item_id %>">
   <td>
-    <%= form_tag entity_items_path(params[:entity_type], params[:entity_id]), remote: true, id: "entity_item_new_#{@entity_item.taxon_item_id}" %>
+    <%= form_tag entity_items_path(params[:entity_type], params[:entity_id]), id: "entity_item_new_#{@entity_item.taxon_item_id}" %>
     <%= hidden_field_tag 'entity_item[taxon_item_id]', @entity_item.taxon_item_id, form: "entity_item_new_#{@entity_item.taxon_item_id}" %>
     <%= @entity_item.taxon_item_id %>
   </td>

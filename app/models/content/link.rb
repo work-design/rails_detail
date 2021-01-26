@@ -1,3 +1,5 @@
-class Link < Content
+module Detail
+  class Link < Content
 
-end unless defined? Link
+  end
+end

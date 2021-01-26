@@ -1,3 +1,4 @@
-class Note < Content
-
-end unless defined? Note
+module Detail
+  class Note < Content
+  end
+end

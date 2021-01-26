@@ -11,7 +11,7 @@
     </div>
   </article>
   <div data-controller="input">
-    <%= check_box_tag '[user]disabled', knowledge.id, @select_ids.include?(knowledge.id), data: { method: :patch, remote: true, url: knowable_my_knowledge_path(params[:knowable_type], params[:knowable_id], knowledge.id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+    <%= check_box_tag '[user]disabled', knowledge.id, @select_ids.include?(knowledge.id), data: { method: :patch, url: knowable_my_knowledge_path(params[:knowable_type], params[:knowable_id], knowledge.id), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
     <label></label>
   </div>
 </div>
