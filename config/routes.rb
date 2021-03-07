@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope :my, module: 'detail/my', as: :my, defaults: { namespace: 'my', business: 'detail' } do
+  scope :my, module: 'detail/my', as: :my, defaults: { business: 'detail', namespace: 'my' } do
     scope path: ':detail_type/:detail_id' do
       resource :note
       resources :pictures
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :knowledges
   end
 
-  scope :admin, module: 'detail/admin', as: :admin, defaults: { namespace: 'admin', business: 'detail' } do
+  scope :admin, module: 'detail/admin', as: :admin, defaults: { business: 'detail', namespace: 'admin' } do
     resources :lists do
       resources :items
     end

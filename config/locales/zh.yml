@@ -1,10 +1,10 @@
 zh:
   activerecord:
     attributes:
-      list:
+      detal/list:
         name: 名称
     enum:
-      list:
+      detail/list:
         kind:
           kind_menu: 目录
           kind_define: 非目录
