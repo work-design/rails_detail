@@ -1,5 +1,5 @@
 module Detail
-  module Model::TaxonModel
+  module Ext::TaxonModel
     extend ActiveSupport::Concern
 
     included do
