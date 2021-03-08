@@ -1,9 +1,9 @@
 module Detail
-  module Model::ItemModel
+  module Ext::Listing
     extend ActiveSupport::Concern
 
     included do
-      has_many :entity_items, as: :entity
+      has_many :entity_items, class_name: 'Detail::EntityItem', as: :entity
     end
 
     def items

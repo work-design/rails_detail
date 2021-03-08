@@ -3,7 +3,7 @@ module Detail
     extend ActiveSupport::Concern
 
     included do
-      has_many :taxon_items, as: :taxon
+      has_many :taxon_items, class_name: 'Detail::TaxonItem', as: :taxon
     end
 
   end
