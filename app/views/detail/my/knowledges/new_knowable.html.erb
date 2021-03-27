@@ -1,4 +1,4 @@
-<%= render layout: 'modal' do %>
+<turbo-frame id="modal">
   <div class="panel">
     <div class="panel-heading">搜索</div>
     <div class="panel-block" id="search-content">
@@ -13,4 +13,4 @@
       <%= render partial: 'knowledge', locals: { knowledge: knowledge } %>
     <% end %>
   </div>
-<% end %>
+</turbo-frame>
