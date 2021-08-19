@@ -1,4 +1,4 @@
-<%= render 'shared/error_messages', target: @item %>
+<%= render 'error_messages', target: @item %>
 <%= f.text_field :name %>
 <%= f.file_field :logo %>
 <%= f.select :key, options_for_select(RailsDetail.config.mapping.keys) %>
