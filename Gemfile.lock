@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 4829a61208ab5a358d43f43795c3e998b636a5b1
+  revision: 2377ede7104b675247bf7b26bc279591d54d0a21
   specs:
     rails_com (1.2.9)
       acme-client
@@ -9,8 +9,10 @@ GIT
       default_where (~> 2.2)
       http-form_data (~> 2.3)
       httpx (~> 0.16)
+      jbuilder
       kaminari
-      rails (~> 6.1)
+      rails (>= 6.1)
+      rails_extend
       turbo-rails
 
 PATH
@@ -22,7 +24,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    acme-client (2.0.8)
+    acme-client (2.0.9)
       faraday (>= 0.17, < 2.0.0)
     actioncable (6.1.3.2)
       actionpack (= 6.1.3.2)
@@ -99,7 +101,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.7.0)
+    faraday (1.8.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -122,11 +124,13 @@ GEM
       activesupport (>= 4.2.0)
     http-2-next (0.5.0)
     http-form_data (2.3.0)
-    httpx (0.16.1)
+    httpx (0.17.0)
       http-2-next (>= 0.4.1)
       timers
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.11.2)
+      activesupport (>= 5.0.0)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -178,6 +182,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails_extend (1.0.0)
+      rails (>= 6.1)
     railties (6.1.3.2)
       actionpack (= 6.1.3.2)
       activesupport (= 6.1.3.2)
@@ -195,7 +201,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     timers (4.3.3)
-    turbo-rails (0.7.3)
+    turbo-rails (0.7.14)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)

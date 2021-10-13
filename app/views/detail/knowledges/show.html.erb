@@ -21,7 +21,7 @@
   <div class="content" id="knowledge_content_<%= @knowledge.id %>" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
     <%= @knowledge.body %>
     <%= link_to edit_my_knowledge_path(@knowledge, edit: 'content'), class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } do %>
-      <i class="fas fa-pencil-alt"></i>
+      <i class="fa-light fa-pencil"></i>
     <% end %>
   </div>
 </div>

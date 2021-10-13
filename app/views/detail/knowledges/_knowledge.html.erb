@@ -6,16 +6,16 @@
     <h2 id="knowledge_title_<%= knowledge.id %>" class="title" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
       <%= link_to knowledge.title, knowledge_path(knowledge) %>
       <%= link_to edit_my_knowledge_path(knowledge, edit: 'title'), class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } do %>
-        <i class="fas fa-pencil-alt"></i>
+        <i class="fa-light fa-pencil"></i>
       <% end %>
       <%= link_to my_knowledge_path(knowledge), method: :delete, class: 'title-edit', style: 'visibility: hidden', data: { confirm: t('.confirm'), show_target: 'item' } do %>
-        <i class="fas fa-trash-alt"></i>
+        <i class="fa-light fa-trash"></i>
       <% end %>
     </h2>
     <div class="content" id="knowledge_content_<%= knowledge.id %>" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
       <%= simple_format knowledge.body %>
       <%= link_to edit_my_knowledge_path(knowledge, edit: 'content'), class: 'title-edit', style: 'visibility: hidden', data: { show_target: 'item' } do %>
-        <i class="fas fa-pencil-alt"></i>
+        <i class="fa-light fa-pencil"></i>
       <% end %>
     </div>
   </div>
