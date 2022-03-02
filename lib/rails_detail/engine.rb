@@ -1,8 +1,12 @@
 require 'rails_com'
 module RailsDetail
   class Engine < ::Rails::Engine
-    
+
     config.autoload_paths += Dir[
+      "#{config.root}/app/models/content"
+    ]
+
+    config.eager_load_paths += Dir[
       "#{config.root}/app/models/content"
     ]
 
