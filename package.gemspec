@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
     'test/**/*'
   ]
 
-  s.add_dependency 'rails_com', '~> 1.2'
+  s.add_dependency 'rails_com'
 end
