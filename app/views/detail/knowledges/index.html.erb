@@ -1,9 +1,3 @@
-<div class="panel panel-default">
-  <div class="panel-heading"><%= link_to t('.new'), { action: 'new' } %></div>
-</div>
+<%= render 'button' %>
 
-<div>
-<% @knowledges.each do |knowledge| %>
-  <%= render partial: 'knowledge', locals: { knowledge: knowledge } %>
-<% end %>
-</div>
+<%= render partial: 'knowledge', collection: @knowledges, as: :knowledge %>
