@@ -1,2 +1,2 @@
-<td><%= model.name %></td>
+<td><%= link_to model.name, { controller: 'items', list_id: model.id } %></td>
 <td><%= model.position %></td>
