@@ -1,31 +1,13 @@
 module Detail
   class My::KnowledgesController < My::BaseController
     before_action :set_knowledge, only: [:show, :edit, :update, :toggle_knowable, :destroy]
+    before_action :set_new_knowledge, only: [:new, :create]
 
     def index
       q_params = {}
       q_params.merge! params.permit('name-like')
 
-      @knowledges = Knowledge.roots.page(params[:page])
-    end
-
-    def new
-      @knowledge = Knowledge.new(parent_id: params[:parent_id])
-    end
-
-    def create
-      @knowledge = Knowledge.new(knowledge_params)
-
-      if @knowledge.save
-        if @knowledge.parent
-          return_to = knowledge_url(@knowledge.parent)
-        else
-          return_to = knowledges_url
-        end
-        render 'create', locals: { return_to: return_to }
-      else
-        render :new, locals: { model: @knowledge }, status: :unprocessable_entity
-      end
+      @knowledges = Knowledge.roots.default_where(q_params).page(params[:page])
     end
 
     def new_knowable
@@ -75,10 +57,6 @@ module Detail
       end
     end
 
-    def destroy
-      @knowledge.destroy
-    end
-
     def sub
       if params[:sup]
         @sup = Sort.find params[:sup]
@@ -105,6 +83,10 @@ module Detail
     private
     def set_knowledge
       @knowledge = Knowledge.find(params[:id])
+    end
+
+    def set_new_knowledge
+      @knowledge = Knowledge.new(parent_id: params[:parent_id])
     end
 
     def knowledge_params
