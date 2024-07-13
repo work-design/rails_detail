@@ -1,6 +1,6 @@
 module Detail
   class Admin::TaxonItemsController < Admin::BaseController
-    before_action :set_taxon_item, only: [:show, :edit, :update, :destroy]
+    before_action :set_taxon_item, only: [:show, :edit, :update, :destroy, :actions]
 
     def index
       taxon_items = TaxonItem.includes(:list).where(taxon_type: params[:taxon_type], taxon_id: params[:taxon_id])
@@ -36,24 +36,6 @@ module Detail
 
       item_ids = TaxonItem.where(x_params).pluck(:item_id)
       @items = Item.where(list_id: params[:list_id]).where.not(id: item_ids).pluck(:name, :id)
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @taxon_item.update(taxon_item_params)
-
-      unless @taxon_item.save
-        render :edit, locals: { model: @taxon_item }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @taxon_item.destroy
     end
 
     private

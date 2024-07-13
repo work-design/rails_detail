@@ -1,6 +1,7 @@
 module Detail
   class Admin::ListsController < Admin::BaseController
-    before_action :set_list, only: [:edit, :update, :destroy]
+    before_action :set_list, only: [:show, :edit, :update, :destroy, :actions]
+    before_action :set_new_list, only: [:new, :create]
 
     def index
       q_params = {}
@@ -9,36 +10,13 @@ module Detail
       @lists = List.default_where(q_params).page(params[:page])
     end
 
-    def new
-      @list = List.new
-    end
-
-    def create
-      @list = List.new list_params
-
-      unless @list.save
-        render :new, locals: { model: @list }, status: :unprocessable_entity
-      end
-    end
-
-    def edit
-    end
-
-    def update
-      @list.assign_attributes list_params
-
-      unless @list.save
-        render :edit, locals: { model: @list }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @list.destroy
-    end
-
     private
     def set_list
       @list = List.find params[:id]
+    end
+
+    def set_new_list
+      @list = List.new(list_params)
     end
 
     def list_params

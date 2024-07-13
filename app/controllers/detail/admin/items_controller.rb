@@ -1,40 +1,11 @@
 module Detail
   class Admin::ItemsController < Admin::BaseController
     before_action :set_list
-    before_action :set_item, only: [:show, :edit, :update, :destroy]
+    before_action :set_item, only: [:show, :edit, :update, :destroy, :actions]
+    before_action :set_new_item, only: [:new, :create]
 
     def index
       @items = @list.items.order(id: :asc).page(params[:page])
-    end
-
-    def new
-      @item = @list.items.build
-    end
-
-    def create
-      @item = @list.items.build item_params
-
-      unless @item.save
-        render :new, locals: { model: @item }, status: :unprocessable_entity
-      end
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @item.assign_attributes item_params
-
-      unless @item.save
-        render :edit, locals: { model: @item }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @item.destroy
     end
 
     private
@@ -43,7 +14,11 @@ module Detail
     end
 
     def set_item
-      @item = Item.find params[:id]
+      @item = @list.items.find params[:id]
+    end
+
+    def set_new_item
+      @item = @list.items.build item_params
     end
 
     def item_params

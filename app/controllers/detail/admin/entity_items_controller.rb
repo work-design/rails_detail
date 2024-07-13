@@ -1,14 +1,12 @@
 module Detail
   class Admin::EntityItemsController < Admin::BaseController
     before_action :set_entity
-    before_action :set_entity_item, only: [:show, :edit, :update, :destroy]
+    before_action :set_entity_item, only: [:show, :edit, :update, :destroy, :actions]
+    before_action :set_new_entity_item, only: [:new, :create]
 
     def index
       @items_hash = @entity.items
       @entity_items = EntityItem.includes(:taxon_item).where(entity_type: params[:entity_type], entity_id: params[:entity_id]).page(params[:page])
-    end
-
-    def show
     end
 
     def new
@@ -22,16 +20,6 @@ module Detail
       if @entity_item.save
         @entity_item.taxon_item.entity_item_id = @entity_item.id
       end
-    end
-
-    def edit
-    end
-
-    def update
-    end
-
-    def destroy
-      @entity_item.destroy
     end
 
     private
