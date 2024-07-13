@@ -7,7 +7,6 @@ module Detail
       attribute :body, :text
       attribute :position, :integer
 
-      has_many :contents, as: :detail
       has_many :knowings, dependent: :destroy
 
       has_one_attached :main_image
