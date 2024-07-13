@@ -1,4 +1,4 @@
-<%= form_with model: [:my, @knowledge] do |f| %>
+<%= form_with model: @knowledge, url: { action: 'update' } do |f| %>
   <%= f.text_area :body, label: nil %>
   <div class="field is-grouped">
     <%= f.submit nil, origin: { offset: nil }, wrap: { all: nil, submit: 'control' } %>

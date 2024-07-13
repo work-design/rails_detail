@@ -1,6 +1,6 @@
 module Detail
   class My::KnowledgesController < My::BaseController
-    before_action :set_knowledge, only: [:show, :edit, :update, :toggle_knowable, :destroy]
+    before_action :set_knowledge, only: [:show, :edit, :edit_title, :edit_content, :update, :toggle_knowable, :destroy]
     before_action :set_new_knowledge, only: [:new, :create]
 
     def index
@@ -40,21 +40,7 @@ module Detail
     end
 
     def show
-      @knowledge = Knowledge.includes(:children => :content).find params[:id]
-    end
-
-    def edit
-      @knowledge = Knowledge.find params[:id]
-    end
-
-    def update
-      @knowledge.assign_attributes knowledge_params
-
-      if @knowledge.save
-        render 'update'
-      else
-        render :edit, locals: { model: @knowledge }, status: :unprocessable_entity
-      end
+      @knowledge = Knowledge.includes(children: :content).find params[:id]
     end
 
     def sub
@@ -71,7 +57,6 @@ module Detail
       @parent = Sort.find params[:id]
       @sort = @parent.children.new sort_params
       @sort.insert_at(params[:sort][:position].to_i)
-
 
       if @sort.save
 
