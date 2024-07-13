@@ -1,0 +1,8 @@
+<% knowledge.children.each do |child| %>
+  <tr>
+    <td class="center aligned">
+      <i class="caret right icon"></i>
+    </td>
+    <%= render partial: 'index_tbody', locals: { knowledge: child } %>
+  </tr>
+<% end %>
