@@ -12,3 +12,7 @@ zh:
       items:
         index:
           title: 条目
+    my:
+      knowledges:
+        cancel:
+          title: 取消

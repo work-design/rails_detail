@@ -33,6 +33,7 @@ Rails.application.routes.draw do
           member do
             post :edit_content
             post :edit_title
+            post :cancel
           end
         end
       end
