@@ -16,7 +16,7 @@ module Detail
     end
 
     def show
-      @knowledge = Knowledge.includes(:contents, children: :contents).find params[:id]
+      @knowledge = Knowledge.includes(:children).find params[:id]
 
       render layout: 'detail/show'
     end
