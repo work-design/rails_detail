@@ -1,16 +1,14 @@
+<td></td>
+<td><%= model.name %></td>
 <td>
-
-</td>
-<td><%= knowledge.name %></td>
-<td>
-  <%= link_to '详细', knowledge_path(knowledge), target: '_blank', class: 'ui green label' %>
-  <%= link_to '编辑', edit_admin_knowledge_path(knowledge), class: 'ui orange label' %>
-  <%= link_to '添加章节', new_admin_knowledge_path(parent_id: knowledge), class: 'ui brown label' %>
-  <%= link_to '删除', admin_knowledge_path(knowledge), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+  <%= link_to '详细', model_path(model), target: '_blank', class: 'ui green label' %>
+  <%= link_to '编辑', edit_admin_model_path(model), class: 'ui orange label' %>
+  <%= link_to '添加章节', new_admin_model_path(parent_id: model), class: 'ui brown label' %>
+  <%= link_to '删除', admin_model_path(model), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
 </td>
 <td>
-  <% if knowledge.children.present? %>
-  <%= link_to admin_knowledge_path(knowledge) do %>
+  <% if model.children.present? %>
+  <%= link_to admin_model_path(model) do %>
     <i class="chevron right icon"></i>
   <% end %>
   <% end %>
