@@ -29,7 +29,12 @@ Rails.application.routes.draw do
             end
           end
         end
-        resources :knowledges
+        resources :knowledges do
+          member do
+            post :edit_content
+            post :edit_title
+          end
+        end
       end
 
       namespace :admin, defaults: { namespace: 'admin' } do

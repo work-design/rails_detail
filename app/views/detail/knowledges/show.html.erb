@@ -20,7 +20,7 @@
 <div class="box">
   <div class="content" id="knowledge_content_<%= @knowledge.id %>" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
     <%= @knowledge.body %>
-    <%= button_to({ controller: 'my/knowledges', action: 'edit', id: @knowledge.id, edit: 'content' }, class: 'title-edit visibility-hidden', data: { show_target: 'item' }) do %>
+    <%= button_to({ controller: 'my/knowledges', action: 'edit_content', id: @knowledge.id }, class: 'title-edit visibility-hidden', data: { show_target: 'item' }) do %>
       <i class="fa-solid fa-pencil"></i>
     <% end %>
   </div>
