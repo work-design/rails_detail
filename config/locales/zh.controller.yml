@@ -16,3 +16,5 @@ zh:
       knowledges:
         cancel:
           title: 取消
+        new_knowable:
+          title: 搜索知识点
