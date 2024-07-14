@@ -5,7 +5,9 @@
       <span class="icon is-left"><i class="fa-solid fa-search"></i></span>
     </div>
   <% end %>
+  <div>
+    <% @knowledges.each do |knowledge| %>
+      <%= render partial: 'knowledge', locals: { knowledge: knowledge } %>
+    <% end %>
+  </div>
 </div>
-<% @knowledges.each do |knowledge| %>
-  <%= render partial: 'knowledge', locals: { knowledge: knowledge } %>
-<% end %>
