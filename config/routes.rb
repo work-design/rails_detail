@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         scope path: ':knowable_type/:knowable_id' do
           resources :knowledges, only: [] do
             collection do
-              get 'knowable' => :new_knowable
+              post 'knowable' => :new_knowable
               get 'search'
             end
             member do
