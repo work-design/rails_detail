@@ -1,7 +1,7 @@
-<div id="search-content">
-  <%= form_with theme: nil, scope: nil, url: { action: 'search' }, html: { style: 'width: 100%;' } do |f| %>
+<div id="search-content" data-controller="type">
+  <%= form_with theme: 'line', scope: nil, url: { action: 'search' }, html: { style: 'width: 100%;' } do |f| %>
     <div class="control has-icons-left">
-      <%= f.search_field 'title-like', class: 'input', placeholder: '搜索', data: { controller: 'typer' } %>
+      <%= f.search_field 'title-like', placeholder: '搜索', data: { typer_target: 'input' } %>
       <span class="icon is-left"><i class="fa-solid fa-search"></i></span>
     </div>
   <% end %>
