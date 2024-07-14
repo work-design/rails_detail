@@ -22,7 +22,7 @@ Rails.application.routes.draw do
           resources :knowledges, only: [] do
             collection do
               post 'knowable' => :new_knowable
-              get 'search'
+              post 'search'
             end
             member do
               patch 'knowable' => :toggle_knowable

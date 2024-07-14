@@ -1,7 +1,7 @@
 <div class="panel">
   <div class="panel-heading">搜索</div>
   <div class="panel-block" id="search-content">
-    <%= form_with theme: nil, scope: nil, url: search_my_knowledges_path(params[:knowable_type], params[:knowable_id]), method: :get, html: { style: 'width: 100%;' } do |f| %>
+    <%= form_with theme: nil, scope: nil, url: { action: 'search' }, html: { style: 'width: 100%;' } do |f| %>
       <div class="control has-icons-left">
         <%= f.search_field 'title-like', class: 'input', placeholder: '搜索', data: { controller: 'typer' } %>
         <span class="icon is-left"><i class="fa-light fa-search"></i></span>

@@ -1,8 +1,0 @@
-var content = document.getElementById('search-content')
-var el = content.nextElementSibling
-while (el) {
-  el.remove()
-  el = content.nextElementSibling
-}
-
-content.insertAdjacentHTML('afterend', '<%= j(render partial: 'search_content') %>')
