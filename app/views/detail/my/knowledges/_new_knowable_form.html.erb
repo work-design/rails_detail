@@ -6,8 +6,6 @@
     </div>
   <% end %>
   <div>
-    <% @knowledges.each do |knowledge| %>
-      <%= render partial: 'knowledge', locals: { knowledge: knowledge } %>
-    <% end %>
+    <%= render partial: 'knowledge', collection: @knowledges, as: :model %>
   </div>
 </div>
