@@ -1,4 +1,4 @@
-<div id="search-content" data-controller="type">
+<div id="search-content" data-controller="typer">
   <%= form_with theme: 'line', scope: nil, url: { action: 'search' }, html: { style: 'width: 100%;' } do |f| %>
     <div class="control has-icons-left">
       <%= f.search_field 'title-like', placeholder: '搜索', data: { typer_target: 'input' } %>
