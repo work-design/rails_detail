@@ -1,17 +1,17 @@
 <article class="media">
   <figure class="media-left">
-    <%= image_tag knowledge.main_image if knowledge.main_image.attached? %>
+    <%= image_tag model.main_image if model.main_image.attached? %>
   </figure>
   <div class="media-content">
-    <h2 class="title"><%= knowledge.title %></h2>
+    <h2 class="title"><%= model.title %></h2>
     <div class="content">
-      <%= knowledge.body %>
+      <%= model.body %>
     </div>
   </div>
+  <div data-controller="input" class="media-right">
+    <%= form_with theme: nil, model: model, url: { action: 'toggle_knowable', id: model.id }, data: { controller: 'input' } do |f| %>
+      <%= f.check_box :disabled, checked: @select_ids.include?(model.id), data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
+      <label data-action="click->input#check"></label>
+    <% end %>
+  </div>
 </article>
-<div data-controller="input">
-  <%= form_with theme: nil, model: model, url: { action: 'toggle_knowledge', id: model.id }, data: { controller: 'input' } do |f| %>
-    <%= f.check_box :disabled, checked: @select_ids.include?(model.id), data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
-    <label data-action="click->input#check"></label>
-  <% end %>
-</div>
