@@ -1,11 +1,9 @@
-<div data-controller="menu" class="menu ex-accordion is-active">
-  <div class="menu-label">
-    <div>
-      <i class="fa-solid fa-fw fa-users"></i>
-      <span><%= t('detail.admin.title') %></span>
-    </div>
-   </div>
-  <div class="menu-list">
-    <%= link_to t('detail.admin.lists.index.title'), { controller: 'detail/admin/lists' }, class: active_helper(controllers: 'lists', active: 'is-active') -%>
+<div class="menu-list">
+  <div class="menu-item">
+    <i class="fa-solid fa-fw fa-users"></i>
+    <span><%= t('detail.admin.title') %></span>
+  </div>
+  <div class="pl-4">
+    <%= link_to t('detail.admin.lists.index.title'), { controller: 'detail/admin/lists' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'lists', item: 'menu-item', active: 'menu-item is-active') -%>
   </div>
 </div>
