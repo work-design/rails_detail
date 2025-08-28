@@ -2,7 +2,7 @@
   <%= form_with theme: 'line', scope: nil, url: { action: 'search' }, html: { style: 'width: 100%;' } do |f| %>
     <div class="control has-icons-left">
       <%= f.search_field 'title-like', placeholder: '搜索', data: { typer_target: 'input' } %>
-      <%= svg_tag 'magnifying-glass' %>
+      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-3' %>
     </div>
   <% end %>
   <div>
